@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "activeClass": "",
+        "icon": "1.png",
+        "title": "Digital Marketing",
+        "text": "Continue indulged speaking the was horrible for domestic position. Seeing get rather.",
+        "btnText": "Read More",
+        "delay": "100ms"
+    },
+    {
+        "id": 2,
+        "activeClass": "active",
+        "icon": "2.png",
+        "title": "App Development",
+        "text": "Continue indulged speaking the was horrible for domestic position. Seeing get rather.",
+        "btnText": "Read More",
+        "delay": "200ms"
+    },
+    {
+        "id": 3,
+        "activeClass": "",
+        "icon": "3.png",
+        "title": "UI/UX Design",
+        "text": "Continue indulged speaking the was horrible for domestic position. Seeing get rather.",
+        "btnText": "Read More",
+        "delay": "400ms"
+    },
+    {
+        "id": 4,
+        "activeClass": "",
+        "icon": "4.png",
+        "title": "Web Design",
+        "text": "Continue indulged speaking the was horrible for domestic position. Seeing get rather.",
+        "btnText": "Read More",
+        "delay": "600ms"
+    }
+]
