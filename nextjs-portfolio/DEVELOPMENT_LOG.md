@@ -76,25 +76,29 @@ src/
 - [x] Set up Next.js configuration files
 
 ### Phase 2: Dependencies Migration
-- [ ] Audit current dependencies for Next.js compatibility
-- [ ] Replace React Router with Next.js routing
+- [x] Audit current dependencies for Next.js compatibility
+- [x] Replace React Router with Next.js routing (completed in components)
 - [ ] Configure styling approach (Bootstrap + custom CSS)
 - [ ] Set up animation libraries (GSAP, WOW.js)
 - [ ] Configure image optimization
 - [ ] Set up component libraries
 
 ### Phase 3: Core Structure Migration
-- [ ] Convert routing system (React Router → Next.js App Router)
-- [ ] Migrate layout components
+- [x] Convert routing system (React Router → Next.js App Router)
+- [x] Migrate layout components (LayoutV1, HeaderV1, FooterV1)
 - [ ] Convert pages to Next.js page structure
-- [ ] Set up global components (Header, Footer, etc.)
+- [x] Set up global components (Header, Footer, etc.)
 - [ ] Configure SEO and meta tags
 
 ### Phase 4: Component Migration
-- [ ] Migrate utility components
+- [x] Migrate utility components (Preloader, Dependency, RoutesScrollToTop)
+- [x] Migrate custom hooks (useSidebarMenu, useStickyMenu, useSubMenuToggle)
+- [x] Migrate header components (HeaderV1, ScrollMenu, ScrollContact)
+- [x] Migrate footer components (FooterV1)
+- [x] Migrate layout components (LayoutV1)
 - [ ] Convert page components
-- [ ] Update component imports/exports
-- [ ] Fix TypeScript types and interfaces
+- [x] Update component imports/exports
+- [x] Fix TypeScript types and interfaces
 - [ ] Test component functionality
 
 ### Phase 5: Advanced Features
@@ -139,14 +143,18 @@ src/
 
 ## Progress Log
 
-### 2024-12-19 - Initial Setup
+### 2024-12-19 - Initial Setup & Component Migration
 - ✅ Created development log
 - ✅ Analyzed current project structure
 - ✅ Identified key dependencies and routes
 - ✅ Manually initialized Next.js project structure
 - ✅ Created basic Next.js files (layout.tsx, page.tsx, globals.css)
 - ✅ Set up TypeScript configuration
-- ⏳ Next: Install dependencies and test basic setup
+- ✅ Migrated utility components (Preloader, Dependency, RoutesScrollToTop)
+- ✅ Migrated custom hooks (useSidebarMenu, useStickyMenu, useSubMenuToggle)
+- ✅ Migrated core layout components (HeaderV1, FooterV1, LayoutV1)
+- ✅ Updated all components for Next.js compatibility
+- ⏳ Next: Copy CSS files and assets, then test the basic layout
 
 ---
 

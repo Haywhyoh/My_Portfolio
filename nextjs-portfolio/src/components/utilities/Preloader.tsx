@@ -1,33 +1,19 @@
 const Preloader = () => {
   return (
     <>
-      <div id="preloader">
-        <div id="antux-preloader" className="antux-preloader">
-          <div className="animation-preloader">
-            <div className="spinner"></div>
-            <div className="txt-loading">
-              <span data-text-preloader="A" className="letters-loading">A</span>
-              <span data-text-preloader="N" className="letters-loading">N</span>
-              <span data-text-preloader="T" className="letters-loading">T</span>
-              <span data-text-preloader="U" className="letters-loading">U</span>
-              <span data-text-preloader="X" className="letters-loading">X</span>
-            </div>
-          </div>
-          <div className="loader">
-            <div className="row">
-              <div className="col-3 loader-section section-left">
-                <div className="bg"></div>
-              </div>
-              <div className="col-3 loader-section section-left">
-                <div className="bg"></div>
-              </div>
-              <div className="col-3 loader-section section-right">
-                <div className="bg"></div>
-              </div>
-              <div className="col-3 loader-section section-right">
-                <div className="bg"></div>
-              </div>
-            </div>
+      <div className="preloader">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+          <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z" />
+        </svg>
+        <div className="preloader-heading">
+          <div className="load-text">
+            <span>L</span>
+            <span>o</span>
+            <span>a</span>
+            <span>d</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
           </div>
         </div>
       </div>

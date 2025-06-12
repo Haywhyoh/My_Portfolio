@@ -1,6 +1,12 @@
 import type { Metadata } from 'next'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'swiper/css'
+import 'swiper/css/bundle'
+import 'react-modal-video/css/modal-video.css'
+import 'react-toastify/dist/ReactToastify.css'
+import 'react-photo-view/dist/react-photo-view.css'
 import './globals.css'
+import ClientProviders from '@/components/providers/ClientProviders'
 
 export const metadata: Metadata = {
   title: 'Portfolio - Next.js',
@@ -14,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <ClientProviders />
+      </body>
     </html>
   )
 } 
