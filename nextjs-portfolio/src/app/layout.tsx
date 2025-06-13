@@ -5,7 +5,12 @@ import 'swiper/css/bundle'
 import 'react-modal-video/css/modal-video.css'
 import 'react-toastify/dist/ReactToastify.css'
 import 'react-photo-view/dist/react-photo-view.css'
+import '../assets/css/validnavs.css'
 import './globals.css'
+import '../assets/css/animate.css'
+import '../assets/css/unit-test.css'
+import '../assets/css/helper.css'
+import '../assets/css/font-awesome.min.css'
 import ClientProviders from '@/components/providers/ClientProviders'
 
 export const metadata: Metadata = {
