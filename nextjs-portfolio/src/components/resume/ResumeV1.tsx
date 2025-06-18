@@ -40,7 +40,7 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                     <div className="timeline-style-one-item">
                                         <div className="timeline-header">
                                             <div className="left">
-                                                <h4>Fullstack Web Developer</h4>
+                                                <h4>Fullstack Engineer</h4>
                                                 <p>
                                                     Hux Ventures - Remote, USA
                                                 </p>
@@ -57,27 +57,7 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                         </div>
                                     </div>
 
-                                    {/* Single Item */}
-                                    <div className="timeline-style-one-item">
-                                        <div className="timeline-header">
-                                            <div className="left">
-                                                <h4>Frontend Engineer</h4>
-                                                <p>
-                                                    Remote - Freelance
-                                                </p>
-                                            </div>
-                                            <div className="right">
-                                                <span>06/2023 – 12/2024</span>
-                                            </div>
-                                        </div>
-                                        <div className="timeline-body">
-                                            <p>
-                                                Redesigned the Hillpad web app interface using React, reducing client onboarding time by 40%. 
-                                                Enhanced performance of three portfolio websites, resulting in 30% increase in engagement and decreased bounce rates.
-                                            </p>
-                                        </div>
-                                    </div>
-
+                                 
                                     {/* Single Item */}
                                     <div className="timeline-style-one-item">
                                         <div className="timeline-header">
@@ -99,6 +79,45 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                         </div>
                                     </div>
 
+                                    {/* Single Item */}
+                                        <div className="timeline-style-one-item">
+                                        <div className="timeline-header">
+                                            <div className="left">
+                                                <h4>Software Engineer</h4>
+                                                <p>
+                                                    Remote - Internship
+                                                </p>
+                                            </div>
+                                            <div className="right">
+                                                <span>02/2021 – 03/2022</span>
+                                            </div>
+                                        </div>
+                                        <div className="timeline-body">
+                                            <p>
+                                            Built dynamic web applications using React for the front end and Node.js for the back end. - Improved user experience by implementing responsive design and optimizing load times
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="timeline-style-one-item">
+                                        <div className="timeline-header">
+                                            <div className="left">
+                                                <h4>Independent Freelancer</h4>
+                                                <p>
+                                                   Upwork - Freelance
+                                                </p>
+                                            </div>
+                                            <div className="right">
+                                                <span>2019 - 2021</span>
+                                            </div>
+                                        </div>
+                                        <div className="timeline-body">
+                                            <p>
+                                                Managed 10+ clients, developing WordPress websites, landing pages, and writing SEO technical content. 
+                                                Built strong client relationships and delivered custom web solutions across diverse industries.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -110,7 +129,7 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                     <div className="timeline-style-one-item">
                                         <div className="timeline-header">
                                             <div className="left">
-                                                <h4>BSc. Electronic and Electrical Engineering</h4>
+                                                <h4>BSc. Electronics Engineering</h4>
                                                 <p>
                                                     Obafemi Awolowo University
                                                 </p>
@@ -131,7 +150,7 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                     <div className="timeline-style-one-item">
                                         <div className="timeline-header">
                                             <div className="left">
-                                                <h4>Holberton Full-Stack Software Engineering</h4>
+                                                <h4>Full-Stack Engineering Diploma</h4>
                                                 <p>
                                                     Holberton School
                                                 </p>
@@ -149,25 +168,7 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                     </div>
 
                                     {/* Single Item */}
-                                    <div className="timeline-style-one-item">
-                                        <div className="timeline-header">
-                                            <div className="left">
-                                                <h4>Independent Freelancer</h4>
-                                                <p>
-                                                    Various Clients
-                                                </p>
-                                            </div>
-                                            <div className="right">
-                                                <span>2019 - 2021</span>
-                                            </div>
-                                        </div>
-                                        <div className="timeline-body">
-                                            <p>
-                                                Managed 10+ clients, developing WordPress websites, landing pages, and writing SEO technical content. 
-                                                Built strong client relationships and delivered custom web solutions across diverse industries.
-                                            </p>
-                                        </div>
-                                    </div>
+                              
                                 </div>
                             </div>
                         </div>

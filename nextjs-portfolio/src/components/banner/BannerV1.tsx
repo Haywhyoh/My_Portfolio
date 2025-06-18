@@ -7,10 +7,10 @@ import { ReactTyped } from 'react-typed';
 const BannerV1 = () => {
 
     const textLines = [
-        '<b className="">Full-Stack Software Engineer</b>',
-        '<b className="">React & Next.js Developer</b>',
-        '<b className="">Python & Node.js Developer</b>',
-        '<b className="">EdTech & SaaS Specialist</b>'
+        '<b className="">Software Engineer</b>',
+        '<b className="">Wordpress Expert</b>',
+        '<b className="">AI Automation</b>',
+        // '<b className="">EdTech & SaaS Specialist</b>'
     ]
 
     return (
@@ -21,7 +21,7 @@ const BannerV1 = () => {
                         <div className="col-lg-12">
                             <div className="banner-style-one-items">
                                 <div className="info">
-                                    <h1>I👋 am Adedayo Ayomide Samuel </h1>
+                                    <h1>I👋 am  Samuel </h1>
                                     <h2>
                                         <span className="header-caption" id="page-top">
                                             <span className="cd-headline clip is-full-width">
