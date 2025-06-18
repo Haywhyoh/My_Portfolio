@@ -28,7 +28,7 @@ const ServicesV1 = ({ sectionClass, hasTitle }: DataType) => {
                             <div className="col-lg-8 offset-lg-2">
                                 <div className="site-heading text-center">
                                     <h4 className="sub-title">Services</h4>
-                                    <h2 className="title">Professional Services</h2>
+                                    <h2 className="title">My Quality Services</h2>
                                 </div>
                             </div>
                         </div>
@@ -39,8 +39,13 @@ const ServicesV1 = ({ sectionClass, hasTitle }: DataType) => {
                     <div className="row">
                         {ServicesData.map((service, index) => (
                             <div className={`col-xl-3 col-md-6 mb-30`} key={service.id}>
-                                <div className={`service-style-one-item ${activeIndex === index ? "active" : ""}`}
+                                <div 
+                                    className={`service-style-one-item ${activeIndex === index ? "active" : ""} animate-on-scroll`}
                                     onMouseEnter={() => handleMouseEnter(index)}
+                                    style={{
+                                        animationDelay: service.delay,
+                                        animation: 'fadeInUp 0.6s ease-out'
+                                    }}
                                 >
                                     <img src={`/assets/img/icon/${service.icon}`} alt="Image Not Found" />
                                     <h4><Link href="/services-details">{service.title}</Link></h4>

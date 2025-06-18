@@ -5,6 +5,8 @@ import CountUp from 'react-countup';
 import Link from "next/link";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ModalVideo from 'react-modal-video';
+import 'react-modal-video/css/modal-video.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -97,22 +99,7 @@ const AboutV1 = () => {
                                         <i className="fas fa-play" />
                                         <div className="effect" />
                                     </Link>
-                                    {isOpen && (
-                                        <div className="modal-video-overlay" onClick={() => setOpen(false)}>
-                                            <div className="modal-video-content">
-                                                <iframe
-                                                    width="560"
-                                                    height="315"
-                                                    src="https://www.youtube.com/embed/aTC_RNYtEb0"
-                                                    title="YouTube video player"
-                                                    frameBorder="0"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowFullScreen
-                                                />
-                                                <button className="modal-close" onClick={() => setOpen(false)}>×</button>
-                                            </div>
-                                        </div>
-                                    )}
+                                    <ModalVideo channel='youtube' isOpen={isOpen} videoId="aTC_RNYtEb0" onClose={() => setOpen(false)} />
                                 </div>
                             </div>
                             <div className="col-lg-4">

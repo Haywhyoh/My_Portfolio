@@ -4,7 +4,7 @@
         "activeClass": "active",
         "icon": "ai.png",
         "title": "AI Agent Building",
-        "text": "Developing intelligent AI agents and automation solutions for businesses. Specialized in building conversational AI, workflow automation, and machine learning integrations to streamline operations.",
+        "text": "Build intelligent AI agents and automation that save your business hours daily. From chatbots to workflow automation - turning manual tasks into smart solutions.",
         "btnText": "Read More",
         "delay": "100ms"
     },
@@ -13,7 +13,7 @@
         "activeClass": "",
         "icon": "1.png",
         "title": "Full Stack Development",
-        "text": "End-to-end web application development using React, Next.js, Node.js, Python, and Django. From database design to responsive frontend interfaces, delivering scalable solutions for 21K+ users.",
+        "text": "Complete web applications from database to frontend. React, Next.js, Python & Node.js expertise proven with 21K+ users served. Scalable solutions that grow with your business.",
         "btnText": "Read More",
         "delay": "200ms"
     },
@@ -22,7 +22,7 @@
         "activeClass": "",
         "icon": "wordpress.png",
         "title": "WordPress Development",
-        "text": "Custom WordPress websites, theme development, and plugin creation. Specialized in building dynamic, SEO-optimized sites with custom functionality and seamless user experiences.",
+        "text": "Custom WordPress sites that convert visitors to customers. SEO-optimized, lightning-fast, and uniquely designed to match your brand and business goals.",
         "btnText": "Read More",
         "delay": "300ms"
     },
@@ -31,7 +31,7 @@
         "activeClass": "",
         "icon": "15.png",
         "title": "Technical Writing",
-        "text": "Creating comprehensive technical documentation, API guides, and developer resources. Experienced in writing clear, actionable content that bridges the gap between complex technology and user understanding.",
+        "text": "Clear, comprehensive technical documentation that developers actually want to read. API guides, user manuals, and developer resources that bridge complexity with clarity.",
         "btnText": "Read More",
         "delay": "400ms"
     }
