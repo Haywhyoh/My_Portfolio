@@ -5,16 +5,13 @@ import CountUp from 'react-countup';
 import Link from "next/link";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import dynamic from 'next/dynamic';
-// import 'react-modal-video/css/modal-video.css';
-// const ModalVideo = dynamic(() => import('react-modal-video'), { ssr: false });
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutV1 = () => {
 
-    // Modal Video (temporarily disabled)
-    // const [isOpen, setOpen] = useState(false);
+    // Modal Video
+    const [isOpen, setOpen] = useState(false);
 
     // Scroll Animation 
     useEffect(() => {
@@ -55,17 +52,17 @@ const AboutV1 = () => {
                             <div className="fun-fact-style-one-items">
                                 <div className="fun-fact">
                                     <div className="counter">
-                                        <div className="timer"> <CountUp end={5} enableScrollSpy={true} /></div>
+                                        <div className="timer"> <CountUp end={12} enableScrollSpy={true} /></div>
                                         <div className="operator">+</div>
                                     </div>
                                     <span className="medium">Years of Experience</span>
                                 </div>
                                 <div className="fun-fact">
                                     <div className="counter">
-                                        <div className="timer"><CountUp end={25} enableScrollSpy={true} /></div>
+                                        <div className="timer"><CountUp end={138} enableScrollSpy={true} /></div>
                                         <div className="operator">+</div>
                                     </div>
-                                    <span className="medium">Projects Completed</span>
+                                    <span className="medium">Projects completed on 30 countries</span>
                                 </div>
                             </div>
                             <div className="clieents-list mt-40">
@@ -77,7 +74,7 @@ const AboutV1 = () => {
                                         <img src="/assets/img/team/17.jpg" alt="Image Not Found" />
                                     </div>
                                     <div className="info">
-                                        <h5>21K+ Users Served</h5>
+                                        <h5>20K+ Clients</h5>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +82,7 @@ const AboutV1 = () => {
                         <div className="col-lg-7 pl-80 pl-md-15 pl-xs-15">
                             <div className="about-style-one-info">
                                 <p>
-                                    As a Full-Stack Software Engineer with 5+ years of experience in EdTech and SaaS industries, I specialize in building scalable web applications using React, Next.js, Python, and Node.js. I have successfully led development teams serving over 21,000 users and have a proven track record of improving user experience and system performance. My expertise spans from frontend development to backend architecture, with a passion for creating efficient, user-centric solutions.
+                                    As a skilled web developer, I specialize in creating responsive, user-friendly websites with a focus on modern design and efficient code. I excel in front-end development, with a deep understanding of HTML, CSS, JavaScript, and various frameworks. My passion is turning ideas into functional and aesthetically pleasing digital experiences.
                                 </p>
                                 <Link className="btn-style-regular btn-border" href="#" ><span>Learn More</span> <i className="fas fa-arrow-right" /></Link>
                             </div>
@@ -96,11 +93,26 @@ const AboutV1 = () => {
                             <div className="col-lg-8 pr-60 pr-md-15 pr-xs-15">
                                 <div className="img-container">
                                     <img src="/assets/img/about/1.jpg" alt="Image Not Found" />
-                                    <Link href="#" className="popup-youtube video-play-button" >
+                                    <Link href="#" className="popup-youtube video-play-button" onClick={() => setOpen(true)} >
                                         <i className="fas fa-play" />
                                         <div className="effect" />
                                     </Link>
-                                    {/* <ModalVideo channel='youtube' isOpen={isOpen} videoId="aTC_RNYtEb0" onClose={() => setOpen(false)} /> */}
+                                    {isOpen && (
+                                        <div className="modal-video-overlay" onClick={() => setOpen(false)}>
+                                            <div className="modal-video-content">
+                                                <iframe
+                                                    width="560"
+                                                    height="315"
+                                                    src="https://www.youtube.com/embed/aTC_RNYtEb0"
+                                                    title="YouTube video player"
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                />
+                                                <button className="modal-close" onClick={() => setOpen(false)}>×</button>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             <div className="col-lg-4">
