@@ -52,17 +52,17 @@ const AboutV1 = () => {
                             <div className="fun-fact-style-one-items">
                                 <div className="fun-fact">
                                     <div className="counter">
-                                        <div className="timer"> <CountUp end={12} enableScrollSpy={true} /></div>
+                                        <div className="timer"> <CountUp end={5} enableScrollSpy={true} /></div>
                                         <div className="operator">+</div>
                                     </div>
                                     <span className="medium">Years of Experience</span>
                                 </div>
                                 <div className="fun-fact">
                                     <div className="counter">
-                                        <div className="timer"><CountUp end={138} enableScrollSpy={true} /></div>
+                                        <div className="timer"><CountUp end={25} enableScrollSpy={true} /></div>
                                         <div className="operator">+</div>
                                     </div>
-                                    <span className="medium">Projects completed on 30 countries</span>
+                                    <span className="medium">Projects Delivered Successfully</span>
                                 </div>
                             </div>
                             <div className="clieents-list mt-40">
@@ -74,7 +74,7 @@ const AboutV1 = () => {
                                         <img src="/assets/img/team/17.jpg" alt="Image Not Found" />
                                     </div>
                                     <div className="info">
-                                        <h5>20K+ Clients</h5>
+                                        <h5>21K+ Users Served</h5>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@ const AboutV1 = () => {
                         <div className="col-lg-7 pl-80 pl-md-15 pl-xs-15">
                             <div className="about-style-one-info">
                                 <p>
-                                    As a skilled web developer, I specialize in creating responsive, user-friendly websites with a focus on modern design and efficient code. I excel in front-end development, with a deep understanding of HTML, CSS, JavaScript, and various frameworks. My passion is turning ideas into functional and aesthetically pleasing digital experiences.
+                                    As a seasoned Full-Stack Software Engineer with 5+ years of proven expertise in EdTech and SaaS industries, I deliver scalable, high-performance web applications that drive business growth. Having successfully led development teams serving over 21,000 combined users, I specialize in React, Next.js, Python, and Node.js ecosystems. My track record includes reducing client onboarding time by 40%, achieving 30K+ monthly impressions through strategic development, and leading cross-functional teams that consistently exceed project expectations and deadlines.
                                 </p>
                                 <Link className="btn-style-regular btn-border" href="#" ><span>Learn More</span> <i className="fas fa-arrow-right" /></Link>
                             </div>
