@@ -30,7 +30,7 @@ const TestimonialV1 = ({ sectionClass }: DataType) => {
                                     <div className="item">
                                         <div className="thumb">
                                             <div className="inner">
-                                                <img src="/assets/img/illustration/2.png" alt="Image Not Found" />
+                                                <img src="/assets/img/naolo.jpeg" alt="Image Not Found" />
                                             </div>
                                         </div>
                                         <div className="content">
@@ -44,7 +44,7 @@ const TestimonialV1 = ({ sectionClass }: DataType) => {
                                                     <i className="fas fa-star" />
                                                 </div>
                                                 <div className="bottom">
-                                                    <img src="/assets/img/partner/9.png" alt="Image Not Found" />
+                                                    <img src="/assets/img/naolo.jpeg" alt="Image Not Found" />
                                                     <p>4.9/ 60 Reviews</p>
                                                 </div>
                                             </div>
@@ -56,8 +56,8 @@ const TestimonialV1 = ({ sectionClass }: DataType) => {
                                             </p>
                                             <div className="tm-footer">
                                                 <div className="provider">
-                                                    <h4>Brooklyn Simmons</h4>
-                                                    <span>UI/UX DESIGNER</span>
+                                                    <h4>Naolo Charless</h4>
+                                                    <span>CEO, BeInitiative</span>
                                                 </div>
                                                 <span>01</span>
                                             </div>

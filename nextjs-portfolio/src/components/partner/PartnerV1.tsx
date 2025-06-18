@@ -9,7 +9,7 @@ const PartnerV1 = () => {
                         <div className="col-lg-6 offset-lg-3">
                             <div className="site-heading text-center">
                                 <h4 className="sub-title">Partner</h4>
-                                <h2 className="title">With The World Premier 80+ Brands</h2>
+                                <h2 className="title">The Brands I've Worked With</h2>
                             </div>
                         </div>
                     </div>
@@ -20,28 +20,28 @@ const PartnerV1 = () => {
                             <div className="partner-style-one-items">
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/1.png" alt="Image Not Found" />
+                                    <img src="/assets/img/partner/hillpad.png" alt="Image Not Found" />
                                 </div>
 
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/2.png" alt="Image Not Found" />
+                                    <img src="/assets/img/partner/beinitiative.png" alt="Image Not Found" />
                                 </div>
 
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/3.png" alt="Image Not Found" />
+                                    <img src="/assets/img/partner/mbuktu.png" alt="Image Not Found" />
                                 </div>
 
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/4.png" alt="Image Not Found" />
+                                    <img src="/assets/img/partner/tri.png" alt="Image Not Found" />
                                 </div>
                             </div>
                             <div className="partner-style-one-items">
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/5.png" alt="Image Not Found" />
+                                    <img src="/assets/img/partner/gra.png" alt="Image Not Found" />
                                 </div>
 
                                 {/* Single Item */}

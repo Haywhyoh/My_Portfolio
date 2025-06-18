@@ -3,42 +3,42 @@
         "id": 1,
         "thumb": "1.jpg",
         "thumbFull": "1-full.jpg",
-        "tags": ["Web", "Coding"],
-        "title": "Document manager application"
+        "tags": ["EdTech", "React"],
+        "title": "Hillpad - Online Course Marketplace"
     },
     {
         "id": 2,
         "thumb": "2.jpg",
         "thumbFull": "2-full.jpg",
-        "tags": ["Software", "Mobile"],
-        "title": "Dynamic mobile app development"
+        "tags": ["Music", "NestJS"],
+        "title": "GraviitalBeats - Music Marketplace"
     },
     {
         "id": 3,
         "thumb": "3.jpg",
         "thumbFull": "3-full.jpg",
-        "tags": ["Brochure", "Design"],
-        "title": "Printable professional brochure templates"
+        "tags": ["Booking", "Beauty"],
+        "title": "Flexibug - Beauty Industry Booking App"
     },
     {
         "id": 4,
-        "thumb": "6.jpg",
-        "thumbFull": "6-full.jpg",
-        "tags": ["Brand", "Mockup"],
-        "title": "Create stunning product flexible mockups"
+        "thumb": "4.jpg",
+        "thumbFull": "4-full.jpg",
+        "tags": ["Booking", "Tattoo"],
+        "title": "TattoAdmin - Tattoo Expert Booking Site"
     },
     {
         "id": 5,
         "thumb": "5.jpg",
         "thumbFull": "5-full.jpg",
-        "tags": ["Design", "Art"],
-        "title": "Decor design vectors illustrations"
+        "tags": ["Ecommerce", "African"],
+        "title": "Mbuktu - African Items Ecommerce Store"
     },
     {
         "id": 6,
-        "thumb": "4.jpg",
-        "thumbFull": "4-full.jpg",
-        "tags": ["Music", "Video"],
-        "title": "Making smart software smartphones"
+        "thumb": "6.jpg",
+        "thumbFull": "6-full.jpg",
+        "tags": ["Initiative", "Web"],
+        "title": "Beinitiative - Community Platform"
     }
 ]

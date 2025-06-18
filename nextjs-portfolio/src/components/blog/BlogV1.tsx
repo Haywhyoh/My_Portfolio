@@ -1,5 +1,8 @@
 'use client';
 
+import BlogV1Data from "../../assets/jsonData/blog/BlogV1Data.json"
+import SingleBlogV1 from './SingleBlogV1';
+
 const BlogV1 = () => {
     return (
         <>
@@ -16,38 +19,11 @@ const BlogV1 = () => {
                 </div>
                 <div className="container">
                     <div className="row">
-                        {/* Blog Item 1 */}
-                        <div className="col-xl-4 col-md-6 col-lg-6 mb-30">
-                            <div className="blog-item">
-                                <img src="/assets/img/blog/1.jpg" alt="Blog Post 1" />
-                                <div className="blog-content">
-                                    <h4>Understanding React Hooks</h4>
-                                    <p>A comprehensive guide to React Hooks and how they can improve your development workflow.</p>
-                                </div>
+                        {BlogV1Data.map(blog =>
+                            <div className="col-xl-4 col-md-6 col-lg-6 mb-30" key={blog.id}>
+                                <SingleBlogV1 blog={blog} />
                             </div>
-                        </div>
-                        
-                        {/* Blog Item 2 */}
-                        <div className="col-xl-4 col-md-6 col-lg-6 mb-30">
-                            <div className="blog-item">
-                                <img src="/assets/img/blog/2.jpg" alt="Blog Post 2" />
-                                <div className="blog-content">
-                                    <h4>Next.js Best Practices</h4>
-                                    <p>Learn the best practices for building scalable applications with Next.js framework.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {/* Blog Item 3 */}
-                        <div className="col-xl-4 col-md-6 col-lg-6 mb-30">
-                            <div className="blog-item">
-                                <img src="/assets/img/blog/3.jpg" alt="Blog Post 3" />
-                                <div className="blog-content">
-                                    <h4>Full-Stack Development Tips</h4>
-                                    <p>Essential tips for becoming a successful full-stack developer in 2024.</p>
-                                </div>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>
