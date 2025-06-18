@@ -53,7 +53,7 @@ const ContactV1 = ({ sectionClass }: DataType) => {
                         <div className="col-lg-8 offset-lg-2">
                             <div className="site-heading text-center">
                                 <h4 className="sub-title">Contact</h4>
-                                <h2 className="title">Let's Work Together</h2>
+                                <h2 className="title">Let&apos;s Work Together</h2>
                             </div>
                         </div>
                     </div>

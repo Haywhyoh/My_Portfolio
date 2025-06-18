@@ -7,9 +7,10 @@ import { ReactTyped } from 'react-typed';
 const BannerV1 = () => {
 
     const textLines = [
-        '<b className="">Web Developer</b>',
-        '<b className="">UI/UX Designer</b>',
-        '<b className="">Professional Dev</b>'
+        '<b className="">Full-Stack Software Engineer</b>',
+        '<b className="">React & Next.js Developer</b>',
+        '<b className="">Python & Node.js Developer</b>',
+        '<b className="">EdTech & SaaS Specialist</b>'
     ]
 
     return (
@@ -20,7 +21,7 @@ const BannerV1 = () => {
                         <div className="col-lg-12">
                             <div className="banner-style-one-items">
                                 <div className="info">
-                                    <h1>I👋 am Dalton </h1>
+                                    <h1>I👋 am Adedayo Ayomide Samuel </h1>
                                     <h2>
                                         <span className="header-caption" id="page-top">
                                             <span className="cd-headline clip is-full-width">
@@ -33,7 +34,7 @@ const BannerV1 = () => {
                                         </span>
                                     </h2>
                                     <p>
-                                        Hi, my name is Dalton Grant and I began using WordPress when it first began. I've spent most of my waking hours for the last ten years designing, programming and operating WordPress sites.
+                                        Hi, I&apos;m Adedayo Ayomide Samuel, a Full-Stack Software Engineer with 5+ years of experience in EdTech and SaaS industries. I specialize in building scalable web applications using React, Next.js, Python, and Node.js, having led teams that serve over 21,000 combined users.
                                     </p>
                                     <div className="flex-social mt-40">
                                         <div className="button">

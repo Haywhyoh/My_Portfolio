@@ -1,0 +1,102 @@
+Adedayo Ayomide Samuel
+Full-Stack Software Engineer
+adefeyisayo998@gmail.com  ▪   ▪ https://samueladedayo.vercel.app/
+
+CAREER SUMMARY
+
+
+
+
+
+
+Experience
+5+ years as a full-stack software engineer in the EdTech and SaaS industry 
+Languages
+JavaScript, Python, C, TypeScript, Bash, PHP, Go
+Tools
+GitHub, PostMan, Vagrant, Docker, WordPress
+Frameworks
+NodeJs, Flask, Express, NextJs, Django, NestJs
+Databases and ORM
+MySQL, PostgreSQL, MongoDB, Redis, Prisma, TypeORM, Firebase, Supabase
+Technologies
+ Apache, Firebase, AWS, Google Cloud, Test Driven Development, Pair Programming
+
+
+PROFESSIONAL EXPERIENCE
+
+
+CodeMyGig
+Remote
+Software Engineer
+01/2025 – 04/2025
+Leading a 6-person contract development team, working on 3 different client projects, serving more than 8,000 users
+Worked against bug backlog, resolving an average of 20 medium bugs/iteration.
+Encouraged adoption of the TDD approach to improve code health, responsible for bringing 20% of code under test coverage.
+Hux Ventures
+Remote, USA
+Fullstack Web Developer
+06/2024 – 01/2025
+Technologies: React, Redux, Next, NestJs, Django, Python, WordPress
+Led a 5-person team that delivered two web applications and SaaS, serving 13,000 combined  users, with reliable and scalable monolithic MVC architectures
+Independently responsible for a Staff and Partners dashboard with referral and affiliate system to track earnings and sales for over 200 partners and staff.                  
+
+
+Frontend Engineer
+06/2023 – 12/2024
+Redesigned the interface of the Hillpad web app using React and reduced client onboarding time by 40%.
+Enhanced the performance of three portfolio project websites by optimizing page load times, resulting in a 30% increase in engagement and a decrease in bounce rates
+
+
+Technologies: Angular, HTML, CSS
+
+
+Probus Technologies
+Remote, Lagos
+Web Developer
+06/2022 – 05/2023
+Built and maintained static landing pages and React and WordPress websites for various clients.
+Developed and executed unit tests using Pytest and Jest, ensuring code quality and reliability, while also creating comprehensive API documentation to enhance developer understanding and usability
+Alx Africa
+Remote, Kenya
+Intern
+02/2021 - 03/2022
+Built dynamic web applications using React for the front end and Node.js for the back end. - Improved user experience by implementing responsive design and optimizing load times
+
+
+2019-2021: Independent Freelancer with 10+ clients managing WordPress websites, landing pages and writing SEO technical-related content
+
+
+
+
+PROJECTS 
+
+
+Hillpad
+01/2024- 02/2025
+Technologies: React, Redux, TypeScript, Django, Supabase
+Built an online course marketplace for top schools
+Promoted to various social networks and implemented SEO strategies that bring in over 30,000 monthly impressions and 4% click-through rates
+Link: https://hillpad.com/
+GraviitalBeats
+02/2025 - Current
+Technologies: NestJs, NextJs, Zustand, Postgres
+Built a musical beat marketplace where producers can sell their beats to music artists and other creatives looking to use licensed beats
+Link: http://graviitalbeats.com/
+Other Projects:  worknoon, mbuktu, tattoAdmin, beinitiative.com
+
+
+EDUCATION & ACCREDITATIONS
+
+
+BSc. Electronic and Electrical Engineering
+02/2016 – 12/2021
+Obafemi Awolowo University
+Holberton Full-Stack Software Engineering Program
+02/2021 - 03/2022
+70 hours/ week of intensive project-based learning focused on full-stack software engineering.
+
+
+GitHub.com/Haywhyoh   ▪  linkedin.com/ayomide-samuel
+
+

@@ -1,38 +1,38 @@
 [
     {
         "id": 1,
-        "activeClass": "",
-        "icon": "1.png",
-        "title": "Digital Marketing",
-        "text": "Continue indulged speaking the was horrible for domestic position. Seeing get rather.",
+        "activeClass": "active",
+        "icon": "ai.png",
+        "title": "AI Agent Building",
+        "text": "Developing intelligent AI agents and automation solutions for businesses. Specialized in building conversational AI, workflow automation, and machine learning integrations to streamline operations.",
         "btnText": "Read More",
         "delay": "100ms"
     },
     {
         "id": 2,
-        "activeClass": "active",
-        "icon": "2.png",
-        "title": "App Development",
-        "text": "Continue indulged speaking the was horrible for domestic position. Seeing get rather.",
+        "activeClass": "",
+        "icon": "1.png",
+        "title": "Full Stack Development",
+        "text": "End-to-end web application development using React, Next.js, Node.js, Python, and Django. From database design to responsive frontend interfaces, delivering scalable solutions for 21K+ users.",
         "btnText": "Read More",
         "delay": "200ms"
     },
     {
         "id": 3,
         "activeClass": "",
-        "icon": "3.png",
-        "title": "UI/UX Design",
-        "text": "Continue indulged speaking the was horrible for domestic position. Seeing get rather.",
+        "icon": "wordpress.png",
+        "title": "WordPress Development",
+        "text": "Custom WordPress websites, theme development, and plugin creation. Specialized in building dynamic, SEO-optimized sites with custom functionality and seamless user experiences.",
         "btnText": "Read More",
-        "delay": "400ms"
+        "delay": "300ms"
     },
     {
         "id": 4,
         "activeClass": "",
-        "icon": "4.png",
-        "title": "Web Design",
-        "text": "Continue indulged speaking the was horrible for domestic position. Seeing get rather.",
+        "icon": "15.png",
+        "title": "Technical Writing",
+        "text": "Creating comprehensive technical documentation, API guides, and developer resources. Experienced in writing clear, actionable content that bridges the gap between complex technology and user understanding.",
         "btnText": "Read More",
-        "delay": "600ms"
+        "delay": "400ms"
     }
 ]

@@ -28,7 +28,7 @@ const ServicesV1 = ({ sectionClass, hasTitle }: DataType) => {
                             <div className="col-lg-8 offset-lg-2">
                                 <div className="site-heading text-center">
                                     <h4 className="sub-title">Services</h4>
-                                    <h2 className="title">My Quality Services</h2>
+                                    <h2 className="title">Professional Services</h2>
                                 </div>
                             </div>
                         </div>

@@ -16,7 +16,7 @@ export default function ContactPage() {
             <div className="site-heading text-center">
               <h4 className="sub-title">Get In Touch</h4>
               <h1 className="title">Contact Me</h1>
-              <p>Ready to start your next project? Let's work together!</p>
+              <p>Ready to start your next project? Let&apos;s work together!</p>
             </div>
           </div>
         </div>

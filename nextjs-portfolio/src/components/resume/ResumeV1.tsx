@@ -26,42 +26,70 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                 
                                 <div className="timeline-style-one-item">
                                     <div className="timeline-header">
-                                        <span>2021 - Present</span>
-                                        <h4>Senior Web Developer</h4>
-                                        <p>Tech Solutions Inc.</p>
+                                        <span>01/2025 – 04/2025</span>
+                                        <h4>Software Engineer</h4>
+                                        <p>CodeMyGig - Remote</p>
                                     </div>
                                     <div className="timeline-body">
                                         <p>
-                                            Leading development of enterprise web applications using React, Next.js, and Node.js. 
-                                            Mentoring junior developers and architecting scalable solutions.
+                                            Leading a 6-person contract development team, working on 3 different client projects, serving more than 8,000 users. 
+                                            Resolved an average of 20 medium bugs per iteration and encouraged TDD adoption, bringing 20% of code under test coverage.
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="timeline-style-one-item">
                                     <div className="timeline-header">
-                                        <span>2019 - 2021</span>
-                                        <h4>Frontend Developer</h4>
-                                        <p>Digital Agency Pro</p>
+                                        <span>06/2024 – 01/2025</span>
+                                        <h4>Fullstack Web Developer</h4>
+                                        <p>Hux Ventures - Remote, USA</p>
                                     </div>
                                     <div className="timeline-body">
                                         <p>
-                                            Developed responsive websites and web applications for various clients. 
-                                            Specialized in React, Vue.js, and modern JavaScript frameworks.
+                                            Led a 5-person team that delivered two web applications and SaaS, serving 13,000 combined users. 
+                                            Independently responsible for Staff and Partners dashboard with referral and affiliate system tracking earnings for over 200 partners.
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="timeline-style-one-item">
                                     <div className="timeline-header">
-                                        <span>2017 - 2019</span>
-                                        <h4>Junior Web Developer</h4>
-                                        <p>StartUp Studios</p>
+                                        <span>06/2023 – 12/2024</span>
+                                        <h4>Frontend Engineer</h4>
+                                        <p>Remote</p>
                                     </div>
                                     <div className="timeline-body">
                                         <p>
-                                            Started my professional journey building WordPress websites and learning 
-                                            modern web development technologies.
+                                            Redesigned the Hillpad web app interface using React, reducing client onboarding time by 40%. 
+                                            Enhanced performance of three portfolio websites, resulting in 30% increase in engagement and decreased bounce rates.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="timeline-style-one-item">
+                                    <div className="timeline-header">
+                                        <span>06/2022 – 05/2023</span>
+                                        <h4>Web Developer</h4>
+                                        <p>Probus Technologies - Remote, Lagos</p>
+                                    </div>
+                                    <div className="timeline-body">
+                                        <p>
+                                            Built and maintained static landing pages and React/WordPress websites for various clients. 
+                                            Developed unit tests using Pytest and Jest, created comprehensive API documentation to enhance developer understanding.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="timeline-style-one-item">
+                                    <div className="timeline-header">
+                                        <span>02/2021 – 03/2022</span>
+                                        <h4>Software Engineering Intern</h4>
+                                        <p>ALX Africa - Remote, Kenya</p>
+                                    </div>
+                                    <div className="timeline-body">
+                                        <p>
+                                            Built dynamic web applications using React for frontend and Node.js for backend. 
+                                            Improved user experience by implementing responsive design and optimizing load times through intensive project-based learning.
                                         </p>
                                     </div>
                                 </div>
@@ -74,42 +102,42 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                 
                                 <div className="timeline-style-one-item">
                                     <div className="timeline-header">
-                                        <span>2013 - 2017</span>
-                                        <h4>Bachelor of Computer Science</h4>
-                                        <p>University of Technology</p>
+                                        <span>02/2016 – 12/2021</span>
+                                        <h4>BSc. Electronic and Electrical Engineering</h4>
+                                        <p>Obafemi Awolowo University</p>
                                     </div>
                                     <div className="timeline-body">
                                         <p>
-                                            Comprehensive study of computer science fundamentals including algorithms, 
-                                            data structures, and software engineering principles.
+                                            Comprehensive study of electronic and electrical engineering principles, including circuit design, 
+                                            digital systems, and engineering mathematics. Strong foundation in problem-solving and analytical thinking.
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="timeline-style-one-item">
                                     <div className="timeline-header">
-                                        <span>2020</span>
-                                        <h4>React Developer Certification</h4>
-                                        <p>Tech Academy</p>
+                                        <span>02/2021 – 03/2022</span>
+                                        <h4>Holberton Full-Stack Software Engineering Program</h4>
+                                        <p>Holberton School</p>
                                     </div>
                                     <div className="timeline-body">
                                         <p>
-                                            Advanced certification in React development, including Redux, 
-                                            Context API, and modern React patterns.
+                                            Intensive 70 hours/week project-based learning program focused on full-stack software engineering. 
+                                            Mastered modern web technologies, algorithms, data structures, and collaborative development practices.
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="timeline-style-one-item">
                                     <div className="timeline-header">
-                                        <span>2021</span>
-                                        <h4>AWS Solutions Architect</h4>
-                                        <p>Amazon Web Services</p>
+                                        <span>2019 – 2021</span>
+                                        <h4>Independent Freelancer</h4>
+                                        <p>Various Clients</p>
                                     </div>
                                     <div className="timeline-body">
                                         <p>
-                                            Certified in designing and deploying scalable applications 
-                                            on AWS cloud infrastructure.
+                                            Managed 10+ clients, developing WordPress websites, landing pages, and writing SEO technical content. 
+                                            Built strong client relationships and delivered custom web solutions across diverse industries.
                                         </p>
                                     </div>
                                 </div>

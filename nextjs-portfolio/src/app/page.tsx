@@ -16,43 +16,71 @@ export default function Home() {
       <ResumeV1 sectionClass="bg-gray default-padding" />
       <ContactV1 sectionClass="bg-gray default-padding" />
       
-      {/* Migration status section */}
-      <div className="container default-padding">
+      {/* Professional Summary Section */}
+      {/* <div className="container default-padding">
         <div className="row justify-content-center">
           <div className="col-lg-10">
             <div className="bg-gradient text-light p-5 rounded text-center">
-              <h2 className="text-white mb-4">🎉 Next.js Migration Success!</h2>
+              <h2 className="text-white mb-4">🚀 Full-Stack Software Engineer</h2>
               <div className="row">
                 <div className="col-md-6">
-                  <h4 className="text-white">✅ Migrated Components:</h4>
+                  <h4 className="text-white">💼 Recent Experience:</h4>
                   <ul className="list-unstyled text-light">
-                    <li>🏠 BannerV1 - Hero with typed animation</li>
-                    <li>👤 AboutV1 - About section with GSAP</li>
-                    <li>⚙️ ServicesV1 - Services showcase</li>
-                    <li>📊 FactV1 - Skills with CountUp</li>
-                    <li>📄 ResumeV1 - Experience timeline</li>
-                    <li>📧 ContactV1 - Contact form</li>
+                    <li>🎯 CodeMyGig - Leading 6-person dev team</li>
+                    <li>🏢 Hux Ventures - Led 5-person team (13K users)</li>
+                    <li>🎨 Frontend Engineer - 40% faster onboarding</li>
+                    <li>🌐 Probus Technologies - React & WordPress</li>
+                    <li>📚 ALX Africa - Full-stack development</li>
+                    <li>💡 10+ freelance WordPress projects</li>
                   </ul>
                 </div>
                 <div className="col-md-6">
-                  <h4 className="text-white">🔧 Technical Features:</h4>
+                  <h4 className="text-white">🛠️ Tech Stack:</h4>
                   <ul className="list-unstyled text-light">
-                    <li>⚡ Next.js 14 App Router</li>
-                    <li>🎨 Bootstrap 5 + Custom CSS</li>
-                    <li>📱 Fully Responsive Design</li>
-                    <li>🔄 React Hooks & State</li>
-                    <li>🌟 Smooth Animations</li>
-                    <li>📈 Progress Counters</li>
+                    <li>⚛️ React, Next.js, Angular, TypeScript</li>
+                    <li>🐍 Python, Django, Flask, Node.js</li>
+                    <li>🗄️ PostgreSQL, MongoDB, Redis, Firebase</li>
+                    <li>☁️ AWS, Google Cloud, Docker</li>
+                    <li>🔧 Git, TDD, Pair Programming</li>
+                    <li>📱 Responsive Design & SEO</li>
                   </ul>
                 </div>
               </div>
+              <div className="row mt-4">
+                <div className="col-md-12">
+                  <h4 className="text-white">🏆 Featured Projects:</h4>
+                  <div className="row">
+                    <div className="col-md-4">
+                      <p className="text-light mb-2">
+                        <strong>🎓 Hillpad</strong><br/>
+                        Online course marketplace<br/>
+                        <small>30K+ monthly impressions</small>
+                      </p>
+                    </div>
+                    <div className="col-md-4">
+                      <p className="text-light mb-2">
+                        <strong>🎵 GraviitalBeats</strong><br/>
+                        Musical beat marketplace<br/>
+                        <small>NestJs + NextJs + Postgres</small>
+                      </p>
+                    </div>
+                    <div className="col-md-4">
+                      <p className="text-light mb-2">
+                        <strong>🎯 Various SaaS</strong><br/>
+                        Multiple client projects<br/>
+                        <small>21K+ combined users</small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <p className="mt-4 text-white">
-                <strong>Portfolio is now fully functional with Next.js!</strong>
+                <strong>5+ Years Experience | EdTech & SaaS Specialist | Holberton Graduate</strong>
               </p>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </LayoutV1>
   )
 } 
