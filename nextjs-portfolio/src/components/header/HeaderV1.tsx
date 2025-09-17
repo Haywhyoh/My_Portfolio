@@ -28,7 +28,16 @@ const HeaderV1 = () => {
                     </div>
                     <div className="container nav-box d-flex justify-content-between align-items-center">
                         <div className="navbar-header">
-                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu" onClick={openMenu}>
+                            <button
+                                type="button"
+                                className="navbar-toggle"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbar-menu"
+                                aria-controls="navbar-menu"
+                                aria-expanded={isOpen}
+                                aria-label="Toggle navigation"
+                                onClick={openMenu}
+                            >
                                 <i className="fa fa-bars" />
                             </button>
                             <Link className="navbar-brand" href="/">
@@ -37,7 +46,16 @@ const HeaderV1 = () => {
                         </div>
                         <div className={`collapse navbar-collapse collapse-mobile ${isOpen ? "show" : ""}`} id="navbar-menu">
                             <img src="/assets/img/logo.png" alt="Logo" />
-                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu" onClick={closeMenu}>
+                            <button
+                                type="button"
+                                className="navbar-toggle"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbar-menu"
+                                aria-controls="navbar-menu"
+                                aria-expanded={isOpen}
+                                aria-label="Close navigation"
+                                onClick={closeMenu}
+                            >
                                 <i className="fa fa-times" />
                             </button>
                             <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">

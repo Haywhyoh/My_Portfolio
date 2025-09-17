@@ -15,8 +15,11 @@ const AboutV1 = () => {
     // Modal Video
     const [isOpen, setOpen] = useState(false);
 
-    // Scroll Animation 
+    // Scroll Animation
     useEffect(() => {
+        // Check if document is available (client-side only)
+        if (typeof document === 'undefined') return;
+
         const upDown_Scroll = document.querySelector(".upDownScrol");
 
         if (upDown_Scroll) {

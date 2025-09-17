@@ -9,7 +9,10 @@ const RoutesScrollToTop = () => {
 
     // Automatically scrolls to top whenever pathname changes
     useEffect(() => {
-        window.scrollTo(0, 0);
+        // Check if window is available (client-side only)
+        if (typeof window !== 'undefined') {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }
     }, [pathname]);
 
     // Return null since this component does not need to render anything

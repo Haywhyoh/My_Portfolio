@@ -1,17 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const useSidebarMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const openMenu = () => {
         setIsOpen(true);
-        document.body.classList.add('no-fade');
+        // Check if document is available (client-side only)
+        if (typeof document !== 'undefined') {
+            document.body.classList.add('no-fade');
+        }
     };
 
     const closeMenu = () => {
         setIsOpen(false);
-        document.body.classList.remove('no-fade');
+        // Check if document is available (client-side only)
+        if (typeof document !== 'undefined') {
+            document.body.classList.remove('no-fade');
+        }
     };
+
+    // Clean up on unmount
+    useEffect(() => {
+        return () => {
+            if (typeof document !== 'undefined') {
+                document.body.classList.remove('no-fade');
+            }
+        };
+    }, []);
 
     return { isOpen, openMenu, closeMenu };
 };
