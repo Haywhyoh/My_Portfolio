@@ -34,7 +34,7 @@ export default function BlogLayout({
   return (
     <div className="blog-layout">
       {/* Breadcrumb section */}
-      <div className="breadcrumb-area bg-gray text-center shadow dark-hard">
+      {/* <div className="breadcrumb-area bg-gray text-center shadow dark-hard">
         <div className="container">
           <div className="row">
             <div className="col-lg-8 offset-lg-2">
@@ -52,7 +52,7 @@ export default function BlogLayout({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Blog content - full width, no sidebar */}
       <div className="blog-area full-blog default-padding">

@@ -77,8 +77,8 @@ Sidebar heading:  22px 'Barlow', sans-serif
 	--dark-optional: #313030;
 	--dark-style-two: #1c1c1c;
 	--white: #ffffff;
-	--color-primary: #FFAE00;
-	--color-secondary: #F54200;
+	--color-primary: #1d4ed8;
+	--color-secondary: #e67e22;
 	--color-heading: #04000b;
 	--color-paragraph: #666666;
 	--box-shadow-primary: -1px 3px 10px 0 rgba(0, 0, 0, 0.6);
@@ -3387,7 +3387,7 @@ a.btn-style-one::after {
 	content: "";
 	height: 100%;
 	width: 100%;
-	background: url('/assets/img/shape/5.png');
+	background: url('/assets/img/shape/button.png');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;

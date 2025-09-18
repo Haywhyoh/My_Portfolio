@@ -56,7 +56,7 @@ export default function SocialShare({
   };
 
   return (
-    <div className={`social-share ${variant}`}>
+    <div className={`modern-social-share ${variant}`}>
       <div className="share-buttons">
         {/* Twitter */}
         <a
@@ -68,42 +68,6 @@ export default function SocialShare({
         >
           <i className="fab fa-twitter"></i>
           {variant === 'horizontal' && <span>Twitter</span>}
-        </a>
-
-        {/* LinkedIn */}
-        <a
-          href={shareLinks.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="share-btn linkedin"
-          aria-label="Share on LinkedIn"
-        >
-          <i className="fab fa-linkedin-in"></i>
-          {variant === 'horizontal' && <span>LinkedIn</span>}
-        </a>
-
-        {/* Facebook */}
-        <a
-          href={shareLinks.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="share-btn facebook"
-          aria-label="Share on Facebook"
-        >
-          <i className="fab fa-facebook-f"></i>
-          {variant === 'horizontal' && <span>Facebook</span>}
-        </a>
-
-        {/* Reddit */}
-        <a
-          href={shareLinks.reddit}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="share-btn reddit"
-          aria-label="Share on Reddit"
-        >
-          <i className="fab fa-reddit-alien"></i>
-          {variant === 'horizontal' && <span>Reddit</span>}
         </a>
 
         {/* WhatsApp */}
@@ -118,27 +82,17 @@ export default function SocialShare({
           {variant === 'horizontal' && <span>WhatsApp</span>}
         </a>
 
-        {/* Telegram */}
+        {/* LinkedIn */}
         <a
-          href={shareLinks.telegram}
+          href={shareLinks.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="share-btn telegram"
-          aria-label="Share on Telegram"
+          className="share-btn linkedin"
+          aria-label="Share on LinkedIn"
         >
-          <i className="fab fa-telegram-plane"></i>
-          {variant === 'horizontal' && <span>Telegram</span>}
+          <i className="fab fa-linkedin-in"></i>
+          {variant === 'horizontal' && <span>LinkedIn</span>}
         </a>
-
-        {/* Email */}
-        <button
-          onClick={handleEmailShare}
-          className="share-btn email"
-          aria-label="Share via Email"
-        >
-          <i className="far fa-envelope"></i>
-          {variant === 'horizontal' && <span>Email</span>}
-        </button>
 
         {/* Copy Link */}
         <button
@@ -154,167 +108,142 @@ export default function SocialShare({
       </div>
 
       <style jsx>{`
-        .social-share {
+        .modern-social-share {
           display: flex;
           align-items: center;
+          justify-content: center;
         }
 
-        .social-share.vertical {
+        .modern-social-share.vertical {
           flex-direction: column;
-          gap: 15px;
+          gap: 20px;
         }
 
-        .social-share.horizontal {
+        .modern-social-share.horizontal {
           flex-direction: row;
-          gap: 10px;
+          gap: 16px;
           flex-wrap: wrap;
         }
 
         .share-buttons {
           display: flex;
-          gap: 10px;
+          gap: 16px;
           flex-wrap: wrap;
+          justify-content: center;
         }
 
-        .social-share.vertical .share-buttons {
+        .modern-social-share.vertical .share-buttons {
           flex-direction: column;
           width: 100%;
+          max-width: 300px;
         }
 
-        .social-share.horizontal .share-buttons {
+        .modern-social-share.horizontal .share-buttons {
           flex-direction: row;
         }
 
         .share-btn {
-          display: flex;
+          display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 8px;
-          padding: 12px 16px;
+          gap: 10px;
+          width: 48px;
+          height: 48px;
           border: none;
-          border-radius: 6px;
+          border-radius: 12px;
           text-decoration: none;
-          font-size: 14px;
-          font-weight: 500;
+          font-size: 16px;
+          font-weight: 600;
           cursor: pointer;
-          transition: all 0.3s ease;
-          min-width: 44px;
-          min-height: 44px;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          background: #6366f1;
+          color: white;
         }
 
-        .social-share.vertical .share-btn {
+        .modern-social-share.vertical .share-btn {
           width: 100%;
+          height: 56px;
+          padding: 0 20px;
           justify-content: flex-start;
+          border-radius: 14px;
+        }
+
+        .modern-social-share.horizontal .share-btn span {
+          display: none;
+        }
+
+        .modern-social-share.vertical .share-btn span {
+          display: block;
+        }
+
+        .share-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
         }
 
         .share-btn i {
-          font-size: 16px;
+          font-size: 18px;
+          flex-shrink: 0;
         }
 
         .share-btn span {
-          font-size: 14px;
-          font-weight: 500;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 0.3px;
         }
 
         /* Twitter */
         .share-btn.twitter {
-          background: #1da1f2;
-          color: white;
+          background: linear-gradient(135deg, #1da1f2, #1991db);
         }
 
         .share-btn.twitter:hover {
-          background: #0d8bd9;
-          transform: translateY(-2px);
-        }
-
-        /* LinkedIn */
-        .share-btn.linkedin {
-          background: #0077b5;
-          color: white;
-        }
-
-        .share-btn.linkedin:hover {
-          background: #005885;
-          transform: translateY(-2px);
-        }
-
-        /* Facebook */
-        .share-btn.facebook {
-          background: #4267b2;
-          color: white;
-        }
-
-        .share-btn.facebook:hover {
-          background: #365899;
-          transform: translateY(-2px);
-        }
-
-        /* Reddit */
-        .share-btn.reddit {
-          background: #ff4500;
-          color: white;
-        }
-
-        .share-btn.reddit:hover {
-          background: #e03d00;
-          transform: translateY(-2px);
+          background: linear-gradient(135deg, #0d8bd9, #0c7bc4);
+          box-shadow: 0 8px 25px rgba(29, 161, 242, 0.4);
         }
 
         /* WhatsApp */
         .share-btn.whatsapp {
-          background: #25d366;
-          color: white;
+          background: linear-gradient(135deg, #25d366, #1ebe58);
         }
 
         .share-btn.whatsapp:hover {
-          background: #1da851;
-          transform: translateY(-2px);
+          background: linear-gradient(135deg, #1da851, #189544);
+          box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
         }
 
-        /* Telegram */
-        .share-btn.telegram {
-          background: #0088cc;
-          color: white;
+        /* LinkedIn */
+        .share-btn.linkedin {
+          background: linear-gradient(135deg, #0077b5, #005885);
         }
 
-        .share-btn.telegram:hover {
-          background: #006699;
-          transform: translateY(-2px);
-        }
-
-        /* Email */
-        .share-btn.email {
-          background: #6c757d;
-          color: white;
-        }
-
-        .share-btn.email:hover {
-          background: #5a6268;
-          transform: translateY(-2px);
+        .share-btn.linkedin:hover {
+          background: linear-gradient(135deg, #005885, #004a6b);
+          box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4);
         }
 
         /* Copy Link */
         .share-btn.copy {
-          background: #28a745;
-          color: white;
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
         }
 
         .share-btn.copy:hover {
-          background: #218838;
-          transform: translateY(-2px);
+          background: linear-gradient(135deg, #4f46e5, #7c3aed);
+          box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
         }
 
         .share-btn.copy.copied {
-          background: #20c997;
-          animation: pulse 0.6s ease-in-out;
+          background: linear-gradient(135deg, #10b981, #059669);
+          animation: copyPulse 0.6s ease-in-out;
         }
 
-        @keyframes pulse {
+        @keyframes copyPulse {
           0% {
             transform: scale(1);
           }
           50% {
-            transform: scale(1.05);
+            transform: scale(1.08);
           }
           100% {
             transform: scale(1);
@@ -323,56 +252,59 @@ export default function SocialShare({
 
         /* Responsive Design */
         @media (max-width: 768px) {
-          .social-share.horizontal .share-buttons {
-            gap: 8px;
+          .modern-social-share.horizontal {
+            gap: 12px;
+          }
+
+          .modern-social-share.horizontal .share-buttons {
+            gap: 12px;
           }
 
           .share-btn {
-            padding: 10px 12px;
-            font-size: 13px;
-            min-width: 40px;
-            min-height: 40px;
+            width: 44px;
+            height: 44px;
+          }
+
+          .share-btn i {
+            font-size: 16px;
+          }
+
+          .modern-social-share.vertical .share-btn {
+            height: 52px;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .modern-social-share.horizontal {
+            gap: 10px;
+          }
+
+          .modern-social-share.horizontal .share-buttons {
+            gap: 10px;
+          }
+
+          .share-btn {
+            width: 40px;
+            height: 40px;
           }
 
           .share-btn i {
             font-size: 14px;
           }
 
-          .share-btn span {
-            font-size: 13px;
+          .modern-social-share.vertical .share-btn {
+            height: 48px;
+            padding: 0 16px;
           }
 
-          .social-share.horizontal .share-btn span {
-            display: none;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .social-share.horizontal {
-            justify-content: center;
-          }
-
-          .share-btn {
-            padding: 8px 10px;
-            min-width: 36px;
-            min-height: 36px;
-          }
-
-          .share-btn i {
-            font-size: 12px;
-          }
-        }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-          .share-btn {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          .modern-social-share.vertical .share-btn span {
+            font-size: 14px;
           }
         }
 
         /* Focus styles for accessibility */
         .share-btn:focus {
-          outline: 2px solid #007bff;
+          outline: 2px solid #6366f1;
           outline-offset: 2px;
         }
 
@@ -380,6 +312,13 @@ export default function SocialShare({
         @media (hover: none) {
           .share-btn:hover {
             transform: none;
+          }
+        }
+
+        /* Print styles */
+        @media print {
+          .modern-social-share {
+            display: none;
           }
         }
       `}</style>

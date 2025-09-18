@@ -128,9 +128,9 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
 
       <style jsx>{`
         .article-navigation {
-          padding: 60px 0;
-          background: #f8f9fa;
-          border-top: 1px solid #e9ecef;
+          padding: 80px 0;
+          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+          border-top: 1px solid #e2e8f0;
         }
 
         .nav-wrapper {
@@ -141,45 +141,49 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
         }
 
         .nav-item {
-          min-height: 120px;
+          min-height: 140px;
         }
 
         .nav-link {
           display: flex;
           align-items: center;
-          gap: 20px;
-          padding: 20px;
+          gap: 24px;
+          padding: 28px;
           background: white;
-          border-radius: 8px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 16px;
+          box-shadow: 0 8px 25px rgba(99, 102, 241, 0.08);
           text-decoration: none;
           color: inherit;
-          transition: all 0.3s ease;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           height: 100%;
+          border: 1px solid rgba(99, 102, 241, 0.1);
         }
 
         .nav-link:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+          transform: translateY(-4px);
+          box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+          border-color: rgba(99, 102, 241, 0.2);
         }
 
         .nav-link.disabled {
-          opacity: 0.5;
+          opacity: 0.4;
           cursor: not-allowed;
           pointer-events: none;
+          background: #f1f5f9;
         }
 
         .nav-arrow {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 50px;
-          height: 50px;
-          background: #007bff;
+          width: 56px;
+          height: 56px;
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
           color: white;
           border-radius: 50%;
-          font-size: 18px;
+          font-size: 20px;
           flex-shrink: 0;
+          box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
         }
 
         .nav-content {
@@ -188,19 +192,19 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
 
         .nav-label {
           display: block;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
           text-transform: uppercase;
-          color: #6c757d;
-          margin-bottom: 8px;
-          letter-spacing: 0.5px;
+          color: #8b5cf6;
+          margin-bottom: 10px;
+          letter-spacing: 0.8px;
         }
 
         .nav-title {
-          font-size: 1.1rem;
-          font-weight: 600;
-          color: #2c3e50;
-          margin-bottom: 8px;
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #1f2937;
+          margin-bottom: 10px;
           line-height: 1.3;
           display: -webkit-box;
           -webkit-line-clamp: 2;
@@ -209,9 +213,9 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
         }
 
         .nav-excerpt {
-          font-size: 14px;
-          color: #6c757d;
-          line-height: 1.4;
+          font-size: 15px;
+          color: #6b7280;
+          line-height: 1.5;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
@@ -229,30 +233,32 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 10px;
-          padding: 20px;
-          background: #007bff;
+          gap: 12px;
+          padding: 24px;
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
           color: white;
-          border-radius: 8px;
+          border-radius: 16px;
           text-decoration: none;
-          transition: all 0.3s ease;
-          min-width: 120px;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          min-width: 140px;
+          box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
         }
 
         .back-link:hover {
-          background: #0056b3;
-          transform: translateY(-2px);
+          background: linear-gradient(135deg, #4f46e5, #7c3aed);
+          transform: translateY(-4px);
+          box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
         }
 
         .back-link i {
-          font-size: 24px;
+          font-size: 28px;
         }
 
         .back-link span {
-          font-size: 14px;
-          font-weight: 600;
+          font-size: 15px;
+          font-weight: 700;
           text-transform: uppercase;
-          letter-spacing: 0.5px;
+          letter-spacing: 0.8px;
         }
 
         .loading {

@@ -28,7 +28,7 @@ export default function Home() {
       <ContactV1 sectionClass="bg-gray default-padding" />
       <BlogV1 />
       <PromoV1 />
-      
+
       {/* Professional Summary Section */}
       {/* <div className="container default-padding">
         <div className="row justify-content-center">
@@ -96,4 +96,4 @@ export default function Home() {
       </div> */}
     </>
   )
-} 
+}
