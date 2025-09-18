@@ -374,3 +374,4 @@ export default function RelatedPosts({ currentPostId, limit = 3 }: RelatedPostsP
     </div>
   );
 }
+

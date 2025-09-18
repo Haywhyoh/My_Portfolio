@@ -86,7 +86,8 @@ Sidebar heading:  22px 'Barlow', sans-serif
 	--box-shadow-regular: 0px 2px 12px 0px #e7e7e7;
 	--bg-gray: #ECF0F3;
 	--bg-gray-secondary: #F3F4F6;
-	--bg-gradient: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+	--bg-gradient: linear-gradient(135deg, #3b82f6, #1d4ed8);
+	--bg-gradient-reverse: linear-gradient(135deg, #1d4ed8, #3b82f6);
 }
 
 /* ============================================================== 
@@ -852,7 +853,7 @@ p {
 	display: inline-block;
 	width: 50px;
 	height: 2px;
-	background: var(--color-primary);
+	background: var(--bg-gradient);
 	position: relative;
 	z-index: 1;
 	left: 10px;
@@ -3055,6 +3056,10 @@ a.btn-round-animation:hover::after {
 	left: 0;
 	top: 0;
 	font-weight: 400;
+	background: var(--bg-gradient);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .cd-words-wrapper b.is-visible {
@@ -3182,6 +3187,10 @@ xclip
 	font-size: 70px;
 	font-weight: 700;
 	margin-bottom: 0;
+	background: var(--bg-gradient);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .banner-style-one-items h2 {

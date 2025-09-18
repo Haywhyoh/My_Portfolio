@@ -9,7 +9,7 @@ const PartnerV1 = () => {
                         <div className="col-lg-6 offset-lg-3">
                             <div className="site-heading text-center">
                                 <h4 className="sub-title">Partner</h4>
-                                <h2 className="title">The Brands I've Worked With</h2>
+                                <h2 className="title">The Brands I&apos;ve Worked With</h2>
                             </div>
                         </div>
                     </div>

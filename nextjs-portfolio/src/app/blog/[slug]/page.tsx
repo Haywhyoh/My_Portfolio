@@ -70,3 +70,4 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   return <BlogDetail post={blog} />;
 }
+

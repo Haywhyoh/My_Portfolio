@@ -1,4 +1,3 @@
-import LayoutV1 from '@/components/Layouts/LayoutV1'
 import ServicesV1 from '@/components/services/ServicesV1'
 import { Metadata } from 'next'
 
@@ -9,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ServicePage() {
   return (
-    <LayoutV1>
+    <>
       <div className="container default-padding">
         <div className="row">
           <div className="col-lg-8 offset-lg-2">
@@ -22,6 +21,6 @@ export default function ServicePage() {
         </div>
       </div>
       <ServicesV1 sectionClass="default-padding" hasTitle={false} />
-    </LayoutV1>
+    </>
   )
 } 

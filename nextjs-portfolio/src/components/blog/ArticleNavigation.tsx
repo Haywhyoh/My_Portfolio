@@ -349,3 +349,4 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
     </nav>
   );
 }
+

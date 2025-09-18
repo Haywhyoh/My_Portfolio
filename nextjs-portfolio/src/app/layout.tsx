@@ -17,6 +17,8 @@ import '../assets/css/style.css'
 import './globals.css'
 
 import ClientProviders from '@/components/providers/ClientProviders'
+import HeaderV1 from '@/components/header/HeaderV1'
+import FooterV1 from '@/components/footer/FooterV1'
 
 export const metadata: Metadata = {
   title: 'Portfolio - Next.js',
@@ -31,7 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <HeaderV1 />
+        <main>
+          {children}
+        </main>
+        <FooterV1 />
         <ClientProviders />
       </body>
     </html>

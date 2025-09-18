@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { BlogCardProps } from '@/lib/types';
 
 const BlogCardV1 = ({
@@ -11,6 +12,8 @@ const BlogCardV1 = ({
   showReadTime = true,
   showAuthor = true
 }: BlogCardProps) => {
+  const [imageError, setImageError] = useState(false);
+
   const {
     slug,
     title,
@@ -24,10 +27,14 @@ const BlogCardV1 = ({
     animationDelay
   } = post;
 
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <>
       <div
-        className="modern-blog-card"
+        className={`modern-blog-card ${variant === 'featured' ? 'featured' : ''}`}
         style={{
           animationDelay: animationDelay,
           animation: 'fadeInUp 0.6s ease-out'
@@ -35,16 +42,30 @@ const BlogCardV1 = ({
       >
         <div className="modern-blog-thumb">
           <Link href={`/blog/${slug}`}>
-            <Image
-              src={`/assets/img/blog/${thumbnail}`}
-              alt={title}
-              width={400}
-              height={280}
-              style={{ objectFit: 'cover', width: '100%', height: '280px' }}
-            />
+            {!imageError ? (
+              <Image
+                src={`/assets/img/blog/${thumbnail}`}
+                alt={title}
+                width={400}
+                height={280}
+                style={{ objectFit: 'cover', width: '100%', height: '280px' }}
+                onError={handleImageError}
+                priority={variant === 'featured'}
+              />
+            ) : (
+              <div className="blog-image-fallback">
+                <div className="fallback-content">
+                  <i className="fas fa-code text-primary mb-2"></i>
+                  <span className="fallback-text">{category}</span>
+                </div>
+              </div>
+            )}
           </Link>
         </div>
         <div className="modern-blog-content">
+          {category && (
+            <span className="modern-blog-category">{category}</span>
+          )}
           <h3 className="modern-blog-title">
             <Link href={`/blog/${slug}`}>{title}</Link>
           </h3>
@@ -56,6 +77,9 @@ const BlogCardV1 = ({
               <span className="blog-author">{author}</span>
             )}
             <span className="blog-date">{date}</span>
+            {showReadTime && readTime && (
+              <span className="blog-read-time">{readTime} min read</span>
+            )}
           </div>
         </div>
       </div>

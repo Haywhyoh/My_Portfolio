@@ -1,4 +1,3 @@
-import LayoutV1 from '@/components/Layouts/LayoutV1'
 import BannerV1 from '@/components/banner/BannerV1'
 import AboutV1 from '@/components/about/AboutV1'
 import ServicesV1 from '@/components/services/ServicesV1'
@@ -15,7 +14,7 @@ import PromoV1 from '@/components/promo/PromoV1'
 
 export default function Home() {
   return (
-    <LayoutV1>
+    <>
       <BannerV1 />
       <AboutV1 />
       <ServicesV1 sectionClass="default-padding" hasTitle={true} />
@@ -95,6 +94,6 @@ export default function Home() {
           </div>
         </div>
       </div> */}
-    </LayoutV1>
+    </>
   )
 } 

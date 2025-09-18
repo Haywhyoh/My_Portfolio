@@ -46,8 +46,8 @@ const BannerV1 = () => {
                                     </div>
                                 </div>
                                 <div className="thumb">
-                                    <img src="/assets/img/illustration/1.png" alt="Image Not Found" />
-                                    <img src="/assets/img/shape/1.png" alt="Image Not Found" />
+                                    <img src="/assets/img/banner/ayomide.png" alt="Image Not Found" />
+                                    <img src="/assets/img/shape/bg.png" alt="Image Not Found" />
                                     <img src="/assets/img/shape/3.png" alt="Image Not Found" />
                                 </div>
                             </div>

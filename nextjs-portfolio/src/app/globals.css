@@ -313,14 +313,13 @@ img {
 
 /* Blog Hero Section */
 .blog-hero-section {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   background-image:
-    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 177, 153, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.3'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3Ccircle cx='53' cy='7' r='1'/%3E%3Ccircle cx='7' cy='53' r='1'/%3E%3Ccircle cx='53' cy='53' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   position: relative;
-  padding: 120px 0 80px;
+  padding: 80px 0 60px;
   overflow: hidden;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .blog-hero-section::before {
@@ -330,7 +329,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(44, 62, 80, 0.8);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%);
   z-index: 1;
 }
 
@@ -340,21 +339,29 @@ img {
 }
 
 .blog-hero-content {
-  color: white;
+  color: #1e293b;
 }
 
 .blog-hero-title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: white;
+  color: #0f172a;
+  background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
 }
 
 .blog-hero-description {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  margin-bottom: 3rem;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  color: #64748b;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .blog-hero-controls {
@@ -424,12 +431,25 @@ img {
 /* Blog Articles Section */
 .blog-articles-section {
   padding: 80px 0;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+}
+
+.blog-articles-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f94a29, transparent);
 }
 
 /* Blog Grid Spacing - Simplified */
 .blog-articles-section .mb-30 {
   margin-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /* Ensure Bootstrap grid works for blog section */
@@ -467,6 +487,14 @@ img {
   max-width: 100% !important;
 }
 
+/* Force 3-column layout for extra large screens */
+@media (min-width: 1200px) {
+  .blog-articles-section .col-xl-4 {
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+  }
+}
+
 @media (max-width: 1199.98px) {
   .blog-articles-section .col-xl-4 {
     flex: 0 0 33.333333% !important;
@@ -499,11 +527,40 @@ img {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+  border: 1px solid rgba(226, 232, 240, 0.5);
 }
 
 .modern-blog-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Featured Blog Card (First Post) */
+.modern-blog-card.featured {
+  border: 2px solid #f94a29;
+  box-shadow: 0 8px 30px rgba(249, 74, 41, 0.2);
+  position: relative;
+}
+
+.modern-blog-card.featured::before {
+  content: 'FEATURED';
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f94a29;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 10;
+}
+
+.modern-blog-card.featured:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 16px 40px rgba(249, 74, 41, 0.25);
 }
 
 .modern-blog-thumb {
@@ -523,11 +580,54 @@ img {
   transform: scale(1.08);
 }
 
+/* Blog Image Fallback */
+.blog-image-fallback {
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px 16px 0 0;
+}
+
+.fallback-content {
+  text-align: center;
+  color: #64748b;
+}
+
+.fallback-content i {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #3b82f6;
+}
+
+.fallback-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #475569;
+}
+
 .modern-blog-content {
   padding: 30px;
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.modern-blog-category {
+  display: inline-block;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 25px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .modern-blog-title {
@@ -575,7 +675,59 @@ img {
   font-size: 0.9rem;
 }
 
+.modern-blog-meta .blog-read-time {
+  color: #f94a29;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
 /* Responsive Design */
+/* ===========================
+   Header/Navbar Fixes
+   =========================== */
+
+/* Fix navbar collapse state - Override validnavs.css conflicts */
+/* Desktop: Always show navbar horizontally */
+@media (min-width: 992px) {
+  nav.navbar.mobile-sidenav .navbar-collapse.collapse.collapse-mobile {
+    display: flex !important;
+    position: static !important;
+    left: auto !important;
+    width: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+}
+
+/* Tablet and below: Hide navbar by default, show on toggle */
+@media (max-width: 991px) {
+  nav.navbar.mobile-sidenav .navbar-collapse.collapse.collapse-mobile:not(.show) {
+    display: none !important;
+    position: fixed;
+    left: -485px;
+  }
+
+  nav.navbar.mobile-sidenav .navbar-collapse.collapse.collapse-mobile.show {
+    display: initial !important;
+    left: 0;
+  }
+}
+
+/* Mobile First Responsive Design */
+@media (max-width: 576px) {
+  .blog-articles-section .col-xl-4,
+  .blog-articles-section .col-lg-4,
+  .blog-articles-section .col-md-6,
+  .blog-articles-section .col-sm-12 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  .modern-blog-card {
+    margin-bottom: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .blog-hero-title {
     font-size: 2.5rem;
@@ -776,5 +928,26 @@ img {
   }
   100% {
     background-position: 200% 0;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
