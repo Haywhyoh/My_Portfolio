@@ -4,10 +4,10 @@ const nextConfig = {
     domains: ['localhost'],
     formats: ['image/webp', 'image/avif'],
   },
-  // Optimize CSS loading
-  experimental: {
-    optimizeCss: true,
-  },
+  // Experimental features (disabled due to missing dependencies)
+  // experimental: {
+  //   optimizeCss: true,
+  // },
   // Enable font optimization
   optimizeFonts: true,
   // Improve build performance

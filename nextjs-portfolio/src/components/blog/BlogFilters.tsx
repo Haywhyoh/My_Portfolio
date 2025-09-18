@@ -9,7 +9,8 @@ const BlogFilters = ({
   selectedCategory,
   selectedTag,
   onCategoryChange,
-  onTagChange
+  onTagChange,
+  variant = "default"
 }: BlogFiltersProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -55,61 +56,92 @@ const BlogFilters = ({
     router.push(newUrl);
   };
 
+  const getFilterClasses = () => {
+    if (variant === 'hero') {
+      return 'blog-filters hero-filters';
+    }
+    return 'blog-filters';
+  };
+
+  const getButtonClasses = () => {
+    if (variant === 'hero') {
+      return 'btn btn-outline-light dropdown-toggle w-100 hero-filter-btn';
+    }
+    return 'btn btn-outline-primary dropdown-toggle w-100';
+  };
+
   return (
-    <div className="blog-filters">
-      {/* Category Filters */}
-      <div className="filter-section mb-4">
-        <h5 className="filter-title">Categories</h5>
-        <div className="filter-options">
+    <div className={getFilterClasses()}>
+      {/* Filter Dropdown */}
+      <div className="dropdown">
+        <button
+          className={getButtonClasses()}
+          type="button"
+          id="blogFiltersDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i className="fas fa-filter me-2"></i>
+          {selectedCategory || selectedTag || 'Tags'}
+        </button>
+        <ul className="dropdown-menu w-100" aria-labelledby="blogFiltersDropdown">
+          {/* Categories */}
+          <li><h6 className="dropdown-header">Categories</h6></li>
           {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => handleCategoryClick(category)}
-              className={`filter-btn ${
-                (selectedCategory === category) ||
-                (category === BLOG_CONFIG.DEFAULT_CATEGORY && !selectedCategory)
-                  ? 'active'
-                  : ''
-              }`}
-            >
-              {category}
-            </button>
+            <li key={category}>
+              <button
+                className={`dropdown-item ${
+                  (selectedCategory === category) ||
+                  (category === BLOG_CONFIG.DEFAULT_CATEGORY && !selectedCategory)
+                    ? 'active'
+                    : ''
+                }`}
+                onClick={() => handleCategoryClick(category)}
+              >
+                <i className="fas fa-folder me-2"></i>
+                {category}
+              </button>
+            </li>
           ))}
-        </div>
-      </div>
 
-      {/* Tag Filters */}
-      <div className="filter-section">
-        <h5 className="filter-title">Tags</h5>
-        <div className="filter-options tag-options">
-          {tags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => handleTagClick(tag)}
-              className={`filter-btn tag-btn ${selectedTag === tag ? 'active' : ''}`}
-            >
-              #{tag}
-            </button>
-          ))}
-        </div>
-      </div>
+          {tags.length > 0 && (
+            <>
+              <li><hr className="dropdown-divider" /></li>
+              <li><h6 className="dropdown-header">Tags</h6></li>
+              {tags.slice(0, 8).map((tag) => (
+                <li key={tag}>
+                  <button
+                    className={`dropdown-item ${selectedTag === tag ? 'active' : ''}`}
+                    onClick={() => handleTagClick(tag)}
+                  >
+                    <i className="fas fa-tag me-2"></i>
+                    {tag}
+                  </button>
+                </li>
+              ))}
+            </>
+          )}
 
-      {/* Clear Filters */}
-      {(selectedCategory || selectedTag) && (
-        <div className="filter-actions mt-3">
-          <button
-            onClick={() => {
-              router.push('/blog');
-              onCategoryChange(undefined);
-              onTagChange(undefined);
-            }}
-            className="btn btn-outline-secondary btn-sm"
-          >
-            <i className="fas fa-times me-1"></i>
-            Clear Filters
-          </button>
-        </div>
-      )}
+          {(selectedCategory || selectedTag) && (
+            <>
+              <li><hr className="dropdown-divider" /></li>
+              <li>
+                <button
+                  className="dropdown-item text-danger"
+                  onClick={() => {
+                    router.push('/blog');
+                    onCategoryChange(undefined);
+                    onTagChange(undefined);
+                  }}
+                >
+                  <i className="fas fa-times me-2"></i>
+                  Clear All Filters
+                </button>
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
     </div>
   );
 };

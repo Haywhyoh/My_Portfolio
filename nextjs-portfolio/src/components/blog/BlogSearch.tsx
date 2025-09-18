@@ -7,7 +7,8 @@ import { BlogSearchProps } from '@/lib/types';
 const BlogSearch = ({
   onSearch,
   placeholder = "Search blog posts...",
-  initialValue = ""
+  initialValue = "",
+  variant = "default"
 }: BlogSearchProps) => {
   const [searchQuery, setSearchQuery] = useState(initialValue);
   const router = useRouter();
@@ -52,10 +53,20 @@ const BlogSearch = ({
     onSearch('');
   };
 
+  const getSearchClasses = () => {
+    if (variant === 'hero') {
+      return 'blog-search-widget hero-search';
+    }
+    return 'blog-search-widget';
+  };
+
   return (
-    <div className="blog-search-widget">
+    <div className={getSearchClasses()}>
       <form onSubmit={handleSubmit} className="search-form">
-        <div className="search-input-group">
+        <div className="input-group search-input-group">
+          <span className="input-group-text search-icon">
+            <i className="fas fa-search"></i>
+          </span>
           <input
             type="text"
             className="form-control search-input"
@@ -63,27 +74,25 @@ const BlogSearch = ({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-
-          <div className="search-buttons">
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={handleClear}
-                className="btn btn-clear"
-                aria-label="Clear search"
-              >
-                <i className="fas fa-times"></i>
-              </button>
-            )}
-
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={handleClear}
+              className="btn btn-outline-secondary clear-btn"
+              aria-label="Clear search"
+            >
+              <i className="fas fa-times"></i>
+            </button>
+          )}
+          {variant !== 'hero' && (
             <button
               type="submit"
-              className="btn btn-search"
+              className="btn btn-primary search-btn"
               aria-label="Search"
             >
-              <i className="fas fa-search"></i>
+              Search
             </button>
-          </div>
+          )}
         </div>
       </form>
     </div>

@@ -39,7 +39,7 @@ function BlogListingFallback() {
       {/* Blog Grid Skeleton */}
       <div className="row">
         {[...Array(9)].map((_, index) => (
-          <div key={index} className="col-xl-4 col-lg-6 col-md-6 mb-30">
+          <div key={index} className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
             <div className="blog-skeleton">
               <div className="skeleton-thumb"></div>
               <div className="skeleton-content">

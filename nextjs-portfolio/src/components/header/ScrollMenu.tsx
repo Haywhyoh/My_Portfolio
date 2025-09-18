@@ -1,4 +1,5 @@
 import { Link } from 'react-scroll';
+import NextLink from 'next/link';
 
 interface DataType {
     closeMenu?: () => void;
@@ -15,6 +16,9 @@ const ScrollMenu: React.FC<DataType> = ({ closeMenu }) => {
             </li>
             <li>
                 <Link className="smooth-menu" to="resume" offset={-50} onClick={closeMenu}>Resume</Link>
+            </li>
+            <li>
+                <NextLink href="/blog" className="smooth-menu" onClick={closeMenu}>Blog</NextLink>
             </li>
             <li>
                 <Link className="smooth-menu" to="pricing" offset={-50} onClick={closeMenu}>Pricing</Link>

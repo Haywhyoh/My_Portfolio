@@ -71,12 +71,14 @@ export interface BlogFiltersProps {
   selectedTag?: string;
   onCategoryChange: (category: string | undefined) => void;
   onTagChange: (tag: string | undefined) => void;
+  variant?: 'default' | 'hero';
 }
 
 export interface BlogSearchProps {
   onSearch: (query: string) => void;
   placeholder?: string;
   initialValue?: string;
+  variant?: 'default' | 'hero';
 }
 
 // Blog configuration constants
@@ -95,4 +97,42 @@ export interface BlogPageMetadata {
   keywords?: string[];
   ogImage?: string;
   canonical?: string;
+}
+
+// Testimonials system TypeScript interfaces
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  position: string;
+  company: string;
+  avatar: string;
+  rating: number; // 1-5 star rating
+  reviewCount: number;
+  platformLogo: string; // Logo of review platform
+  testimonial: string; // The actual review text
+  platformRating: string; // Overall rating on platform (e.g., "4.9")
+  projectType: string; // Type of project worked on
+  featured: boolean; // Whether to show in featured testimonials
+}
+
+export interface TestimonialProps {
+  sectionClass?: string;
+  variant?: 'default' | 'dark';
+  showOnlyFeatured?: boolean;
+  maxItems?: number;
+  autoplay?: boolean;
+  showPagination?: boolean;
+}
+
+export interface TestimonialCardProps {
+  testimonial: Testimonial;
+  index: number;
+}
+
+export interface TestimonialSwiperProps {
+  testimonials: Testimonial[];
+  variant?: 'default' | 'dark';
+  autoplay?: boolean;
+  showPagination?: boolean;
 }

@@ -9,7 +9,7 @@ import { getTestimonialsForDisplay } from '@/lib/testimonials';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-const TestimonialV1 = ({
+const TestimonialV2 = ({
     sectionClass,
     showOnlyFeatured = true,
     maxItems = 6,
@@ -34,9 +34,9 @@ const TestimonialV1 = ({
         ));
     };
 
-    // Single testimonial card component
+    // Single testimonial card component for dark theme
     const TestimonialCard = ({ testimonial, index }: { testimonial: Testimonial; index: number }) => (
-        <div className="testimonial-style-one">
+        <div className="testimonial-style-one dark-variant">
             <div className="item">
                 <div className="thumb">
                     <div className="inner">
@@ -50,7 +50,15 @@ const TestimonialV1 = ({
                             {renderStars(testimonial.rating)}
                         </div>
                         <div className="bottom">
-                            <img src={testimonial.platformLogo} alt="Review Platform" />
+                            {/* Use light version of platform logo for dark theme */}
+                            <img
+                                src={testimonial.platformLogo.replace('.png', '-light.png').replace('.jpg', '-light.jpg').replace('.jpeg', '-light.jpeg') || testimonial.platformLogo}
+                                alt="Review Platform"
+                                onError={(e) => {
+                                    // Fallback to original image if light version doesn't exist
+                                    e.currentTarget.src = testimonial.platformLogo;
+                                }}
+                            />
                             <p>{testimonial.platformRating}/ {testimonial.reviewCount} Reviews</p>
                         </div>
                     </div>
@@ -71,7 +79,7 @@ const TestimonialV1 = ({
 
     return (
         <>
-            <div className={`testimonial-style-one-area default-padding ${sectionClass ? sectionClass : ""}`}>
+            <div className={`testimonial-style-one-area default-padding testimonial-dark-theme ${sectionClass ? sectionClass : ""}`}>
                 <div className="shape-left-top">
                     <img src="/assets/img/shape/10.png" alt="Image Not Found" />
                 </div>
@@ -79,8 +87,8 @@ const TestimonialV1 = ({
                     <div className="heading-left">
                         <div className="row">
                             <div className="col-xl-6">
-                                <h4 className="sub-title">Testimonials</h4>
-                                <h2 className="title">Clients Testimonials</h2>
+                                <h4 className="sub-title text-light">Testimonials</h4>
+                                <h2 className="title text-white">Clients Testimonials</h2>
                             </div>
                         </div>
                     </div>
@@ -111,7 +119,7 @@ const TestimonialV1 = ({
                                         spaceBetween={30}
                                         slidesPerView={1}
                                         speed={600}
-                                        className="testimonials-swiper"
+                                        className="testimonials-swiper dark-theme"
                                     >
                                         {testimonials.map((testimonial, index) => (
                                             <SwiperSlide key={testimonial.id}>
@@ -121,13 +129,13 @@ const TestimonialV1 = ({
                                     </Swiper>
                                 ) : (
                                     <div className="no-testimonials text-center py-5">
-                                        <p>No testimonials available at the moment.</p>
+                                        <p className="text-light">No testimonials available at the moment.</p>
                                     </div>
                                 )}
 
                                 {/* Pagination */}
                                 {showPagination && testimonials.length > 1 && (
-                                    <div className="testimonial-pagination">
+                                    <div className="testimonial-pagination dark-pagination">
                                         <div className="swiper-pagination" />
                                     </div>
                                 )}
@@ -140,4 +148,4 @@ const TestimonialV1 = ({
     );
 };
 
-export default TestimonialV1; 
+export default TestimonialV2;

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import BlogV1Data from "../../assets/jsonData/blog/BlogV1Data.json"
 import SingleBlogV1 from './SingleBlogV1';
 
@@ -24,6 +25,16 @@ const BlogV1 = () => {
                                 <SingleBlogV1 blog={blog} />
                             </div>
                         )}
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="text-center mt-50">
+                                <Link href="/blog" className="btn btn-primary">
+                                    View All Posts
+                                    <i className="fas fa-arrow-right"></i>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

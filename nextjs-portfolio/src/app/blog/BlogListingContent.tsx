@@ -129,90 +129,117 @@ export default function BlogListingContent() {
   };
 
   return (
-    <div className="blog-listing-content">
-      {/* Header Section */}
-      <div className="blog-listing-header mb-5">
-        <div className="row align-items-center">
-          <div className="col-lg-8">
-            <h2 className="section-title">Latest Blog Posts</h2>
-            <p className="section-subtitle text-muted">
-              Insights on web development, React, Next.js, and modern software engineering
-            </p>
-          </div>
-          <div className="col-lg-4">
-            <div className="results-info text-lg-end">
-              <span className="text-muted">{getResultsInfo()}</span>
+    <>
+      {/* Hero Section */}
+      <div className="blog-hero-section">
+        <div className="blog-hero-overlay">
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+                <div className="blog-hero-content text-center">
+                  <h1 className="blog-hero-title">Our Articles</h1>
+                  <p className="blog-hero-description">
+                    This is a melting pot of insights, tips, and innovative ways to use
+                    modern web technologies, tailored for professionals who thrive on web innovation.
+                  </p>
+
+                  {/* Search and Tags */}
+                  <div className="blog-hero-controls">
+                    <div className="row align-items-center justify-content-center">
+                      <div className="col-lg-6 col-md-8">
+                        <div className="hero-search-wrapper">
+                          <BlogSearch
+                            onSearch={handleSearch}
+                            initialValue={searchQuery}
+                            placeholder="Search..."
+                            variant="hero"
+                          />
+                        </div>
+                      </div>
+                      <div className="col-lg-3 col-md-4">
+                        <div className="hero-tags-wrapper">
+                          <BlogFilters
+                            categories={categories}
+                            tags={tags}
+                            selectedCategory={selectedCategory}
+                            selectedTag={selectedTag}
+                            onCategoryChange={handleCategoryChange}
+                            onTagChange={handleTagChange}
+                            variant="hero"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Search and Filters */}
-      <div className="blog-controls mb-5">
-        <div className="row">
-          <div className="col-lg-8 mb-3 mb-lg-0">
-            <BlogSearch
-              onSearch={handleSearch}
-              initialValue={searchQuery}
-              placeholder="Search articles, technologies, topics..."
-            />
+      {/* Blog Content */}
+      <div className="blog-articles-section">
+        <div className="container">
+          {/* Active Filters */}
+          {(searchQuery || selectedCategory || selectedTag) && (
+            <div className="row mb-4">
+              <div className="col-lg-12">
+                <div className="active-filters-display">
+                  <div className="d-flex flex-wrap align-items-center">
+                    <span className="filter-label me-3">Active Filters:</span>
+                    <div className="filter-badges">
+                      {searchQuery && (
+                        <span className="filter-badge search-badge">
+                          <i className="fas fa-search me-1"></i>
+                          &ldquo;{searchQuery}&rdquo;
+                        </span>
+                      )}
+                      {selectedCategory && (
+                        <span className="filter-badge category-badge">
+                          <i className="fas fa-folder me-1"></i>
+                          {selectedCategory}
+                        </span>
+                      )}
+                      {selectedTag && (
+                        <span className="filter-badge tag-badge">
+                          <i className="fas fa-tag me-1"></i>
+                          {selectedTag}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Blog Grid */}
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="row">
+                <BlogGrid posts={posts} loading={loading} />
+              </div>
+            </div>
           </div>
-          <div className="col-lg-4">
-            <BlogFilters
-              categories={categories}
-              tags={tags}
-              selectedCategory={selectedCategory}
-              selectedTag={selectedTag}
-              onCategoryChange={handleCategoryChange}
-              onTagChange={handleTagChange}
-            />
-          </div>
+
+          {/* Pagination */}
+          {!loading && totalPages > 1 && (
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="pagination-wrapper text-center mt-60">
+                  <BlogPagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    basePath="/blog"
+                    showInfo={false}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Active Filters Display */}
-      {(searchQuery || selectedCategory || selectedTag) && (
-        <div className="active-filters mb-4">
-          <div className="d-flex flex-wrap align-items-center gap-2">
-            <span className="text-muted me-2">Active filters:</span>
-
-            {searchQuery && (
-              <span className="badge bg-primary">
-                Search: "{searchQuery}"
-              </span>
-            )}
-
-            {selectedCategory && (
-              <span className="badge bg-success">
-                Category: {selectedCategory}
-              </span>
-            )}
-
-            {selectedTag && (
-              <span className="badge bg-info">
-                Tag: #{selectedTag}
-              </span>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Blog Grid */}
-      <div className="blog-content">
-        <BlogGrid posts={posts} loading={loading} />
-      </div>
-
-      {/* Pagination */}
-      {!loading && totalPages > 1 && (
-        <div className="pagination-wrapper mt-5">
-          <BlogPagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            basePath="/blog"
-            showInfo={true}
-          />
-        </div>
-      )}
-    </div>
+    </>
   );
 }

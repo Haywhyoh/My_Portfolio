@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import PortfolioData from "../../assets/jsonData/portfolio/PortfolioData.json"
-import Isotope from 'isotope-layout';
 import Link from "next/link";
+import dynamic from 'next/dynamic';
 
 const IsotopeGallery = () => {
     const galleryRef = useRef<HTMLDivElement | null>(null);
@@ -25,19 +25,25 @@ const IsotopeGallery = () => {
     };
 
     useEffect(() => {
-        if (loadedImagesCount === totalImages && galleryRef.current) {
-            const iso = new Isotope(galleryRef.current, {
-                itemSelector: '.gallery-item',
-                layoutMode: 'masonry',
+        if (loadedImagesCount === totalImages && galleryRef.current && typeof window !== 'undefined') {
+            import('isotope-layout').then((IsotopeModule) => {
+                const Isotope = IsotopeModule.default;
+
+                const iso = new Isotope(galleryRef.current!, {
+                    itemSelector: '.gallery-item',
+                    layoutMode: 'masonry',
+                });
+
+                setTimeout(() => {
+                    iso.layout();
+                }, 500);
+
+                return () => {
+                    iso.destroy();
+                };
+            }).catch(error => {
+                console.error('Failed to load Isotope:', error);
             });
-
-            setTimeout(() => {
-                iso.layout();
-            }, 500);
-
-            return () => {
-                iso.destroy();
-            };
         }
     }, [loadedImagesCount, totalImages]);
 

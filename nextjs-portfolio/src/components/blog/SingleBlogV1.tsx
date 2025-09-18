@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import { generateSlug } from "@/lib/blog";
 
 interface DataType {
     id?: number;
@@ -12,7 +13,8 @@ interface DataType {
 }
 
 const SingleBlogV1 = ({ blog }: { blog: DataType }) => {
-    const { id, thumb, date, title, animationDelay, tag } = blog
+    const { id, thumb, date, title, animationDelay, tag } = blog;
+    const slug = title ? generateSlug(title) : '';
 
     return (
         <>
@@ -24,22 +26,22 @@ const SingleBlogV1 = ({ blog }: { blog: DataType }) => {
                 }}
             >
                 <div className="home-blog-thumb">
-                    <Link href={`/blog-single-with-sidebar/${id}`}>
+                    <Link href={`/blog/${slug}`}>
                         <img src={`/assets/img/blog/${thumb}`} alt="Image not Found" />
                     </Link>
                 </div>
                 <div className="content">
                     <ul className="home-blog-meta">
                         <li>
-                            <Link href="#">{tag}</Link>
+                            <Link href={`/blog?tag=${encodeURIComponent(tag || '')}`}>{tag}</Link>
                         </li>
                         <li>{date}</li>
                     </ul>
                     <div className="info">
                         <h4 className="blog-title">
-                            <Link href={`/blog-single-with-sidebar/${id}`}>{title}</Link>
+                            <Link href={`/blog/${slug}`}>{title}</Link>
                         </h4>
-                        <Link href={`/blog-single-with-sidebar/${id}`} className="btn-read-more">Read More <i className="fas fa-arrow-right"></i></Link>
+                        <Link href={`/blog/${slug}`} className="btn-read-more">Read More <i className="fas fa-arrow-right"></i></Link>
                     </div>
                 </div>
             </div>
