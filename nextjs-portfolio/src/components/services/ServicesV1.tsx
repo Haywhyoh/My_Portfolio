@@ -48,9 +48,9 @@ const ServicesV1 = ({ sectionClass, hasTitle }: DataType) => {
                                     }}
                                 >
                                     <img src={`/assets/img/icon/${service.icon}`} alt="Image Not Found" />
-                                    <h4><Link href="/services-details">{service.title}</Link></h4>
+                                    <h4><Link href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>{service.title}</Link></h4>
                                     <p>{service.text}</p>
-                                    <Link href="/services-details" className="btn-style-four">
+                                    <Link href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`} className="btn-style-four">
                                         <div className="icon"><img src="/assets/img/icon/arrow.png" alt="Image Not Found" /></div> Read More
                                     </Link>
                                 </div>

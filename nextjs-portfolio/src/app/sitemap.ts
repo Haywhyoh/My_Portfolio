@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getAllBlogs } from '@/lib/blog';
+import ServicesData from '@/assets/jsonData/services/ServicesData.json';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
@@ -65,7 +66,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error generating blog sitemap:', error);
   }
 
-  return [...staticPages, ...blogPages];
+  // Dynamic service pages
+  const servicePages: MetadataRoute.Sitemap = ServicesData.map((service) => ({
+    url: `${baseUrl}/services/${service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...blogPages, ...servicePages];
 }
 
 

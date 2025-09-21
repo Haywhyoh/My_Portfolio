@@ -34,12 +34,16 @@ const IsotopeGallery = () => {
                     layoutMode: 'masonry',
                 });
 
+                // Force layout after a short delay to ensure proper rendering
                 setTimeout(() => {
                     iso.layout();
-                }, 500);
+                }, 100);
 
+                // Cleanup function
                 return () => {
-                    iso.destroy();
+                    if (iso) {
+                        iso.destroy();
+                    }
                 };
             }).catch(error => {
                 console.error('Failed to load Isotope:', error);

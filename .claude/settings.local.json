@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Read(//c/Users/USER/Pictures/Screenshots/**)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

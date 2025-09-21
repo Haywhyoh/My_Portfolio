@@ -3,7 +3,7 @@
         "id": 1,
         "activeClass": "active",
         "icon": "ai.png",
-        "title": "AI Agent Building",
+        "title": "AI Engineering",
         "text": "Build intelligent AI agents and automation that save your business hours daily. From chatbots to workflow automation - turning manual tasks into smart solutions.",
         "btnText": "Read More",
         "delay": "100ms"
@@ -13,7 +13,7 @@
         "activeClass": "",
         "icon": "1.png",
         "title": "Full Stack Development",
-        "text": "Complete web applications from database to frontend. React, Next.js, Python & Node.js expertise proven with 21K+ users served. Scalable solutions that grow with your business.",
+        "text": "Build complete web applications from database to frontend. Expertise in React, Next.js, Python & Node.js, proven with 21K+ users served.",
         "btnText": "Read More",
         "delay": "200ms"
     },
@@ -30,8 +30,8 @@
         "id": 4,
         "activeClass": "",
         "icon": "15.png",
-        "title": "Technical Writing",
-        "text": "Clear, comprehensive technical documentation that developers actually want to read. API guides, user manuals, and developer resources that bridge complexity with clarity.",
+        "title": "Mobile Development",
+        "text": "Build responsive, feature-rich mobile apps for iOS and Android. Expertise in React Native, and Kotlin, delivering seamless user experiences across platforms.",
         "btnText": "Read More",
         "delay": "400ms"
     }

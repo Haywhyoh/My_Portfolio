@@ -29,6 +29,120 @@ img {
   height: auto;
 }
 
+/* Portfolio Gallery Fixes */
+.gallery-items.colums-3 {
+  display: block;
+  overflow: hidden;
+}
+
+.gallery-items.colums-3 .gallery-item {
+  float: left;
+  padding: 15px;
+  width: 33.3333%;
+  box-sizing: border-box;
+}
+
+.gallery-style-one {
+  padding: 15px;
+  background: linear-gradient(50deg, #ffffff 20%, #ECF0F3 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 9px 0 rgb(109 117 143 / 5%);
+  position: relative;
+  transition: all 0.35s ease-in-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-style-one img {
+  border-radius: 5px;
+  margin-bottom: 30px;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-style-one .info {
+  padding: 0 15px;
+  padding-bottom: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-style-one .overlay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.gallery-style-one .overlay .icon {
+  width: 100px;
+  text-align: right;
+}
+
+.gallery-style-one .overlay .icon a {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  line-height: 45px;
+  text-align: center;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #ffffff;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.gallery-style-one .overlay .icon a i {
+  font-weight: 100;
+  transform: rotate(-45deg);
+}
+
+.gallery-style-one .info h4 {
+  margin: 0;
+  margin-top: 15px;
+  font-size: 30px;
+  flex: 1;
+}
+
+ul.pf-tags {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.pf-tags li {
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: 8px;
+}
+
+ul.pf-tags li a {
+  display: inline-block;
+  border: 1px solid #a2a2a2;
+  padding: 0 20px;
+  border-radius: 30px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #333;
+}
+
+/* Mobile responsive */
+@media only screen and (max-width: 767px) {
+  .gallery-items.colums-3 .gallery-item {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .gallery-items.colums-3 .gallery-item {
+    width: 50%;
+  }
+}
+
 /* Prevent layout shift during font loading */
 .font-loading {
   font-display: swap;
