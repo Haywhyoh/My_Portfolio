@@ -17,6 +17,7 @@ import '../assets/css/style.css'
 import './globals.css'
 
 import ClientProviders from '@/components/providers/ClientProviders'
+import SessionProvider from '@/components/SessionProvider'
 import HeaderV1 from '@/components/header/HeaderV1'
 import FooterV1 from '@/components/footer/FooterV1'
 
@@ -33,12 +34,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <HeaderV1 />
-        <main>
-          {children}
-        </main>
-        <FooterV1 />
-        <ClientProviders />
+        <SessionProvider>
+          <HeaderV1 />
+          <main>
+            {children}
+          </main>
+          <FooterV1 />
+          <ClientProviders />
+        </SessionProvider>
       </body>
     </html>
   )
