@@ -187,3 +187,4 @@ export function generatePortfolioStructuredData(projects: Array<{
   };
 }
 
+
