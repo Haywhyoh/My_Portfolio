@@ -19,11 +19,14 @@ export async function GET() {
       }
     });
 
-    return NextResponse.json(Array.from(allTags).sort());
+    return NextResponse.json({
+      success: true,
+      tags: Array.from(allTags).sort()
+    });
   } catch (error) {
     console.error('Error fetching tags:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch tags' },
+      { success: false, error: 'Failed to fetch tags' },
       { status: 500 }
     );
   }

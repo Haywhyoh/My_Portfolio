@@ -1,9 +1,6 @@
 import { BlogPost, BlogListResponse, BLOG_CONFIG } from './types';
-import { calculatePagination, getPaginatedPosts } from './pagination';
 
-// This will be our enhanced blog data
-// For now, we'll use JSON files, but this can easily be replaced with a CMS or API
-let cachedBlogs: BlogPost[] | null = null;
+// API-based blog functions using the database
 
 /**
  * Generate a slug from a title
@@ -27,44 +24,58 @@ export function calculateReadTime(content: string): number {
 }
 
 /**
- * Load and transform blog data
+ * API Helper to fetch from backend
  */
-async function loadBlogData(): Promise<BlogPost[]> {
-  if (cachedBlogs) {
-    return cachedBlogs;
-  }
-
+async function fetchFromAPI(endpoint: string, options?: RequestInit): Promise<any> {
   try {
-    // Import the existing blog data
-    const BlogData = await import('../assets/jsonData/blog/BlogData.json');
+    const response = await fetch(`/api/${endpoint}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      ...options,
+    });
 
-    // Transform and enhance the existing data
-    cachedBlogs = BlogData.default.map((blog: any) => ({
-      id: blog.id,
-      title: blog.title,
-      slug: generateSlug(blog.title),
-      excerpt: blog.text || 'No excerpt available.',
-      content: generateBlogContent(blog), // Generate full content
-      author: blog.author,
-      date: blog.date,
-      publishedAt: new Date(blog.date).toISOString(),
-      updatedAt: new Date(blog.date).toISOString(),
-      thumbnail: blog.thumb,
-      featuredImage: blog.thumbFull || blog.thumb,
-      tags: generateTags(blog.title), // Generate tags based on title
-      category: generateCategory(blog.author), // Generate category based on author
-      readTime: calculateReadTime(blog.text || ''),
-      isPublished: true,
-      seoTitle: blog.title,
-      seoDescription: blog.text?.substring(0, 160) || 'Read this blog post.',
-      animationDelay: blog.animationDelay || '100ms'
-    }));
+    if (!response.ok) {
+      throw new Error(`API call failed: ${response.status}`);
+    }
 
-    return cachedBlogs;
+    return await response.json();
   } catch (error) {
-    console.error('Failed to load blog data:', error);
-    return [];
+    console.error(`API Error (${endpoint}):`, error);
+    throw error;
   }
+}
+
+/**
+ * Transform database blog to frontend BlogPost format
+ */
+function transformDatabaseBlog(dbBlog: any): BlogPost {
+  const tags = typeof dbBlog.tags === 'string' ? JSON.parse(dbBlog.tags) : dbBlog.tags || [];
+
+  return {
+    id: dbBlog.id,
+    title: dbBlog.title,
+    slug: dbBlog.slug,
+    excerpt: dbBlog.excerpt || '',
+    content: dbBlog.content || '',
+    author: dbBlog.author,
+    date: new Date(dbBlog.publishedAt || dbBlog.createdAt).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }),
+    publishedAt: dbBlog.publishedAt || dbBlog.createdAt,
+    updatedAt: dbBlog.updatedAt,
+    thumbnail: dbBlog.thumbnail || '',
+    featuredImage: dbBlog.featuredImage || dbBlog.thumbnail || '',
+    tags,
+    category: dbBlog.category,
+    readTime: dbBlog.readTime || calculateReadTime(dbBlog.content || ''),
+    isPublished: dbBlog.isPublished,
+    seoTitle: dbBlog.seoTitle || dbBlog.title,
+    seoDescription: dbBlog.seoDescription || dbBlog.excerpt,
+    viewCount: dbBlog.viewCount || 0
+  };
 }
 
 /**
@@ -137,65 +148,45 @@ function generateCategory(author: string): string {
  * Get all blog posts
  */
 export async function getAllBlogs(): Promise<BlogPost[]> {
-  return await loadBlogData();
+  try {
+    const data = await fetchFromAPI('blogs?published=true');
+    return data.blogs.map(transformDatabaseBlog);
+  } catch (error) {
+    console.error('Failed to fetch all blogs:', error);
+    return [];
+  }
 }
 
 /**
  * Get blog post by slug
  */
 export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
-  const blogs = await loadBlogData();
-  return blogs.find(blog => blog.slug === slug) || null;
+  try {
+    const data = await fetchFromAPI(`blogs/${slug}`);
+    if (data.success && data.blog) {
+      return transformDatabaseBlog(data.blog);
+    }
+    return null;
+  } catch (error) {
+    console.error('Failed to fetch blog by slug:', error);
+    return null;
+  }
 }
 
 /**
  * Get blog post by ID (for backward compatibility)
  */
 export async function getBlogById(id: number): Promise<BlogPost | null> {
-  const blogs = await loadBlogData();
-  return blogs.find(blog => blog.id === id) || null;
-}
-
-/**
- * Get blogs by category
- */
-export async function getBlogsByCategory(category: string): Promise<BlogPost[]> {
-  const blogs = await loadBlogData();
-  if (category === BLOG_CONFIG.DEFAULT_CATEGORY) {
-    return blogs;
+  try {
+    const data = await fetchFromAPI(`blogs?id=${id}`);
+    if (data.blogs && data.blogs.length > 0) {
+      return transformDatabaseBlog(data.blogs[0]);
+    }
+    return null;
+  } catch (error) {
+    console.error('Failed to fetch blog by ID:', error);
+    return null;
   }
-  return blogs.filter(blog => blog.category.toLowerCase() === category.toLowerCase());
-}
-
-/**
- * Get blogs by tag
- */
-export async function getBlogsByTag(tag: string): Promise<BlogPost[]> {
-  const blogs = await loadBlogData();
-  return blogs.filter(blog =>
-    blog.tags.some(blogTag => blogTag.toLowerCase() === tag.toLowerCase())
-  );
-}
-
-/**
- * Search blogs by title, excerpt, or content
- */
-export async function searchBlogs(query: string): Promise<BlogPost[]> {
-  if (!query || query.trim().length === 0) {
-    return await getAllBlogs();
-  }
-
-  const blogs = await loadBlogData();
-  const searchQuery = query.toLowerCase().trim();
-
-  return blogs.filter(blog =>
-    blog.title.toLowerCase().includes(searchQuery) ||
-    blog.excerpt.toLowerCase().includes(searchQuery) ||
-    blog.content.toLowerCase().includes(searchQuery) ||
-    blog.tags.some(tag => tag.toLowerCase().includes(searchQuery)) ||
-    blog.category.toLowerCase().includes(searchQuery) ||
-    blog.author.toLowerCase().includes(searchQuery)
-  );
 }
 
 /**
@@ -207,74 +198,96 @@ export async function getPaginatedBlogs(
   tag?: string,
   search?: string
 ): Promise<BlogListResponse> {
-  let blogs = await loadBlogData();
+  try {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      limit: BLOG_CONFIG.POSTS_PER_PAGE.toString(),
+      published: 'true'
+    });
 
-  // Apply filters
-  if (search) {
-    blogs = await searchBlogs(search);
-  } else if (category && category !== BLOG_CONFIG.DEFAULT_CATEGORY) {
-    blogs = await getBlogsByCategory(category);
-  } else if (tag) {
-    blogs = await getBlogsByTag(tag);
+    if (category && category !== BLOG_CONFIG.DEFAULT_CATEGORY) {
+      params.append('category', category);
+    }
+    if (tag) {
+      params.append('tag', tag);
+    }
+    if (search) {
+      params.append('search', search);
+    }
+
+    const data = await fetchFromAPI(`blogs?${params.toString()}`);
+
+    return {
+      posts: data.blogs.map(transformDatabaseBlog),
+      totalPosts: data.totalCount,
+      totalPages: data.totalPages,
+      currentPage: data.currentPage,
+      postsPerPage: BLOG_CONFIG.POSTS_PER_PAGE,
+      hasNextPage: data.currentPage < data.totalPages,
+      hasPrevPage: data.currentPage > 1
+    };
+  } catch (error) {
+    console.error('Failed to fetch paginated blogs:', error);
+    return {
+      posts: [],
+      totalPosts: 0,
+      totalPages: 1,
+      currentPage: 1,
+      postsPerPage: BLOG_CONFIG.POSTS_PER_PAGE,
+      hasNextPage: false,
+      hasPrevPage: false
+    };
   }
-
-  // Sort by publication date (newest first)
-  blogs = blogs.sort((a, b) =>
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
-
-  const totalPosts = blogs.length;
-  const pagination = calculatePagination(totalPosts, page);
-  const paginatedPosts = getPaginatedPosts(blogs, page);
-
-  return {
-    posts: paginatedPosts,
-    totalPosts,
-    totalPages: pagination.totalPages,
-    currentPage: pagination.currentPage,
-    postsPerPage: pagination.postsPerPage,
-    hasNextPage: pagination.hasNextPage,
-    hasPrevPage: pagination.hasPrevPage
-  };
 }
 
 /**
  * Get all unique categories
  */
 export async function getAllCategories(): Promise<string[]> {
-  const blogs = await loadBlogData();
-  const categories = Array.from(new Set(blogs.map(blog => blog.category)));
-  return [BLOG_CONFIG.DEFAULT_CATEGORY, ...categories.sort()];
+  try {
+    const data = await fetchFromAPI('blogs/categories');
+    return [BLOG_CONFIG.DEFAULT_CATEGORY, ...data.categories.sort()];
+  } catch (error) {
+    console.error('Failed to fetch categories:', error);
+    return [BLOG_CONFIG.DEFAULT_CATEGORY];
+  }
 }
 
 /**
  * Get all unique tags
  */
 export async function getAllTags(): Promise<string[]> {
-  const blogs = await loadBlogData();
-  const allTags = blogs.flatMap(blog => blog.tags);
-  const uniqueTags = Array.from(new Set(allTags));
-  return uniqueTags.sort();
+  try {
+    const data = await fetchFromAPI('blogs/tags');
+    return data.tags.sort();
+  } catch (error) {
+    console.error('Failed to fetch tags:', error);
+    return [];
+  }
 }
 
 /**
  * Get related blog posts (same category or similar tags)
  */
 export async function getRelatedBlogs(blogId: number, limit: number = 3): Promise<BlogPost[]> {
-  const blogs = await loadBlogData();
-  const currentBlog = blogs.find(blog => blog.id === blogId);
+  try {
+    const data = await fetchFromAPI(`blogs/${blogId}/related?limit=${limit}`);
+    return data.relatedBlogs.map(transformDatabaseBlog);
+  } catch (error) {
+    console.error('Failed to fetch related blogs:', error);
+    return [];
+  }
+}
 
-  if (!currentBlog) return [];
-
-  // Get blogs from same category or with similar tags
-  const relatedBlogs = blogs
-    .filter(blog => blog.id !== blogId)
-    .filter(blog =>
-      blog.category === currentBlog.category ||
-      blog.tags.some(tag => currentBlog.tags.includes(tag))
-    )
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-    .slice(0, limit);
-
-  return relatedBlogs;
+/**
+ * Increment view count for a blog post
+ */
+export async function incrementViewCount(slug: string): Promise<void> {
+  try {
+    await fetchFromAPI(`blogs/${slug}/view`, {
+      method: 'POST'
+    });
+  } catch (error) {
+    console.error('Failed to increment view count:', error);
+  }
 }

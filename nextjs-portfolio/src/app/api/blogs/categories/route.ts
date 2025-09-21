@@ -10,11 +10,14 @@ export async function GET() {
 
     const categories = Array.from(new Set(blogs.map(blog => blog.category)));
 
-    return NextResponse.json(categories.sort());
+    return NextResponse.json({
+      success: true,
+      categories: categories.sort()
+    });
   } catch (error) {
     console.error('Error fetching categories:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch categories' },
+      { success: false, error: 'Failed to fetch categories' },
       { status: 500 }
     );
   }

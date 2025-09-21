@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BlogPost } from '@/lib/types';
 import { parseMarkdown, formatDate, formatReadTime } from '@/lib/markdown';
+import { incrementViewCount } from '@/lib/blog';
 import ArticleNavigation from './ArticleNavigation';
 import SocialShare from './SocialShare';
 import RelatedPosts from './RelatedPosts';
@@ -15,6 +16,11 @@ interface BlogDetailProps {
 
 export default function BlogDetail({ post }: BlogDetailProps) {
   const [readingProgress, setReadingProgress] = useState(0);
+
+  // Track view count on component mount
+  useEffect(() => {
+    incrementViewCount(post.slug);
+  }, [post.slug]);
 
   // Reading progress calculation
   useEffect(() => {
