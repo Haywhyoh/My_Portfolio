@@ -1,6 +1,12 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import BlogListingContent from './BlogListingContent';
+import { getAllBlogs } from '@/lib/blog';
+import {
+  generateBlogListingStructuredData,
+  generateWebsiteStructuredData,
+  StructuredDataScript
+} from '@/lib/structured-data';
 
 export const metadata: Metadata = {
   title: 'Blog - Web Development Insights',
@@ -13,11 +19,25 @@ export const metadata: Metadata = {
   }
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  // Get blog data for structured data
+  const blogs = await getAllBlogs();
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourportfolio.com';
+
+  const blogListingStructuredData = generateBlogListingStructuredData(blogs, siteUrl);
+  const websiteStructuredData = generateWebsiteStructuredData(siteUrl);
+
   return (
-    <Suspense fallback={<BlogListingFallback />}>
-      <BlogListingContent />
-    </Suspense>
+    <>
+      {/* Structured Data */}
+      <StructuredDataScript data={blogListingStructuredData} />
+      <StructuredDataScript data={websiteStructuredData} />
+
+      {/* Blog Listing Content */}
+      <Suspense fallback={<BlogListingFallback />}>
+        <BlogListingContent />
+      </Suspense>
+    </>
   );
 }
 

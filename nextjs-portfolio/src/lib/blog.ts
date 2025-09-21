@@ -162,9 +162,9 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
  */
 export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    const data = await fetchFromAPI(`blogs/${slug}`);
-    if (data.success && data.blog) {
-      return transformDatabaseBlog(data.blog);
+    const blog = await fetchFromAPI(`blogs/${slug}`);
+    if (blog) {
+      return transformDatabaseBlog(blog);
     }
     return null;
   } catch (error) {
@@ -178,9 +178,9 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
  */
 export async function getBlogById(id: number): Promise<BlogPost | null> {
   try {
-    const data = await fetchFromAPI(`blogs?id=${id}`);
-    if (data.blogs && data.blogs.length > 0) {
-      return transformDatabaseBlog(data.blogs[0]);
+    const blog = await fetchFromAPI(`blogs/${id}`);
+    if (blog) {
+      return transformDatabaseBlog(blog);
     }
     return null;
   } catch (error) {
@@ -282,9 +282,9 @@ export async function getRelatedBlogs(blogId: number, limit: number = 3): Promis
 /**
  * Increment view count for a blog post
  */
-export async function incrementViewCount(slug: string): Promise<void> {
+export async function incrementViewCount(slugOrId: string | number): Promise<void> {
   try {
-    await fetchFromAPI(`blogs/${slug}/view`, {
+    await fetchFromAPI(`blogs/${slugOrId}/view`, {
       method: 'POST'
     });
   } catch (error) {

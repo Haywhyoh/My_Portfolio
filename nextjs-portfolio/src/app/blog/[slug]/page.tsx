@@ -3,6 +3,11 @@ import type { Metadata } from 'next';
 import { getBlogBySlug, getAllBlogs } from '@/lib/blog';
 import BlogDetail from '@/components/blog/BlogDetail';
 import { generateSlug } from '@/lib/blog';
+import {
+  generateBlogPostStructuredData,
+  generateBreadcrumbStructuredData,
+  StructuredDataScript
+} from '@/lib/structured-data';
 
 interface BlogDetailPageProps {
   params: {
@@ -68,7 +73,25 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     notFound();
   }
 
-  return <BlogDetail post={blog} />;
+  // Generate structured data
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourportfolio.com';
+  const blogStructuredData = generateBlogPostStructuredData(blog, siteUrl);
+  const breadcrumbStructuredData = generateBreadcrumbStructuredData([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: blog.title, url: `/blog/${blog.slug}` }
+  ], siteUrl);
+
+  return (
+    <>
+      {/* Structured Data */}
+      <StructuredDataScript data={blogStructuredData} />
+      <StructuredDataScript data={breadcrumbStructuredData} />
+
+      {/* Blog Content */}
+      <BlogDetail post={blog} />
+    </>
+  );
 }
 
 
