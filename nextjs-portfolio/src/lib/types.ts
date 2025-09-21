@@ -7,17 +7,20 @@ export interface BlogPost {
   excerpt: string; // Short description for listing
   content: string; // Full blog content (for detail page)
   author: string;
-  date: string; // Display date
-  publishedAt: string; // ISO format for better parsing
+  date?: string; // Display date (for legacy compatibility)
+  publishedAt: string | null; // ISO format for better parsing
   updatedAt?: string;
-  thumbnail: string; // Main image for cards
-  featuredImage?: string; // Full-size image for detail page
+  createdAt: string;
+  thumbnail: string | null; // Main image for cards
+  featuredImage?: string | null; // Full-size image for detail page
   tags: string[];
   category: string;
   readTime: number; // Estimated reading time in minutes
+  viewCount?: number; // Number of views
   isPublished: boolean;
-  seoTitle?: string;
-  seoDescription?: string;
+  isDraft?: boolean;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
   animationDelay?: string; // For homepage animations
 }
 
@@ -29,6 +32,41 @@ export interface BlogListResponse {
   postsPerPage: number;
   hasNextPage: boolean;
   hasPrevPage: boolean;
+}
+
+// API-specific types
+export interface CreateBlogRequest {
+  title: string;
+  excerpt?: string;
+  content: string;
+  author: string;
+  thumbnail?: string;
+  featuredImage?: string;
+  tags?: string[];
+  category?: string;
+  isPublished?: boolean;
+  seoTitle?: string;
+  seoDescription?: string;
+  publishedAt?: string;
+}
+
+export interface UpdateBlogRequest extends Partial<CreateBlogRequest> {}
+
+export interface BlogAPIResponse {
+  blogs: BlogPost[];
+  pagination: {
+    currentPage: number;
+    totalPages: number;
+    totalItems: number;
+    itemsPerPage: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+  };
+}
+
+export interface APIError {
+  error: string;
+  details?: any;
 }
 
 export interface PaginationInfo {

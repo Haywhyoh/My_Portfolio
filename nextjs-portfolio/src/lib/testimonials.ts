@@ -95,10 +95,10 @@ export function getTestimonialStats() {
   const featuredCount = testimonials.filter(t => t.featured).length;
 
   // Get unique project types
-  const projectTypes = [...new Set(testimonials.map(t => t.projectType))];
+  const projectTypes = Array.from(new Set(testimonials.map(t => t.projectType)));
 
   // Get unique companies
-  const companies = [...new Set(testimonials.map(t => t.company))];
+  const companies = Array.from(new Set(testimonials.map(t => t.company)));
 
   return {
     totalTestimonials: testimonials.length,

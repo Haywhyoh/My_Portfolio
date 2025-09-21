@@ -5,7 +5,11 @@
       "Bash(npm run dev:*)",
       "Bash(find:*)",
       "Read(//c/Users/USER/Pictures/Screenshots/**)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npm i:*)",
+      "Bash(npx prisma init:*)",
+      "Bash(npx prisma generate:*)",
+      "Bash(npx prisma:*)"
     ],
     "deny": [],
     "ask": []

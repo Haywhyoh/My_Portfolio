@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import PortfolioData from "../../assets/jsonData/portfolio/PortfolioData.json"
 import Link from "next/link";
-import dynamic from 'next/dynamic';
 
 const IsotopeGallery = () => {
     const galleryRef = useRef<HTMLDivElement | null>(null);
@@ -25,31 +24,42 @@ const IsotopeGallery = () => {
     };
 
     useEffect(() => {
-        if (loadedImagesCount === totalImages && galleryRef.current && typeof window !== 'undefined') {
-            import('isotope-layout').then((IsotopeModule) => {
-                const Isotope = IsotopeModule.default;
+        // Initialize Isotope after a short delay, regardless of image loading
+        const timer = setTimeout(() => {
+            if (galleryRef.current && typeof window !== 'undefined') {
+                Promise.all([
+                    import('isotope-layout'),
+                    import('imagesloaded')
+                ]).then(([IsotopeModule, imagesLoadedModule]) => {
+                    const Isotope = IsotopeModule.default;
+                    const imagesLoaded = imagesLoadedModule.default;
 
-                const iso = new Isotope(galleryRef.current!, {
-                    itemSelector: '.gallery-item',
-                    layoutMode: 'masonry',
+                    const iso = new Isotope(galleryRef.current!, {
+                        itemSelector: '.gallery-item',
+                        layoutMode: 'masonry',
+                    });
+
+                    // Wait for all images to load before re-laying out
+                    imagesLoaded(galleryRef.current!, () => {
+                        setTimeout(() => {
+                            iso.layout();
+                        }, 500);
+                    });
+
+                    // Cleanup function
+                    return () => {
+                        if (iso) {
+                            iso.destroy();
+                        }
+                    };
+                }).catch(error => {
+                    console.error('Failed to load Isotope or ImagesLoaded:', error);
                 });
+            }
+        }, 1000);
 
-                // Force layout after a short delay to ensure proper rendering
-                setTimeout(() => {
-                    iso.layout();
-                }, 100);
-
-                // Cleanup function
-                return () => {
-                    if (iso) {
-                        iso.destroy();
-                    }
-                };
-            }).catch(error => {
-                console.error('Failed to load Isotope:', error);
-            });
-        }
-    }, [loadedImagesCount, totalImages]);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <>

@@ -33,6 +33,7 @@ img {
 .gallery-items.colums-3 {
   display: block;
   overflow: hidden;
+  width: 100%;
 }
 
 .gallery-items.colums-3 .gallery-item {
@@ -134,6 +135,12 @@ ul.pf-tags li a {
     width: 100%;
     padding-left: 0;
     padding-right: 0;
+    position: relative;
+    float: left;
+  }
+
+  .gallery-items.colums-3 {
+    position: static;
   }
 }
 
