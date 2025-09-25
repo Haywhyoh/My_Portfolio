@@ -106,7 +106,7 @@ const AboutV1 = () => {
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                <img src="/assets/img/about/2.jpg" alt="Image Not Found" />
+                                <img src="/assets/img/about/developer.png" alt="Image Not Found" />
                             </div>
                         </div>
                     </div>
