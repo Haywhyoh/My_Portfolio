@@ -55,7 +55,7 @@ export default function AdminLogin() {
       <div className="container-fluid min-vh-100">
         <div className="row min-vh-100">
           {/* Left Side - Info */}
-          <div className="col-lg-6 d-none d-lg-flex align-items-center justify-content-center bg-primary">
+          <div className="col-lg-6 d-none d-lg-flex align-items-center justify-content-center admin-hero-side">
             <div className="text-center text-white">
               <div className="mb-4">
                 <i className="fas fa-crown" style={{ fontSize: '4rem' }}></i>
@@ -180,6 +180,59 @@ export default function AdminLogin() {
           background: #f8f9fa;
         }
 
+        .admin-hero-side {
+          background: linear-gradient(135deg, rgba(74, 144, 226, 0.8), rgba(143, 130, 255, 0.8)),
+                      url('/assets/img/about/blue.jpeg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .admin-hero-side::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(74, 144, 226, 0.3);
+          backdrop-filter: blur(2px);
+          z-index: 1;
+        }
+
+        .admin-hero-side > div {
+          position: relative;
+          z-index: 2;
+          padding: 3rem;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(15px);
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          max-width: 500px;
+          margin: 2rem;
+        }
+
+        .admin-hero-side h2 {
+          font-size: 2.5rem;
+          font-weight: 700;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          margin-bottom: 1rem;
+        }
+
+        .admin-hero-side p.lead {
+          font-size: 1.2rem;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+          margin-bottom: 2rem;
+        }
+
+        .admin-hero-side .fas.fa-crown {
+          color: #ffd700;
+          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
         .login-form-container {
           width: 100%;
           max-width: 400px;
@@ -189,23 +242,65 @@ export default function AdminLogin() {
         .login-form {
           background: white;
           padding: 2rem;
-          border-radius: 10px;
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          border-radius: 15px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+          border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .input-group-text {
           background: #f8f9fa;
           border-color: #dee2e6;
+          color: #6c757d;
+        }
+
+        .form-control {
+          border-color: #dee2e6;
+          transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+          border-color: #4a90e2;
+          box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+        }
+
+        .btn-primary {
+          background: linear-gradient(135deg, #4a90e2, #8f82ff);
+          border: none;
+          border-radius: 10px;
+          padding: 12px 24px;
+          font-weight: 600;
+          transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+          background: linear-gradient(135deg, #357abd, #7e6fff);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
         }
 
         .feature-item {
           display: flex;
           align-items: center;
           justify-content: center;
+          background: rgba(255, 255, 255, 0.15);
+          padding: 12px 20px;
+          border-radius: 25px;
+          margin: 8px;
+          backdrop-filter: blur(5px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+          background: rgba(255, 255, 255, 0.25);
+          transform: translateX(10px);
         }
 
         .demo-credentials {
           border: 1px solid #dee2e6;
+          background: rgba(248, 249, 250, 0.8);
+          backdrop-filter: blur(10px);
         }
 
         @media (max-width: 991.98px) {
@@ -215,6 +310,15 @@ export default function AdminLogin() {
 
           .login-form {
             padding: 1.5rem;
+          }
+
+          .admin-hero-side > div {
+            padding: 2rem;
+            margin: 1rem;
+          }
+
+          .admin-hero-side h2 {
+            font-size: 2rem;
           }
         }
       `}</style>

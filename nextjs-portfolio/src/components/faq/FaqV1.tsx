@@ -10,7 +10,7 @@ const FaqV1 = () => {
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="thumb-style-one">
-                                <img src="/assets/img/about/3.jpg" alt="Image Not Found" />
+                                <img src="/assets/img/about/girl.jpg" alt="Image Not Found" />
                                 <div className="chat-card">
                                     <p>{`Can't find what your are loking for you?`}</p>
                                     <h5>I would like to chat with you</h5>
@@ -100,6 +100,55 @@ const FaqV1 = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Glassmorphism styling */}
+            <style jsx>{`
+                .chat-card {
+                    background: rgba(255, 255, 255, 0.2) !important;
+                    backdrop-filter: blur(15px) !important;
+                    -webkit-backdrop-filter: blur(15px) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+                    border-radius: 16px !important;
+                    padding: 24px !important;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+                    transition: all 0.3s ease !important;
+                }
+
+                .chat-card:hover {
+                    background: rgba(255, 255, 255, 0.25) !important;
+                    transform: translateY(-2px) !important;
+                    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+                }
+
+                .chat-card p {
+                    color: rgba(0, 0, 0, 0.8) !important;
+                    font-weight: 500 !important;
+                    margin-bottom: 12px !important;
+                    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+                }
+
+                .chat-card h5 {
+                    color: rgba(0, 0, 0, 0.9) !important;
+                    font-weight: 700 !important;
+                    margin-bottom: 16px !important;
+                    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+                }
+
+                .chat-card a {
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    background: rgba(24, 119, 242, 0.9) !important;
+                    backdrop-filter: blur(5px) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                    transition: all 0.3s ease !important;
+                }
+
+                .chat-card a:hover {
+                    background: rgba(24, 119, 242, 1) !important;
+                    transform: scale(1.05) !important;
+                }
+            `}</style>
         </>
     );
 };

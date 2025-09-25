@@ -21,7 +21,9 @@ const BannerV1 = () => {
                         <div className="col-lg-12">
                             <div className="banner-style-one-items">
                                 <div className="info">
-                                    <h1>I👋 am  Samuel </h1>
+                                    <h1>
+                                        I <span style={{ color: '#e67e22' }}>👋</span> am Samuel
+                                    </h1>
                                     <h2>
                                         <span className="header-caption" id="page-top">
                                             <span className="cd-headline clip is-full-width">
