@@ -12,7 +12,7 @@ const ScrollMenu: React.FC<DataType> = ({ closeMenu }) => {
                 <Link className="smooth-menu" to="services" offset={-50} onClick={closeMenu}>Services</Link>
             </li>
             <li>
-                <Link className="smooth-menu" to="portfolio" offset={-50} onClick={closeMenu}>Portfolio</Link>
+                <NextLink href="/projects" className="smooth-menu" onClick={closeMenu}>Portfolio</NextLink>
             </li>
             <li>
                 <Link className="smooth-menu" to="resume" offset={-50} onClick={closeMenu}>Resume</Link>

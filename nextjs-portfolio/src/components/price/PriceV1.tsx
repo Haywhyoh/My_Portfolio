@@ -40,21 +40,21 @@ const PriceV1 = ({ sectionClass, hasTitle }: DataType) => {
                                     <div className="left">
                                         <h4>WordPress Development</h4>
                                         <p>
-                                            Simple and flexible per - user pricing
+                                            Business Website, NGO Website, Agency Website
                                         </p>
                                     </div>
                                 </div>
                                 <div className="content">
                                     <div className="price">
-                                        <h2><sup>$</sup>48</h2>
+                                        <h2><sup>$</sup>200</h2>
                                     </div>
                                     <ul>
-                                        <li>1 Page with Elementor</li>
-                                        <li>Design Customization</li>
+                                        <li>5 Pages with Elementor</li>
+                                        <li>Theme Customization</li>
                                         <li>Responsive Design</li>
-                                        <li>1 Page with Elementor</li>
-                                        <li>Design Customization</li>
-                                        <li>Responsive Design</li>
+                                        <li>SEO and AI Optimized</li>
+                                        <li>Payment Gateway Integration</li>
+                                        <li>30 Days Support</li>
                                     </ul>
                                     <div className="button mt-30">
                                         <Link className="btn-style-regular" href="/contact"><span>Order Now</span> <i className="fas fa-arrow-right" /></Link>
@@ -71,23 +71,23 @@ const PriceV1 = ({ sectionClass, hasTitle }: DataType) => {
                                         <i className="fab fa-bootstrap" />
                                     </div>
                                     <div className="left">
-                                        <h4>Static frontend design</h4>
+                                        <h4>Single Landing Page</h4>
                                         <p>
-                                            Simple and flexible per - user pricing
+                                            Single Landing Page for your business
                                         </p>
                                     </div>
                                 </div>
                                 <div className="content">
                                     <div className="price">
-                                        <h2><sup>$</sup>28</h2>
+                                        <h2><sup>$</sup>30</h2>
                                     </div>
                                     <ul>
-                                        <li>2 Page with Bootstrap5</li>
-                                        <li>Design implement</li>
+                                        <li>1 Page with Elementor</li>
+                                        <li>Social Media Integration</li>
                                         <li>Responsive Design</li>
-                                        <li>2 Page with Bootstrap5</li>
-                                        <li>Design implement</li>
-                                        <li>Responsive Design</li>
+                                        <li>SEO and AI Optimized</li>
+                                        <li>Contact Form</li>
+                                        <li>7 Days Support</li>
                                     </ul>
                                     <div className="button mt-30">
                                         <Link className="btn-style-regular btn-border" href="/contact"><span>Order Now</span> <i className="fas fa-arrow-right" /></Link>

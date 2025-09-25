@@ -810,25 +810,26 @@ ul.pf-tags li a {
 /* Fix navbar collapse state - Override validnavs.css conflicts */
 /* Desktop: Always show navbar horizontally */
 @media (min-width: 992px) {
-  nav.navbar.mobile-sidenav .navbar-collapse.collapse.collapse-mobile {
+  nav.navbar.validnavs.mobile-sidenav .navbar-collapse.collapse.collapse-mobile {
     display: flex !important;
     position: static !important;
     left: auto !important;
     width: auto !important;
     padding: 0 !important;
     background: transparent !important;
+    visibility: visible !important;
   }
 }
 
 /* Tablet and below: Hide navbar by default, show on toggle */
 @media (max-width: 991px) {
-  nav.navbar.mobile-sidenav .navbar-collapse.collapse.collapse-mobile:not(.show) {
+  nav.navbar.validnavs.mobile-sidenav .navbar-collapse.collapse.collapse-mobile:not(.show) {
     display: none !important;
     position: fixed;
     left: -485px;
   }
 
-  nav.navbar.mobile-sidenav .navbar-collapse.collapse.collapse-mobile.show {
+  nav.navbar.validnavs.mobile-sidenav .navbar-collapse.collapse.collapse-mobile.show {
     display: initial !important;
     left: 0;
   }

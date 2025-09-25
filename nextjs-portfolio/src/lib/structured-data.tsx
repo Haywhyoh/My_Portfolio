@@ -1,3 +1,4 @@
+import React from 'react';
 import { BlogPost } from './types';
 
 export interface StructuredData {

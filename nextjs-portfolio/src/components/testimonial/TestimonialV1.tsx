@@ -44,7 +44,7 @@ const TestimonialV1 = ({
                     </div>
                 </div>
                 <div className="content">
-                    <div className="tm-review">
+                    {/* <div className="tm-review">
                         <div className="top">
                             <h5>Reviews On</h5>
                             {renderStars(testimonial.rating)}
@@ -53,7 +53,7 @@ const TestimonialV1 = ({
                             <img src={testimonial.platformLogo} alt="Review Platform" />
                             <p>{testimonial.platformRating}/ {testimonial.reviewCount} Reviews</p>
                         </div>
-                    </div>
+                    </div> */}
                     <p>
                         &ldquo;{testimonial.testimonial}&rdquo;
                     </p>

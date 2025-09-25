@@ -73,10 +73,10 @@ const AboutV1 = () => {
                             <div className="clieents-list mt-40">
                                 <div className="d-flex">
                                     <div className="thumb">
-                                        <img src="/assets/img/team/14.jpg" alt="Image Not Found" />
-                                        <img src="/assets/img/team/15.jpg" alt="Image Not Found" />
-                                        <img src="/assets/img/team/16.jpg" alt="Image Not Found" />
-                                        <img src="/assets/img/team/17.jpg" alt="Image Not Found" />
+                                        <img src="/assets/img/tony.jpeg" alt="Image Not Found" />
+                                        <img src="/assets/img/sam2.png" alt="Image Not Found" />
+                                        <img src="/assets/img/naolo.jpeg" alt="Image Not Found" />
+                                        <img src="/assets/img/john.jpg" alt="Image Not Found" />
                                     </div>
                                     <div className="info">
                                         <h5>21K+ Users Served</h5>

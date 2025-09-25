@@ -23,28 +23,32 @@ const FactV1 = () => {
                         {/* Single item */}
                         <div className="funfact-style-two-item">
                             <div className="icon">
-                                <img src="/assets/img/icon/xd.png" alt="Image Not Found" />
+                                <img src="/assets/img/gallery/react.png" alt="Image Not Found" />
                             </div>
                             <div className="fun-fact">
-                                <div className="counter">
-                                    {/* <div className="timer"><CountUp end={80} enableScrollSpy={true} /></div>
-                                    <div className="operator">%</div> */}
+                            <div className="counter">
+                                <span className="operator">ReactJs</span>
+                            </div>
+                                <div className="">
+                                    <div className="medium"><CountUp end={5} enableScrollSpy={true} />+years</div>
+                                    
                                 </div>
-                                <span className="medium">Adobe XD</span>
                             </div>
                         </div>
 
                         {/* Single item */}
                         <div className="funfact-style-two-item">
                             <div className="icon">
-                                <img src="/assets/img/icon/figma.png" alt="Image Not Found" />
+                                <img src="/assets/img/gallery/node.png" alt="Image Not Found" />
                             </div>
                             <div className="fun-fact">
-                                <div className="counter">
-                                    {/* <div className="timer"><CountUp end={90} enableScrollSpy={true} /></div>
-                                    <div className="operator">%</div> */}
+                            <div className="counter">
+                                <span className="operator">NodeJs</span>
+                            </div>
+                                <div className="">
+                                    <div className="medium"><CountUp end={5} enableScrollSpy={true} />+years</div>
+                                    
                                 </div>
-                                <span className="medium">Figma</span>
                             </div>
                         </div>
 
@@ -54,25 +58,27 @@ const FactV1 = () => {
                                 <img src="/assets/img/icon/wordpress.png" alt="Image Not Found" />
                             </div>
                             <div className="fun-fact">
-                                <div className="counter">
-                                    {/* <div className="timer"><CountUp end={70} enableScrollSpy={true} /></div>
-                                    <div className="operator">%</div> */}
+                            <div className="counter">
+                                <span className="operator">Wordpress</span>
+                            </div>
+                                <div className="">
+                                    <div className="medium"><CountUp end={6} enableScrollSpy={true} />+years</div>
+                                    
                                 </div>
-                                <span className="medium">WordPress</span>
                             </div>
                         </div>
 
                         {/* Single item */}
                         <div className="funfact-style-two-item">
                             <div className="icon">
-                                <img src="/assets/img/gallery/nextjs.svg" alt="Image Not Found" />
+                                <img src="/assets/img/gallery/nextjs.png" alt="Image Not Found" />
                             </div>
                             <div className="fun-fact">
                             <div className="counter">
                                 <span className="operator">NextJs</span>
                             </div>
                                 <div className="">
-                                    <div className="medium"><CountUp end={5} enableScrollSpy={true} />+years</div>
+                                    <div className="medium"><CountUp end={3} enableScrollSpy={true} />+years</div>
                                     
                                 </div>
                             </div>
