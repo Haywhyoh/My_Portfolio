@@ -4,14 +4,12 @@ import Link from "next/link";
 import ScrollMenu from "./ScrollMenu";
 import useSidebarMenu from "../../hooks/useSidebarMenu";
 import useStickyMenu from "../../hooks/useStickyMenu";
-import useSubMenuToggle from "../../hooks/useSubMenuToggle";
 import ScrollContact from "./ScrollContact";
 
 const HeaderV1 = () => {
 
     const { isOpen, openMenu, closeMenu } = useSidebarMenu();
     const isMenuSticky = useStickyMenu();
-    const toggleSubMenu = useSubMenuToggle();
 
     return (
         <>
@@ -59,12 +57,8 @@ const HeaderV1 = () => {
                                 <i className="fa fa-times" />
                             </button>
                             <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                                <li className="dropdown">
-                                    <Link href="#" className="dropdown-toggle active" data-toggle="dropdown" onClick={toggleSubMenu}>Home</Link>
-                                    <ul className="dropdown-menu">
-                                        <li><Link href="/">Home Version Light</Link></li>
-                                        <li><Link href="/home-dark">Home Version Dark</Link></li>
-                                    </ul>
+                                <li>
+                                    <Link href="/" className="smooth-menu active" onClick={closeMenu}>Home</Link>
                                 </li>
                                 <ScrollMenu closeMenu={closeMenu} />
                             </ul>
