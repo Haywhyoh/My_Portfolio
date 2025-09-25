@@ -4,7 +4,7 @@ import PortfolioV1 from "../../components/portfolio/PortfolioV1";
 const ProjectsPage = () => {
     return (
         <>
-            <LayoutV2 breadCrumb='Projects' title='Digital marketing and analytical solution'>
+            <LayoutV2 breadCrumb='Projects' title='Web and App Development'>
                 <PortfolioV1 sectionClass='default-padding-bottom' hasTitle={false} />
             </LayoutV2>
         </>

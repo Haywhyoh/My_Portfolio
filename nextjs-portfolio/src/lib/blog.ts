@@ -1,4 +1,5 @@
 import { BlogPost, BlogListResponse, BLOG_CONFIG } from './types';
+import { prisma } from './prisma';
 
 // API-based blog functions using the database
 
@@ -24,7 +25,7 @@ export function calculateReadTime(content: string): number {
 }
 
 /**
- * API Helper to fetch from backend
+ * API Helper to fetch from backend (for client-side calls)
  */
 async function fetchFromAPI(endpoint: string, options?: RequestInit): Promise<any> {
   try {
@@ -43,6 +44,103 @@ async function fetchFromAPI(endpoint: string, options?: RequestInit): Promise<an
   } catch (error) {
     console.error(`API Error (${endpoint}):`, error);
     throw error;
+  }
+}
+
+/**
+ * Direct database query (for server-side calls)
+ */
+async function queryDatabase(options: {
+  published?: boolean;
+  limit?: number;
+  page?: number;
+  search?: string;
+  category?: string;
+  tag?: string;
+} = {}): Promise<any> {
+  try {
+    const {
+      published = true,
+      limit = 10,
+      page = 1,
+      search,
+      category,
+      tag
+    } = options;
+
+    const skip = (page - 1) * limit;
+    const where: any = {};
+
+    if (published) {
+      where.isPublished = true;
+    }
+
+    if (search) {
+      where.OR = [
+        { title: { contains: search, mode: 'insensitive' } },
+        { excerpt: { contains: search, mode: 'insensitive' } },
+        { content: { contains: search, mode: 'insensitive' } },
+        { author: { contains: search, mode: 'insensitive' } },
+      ];
+    }
+
+    if (category) {
+      where.category = category;
+    }
+
+    if (tag) {
+      where.tags = { contains: tag };
+    }
+
+    const [blogs, total] = await Promise.all([
+      prisma.blog.findMany({
+        where,
+        skip,
+        take: limit,
+        orderBy: {
+          createdAt: 'desc',
+        },
+        select: {
+          id: true,
+          title: true,
+          slug: true,
+          excerpt: true,
+          content: true,
+          author: true,
+          thumbnail: true,
+          featuredImage: true,
+          tags: true,
+          category: true,
+          readTime: true,
+          viewCount: true,
+          isPublished: true,
+          publishedAt: true,
+          createdAt: true,
+          updatedAt: true,
+          seoTitle: true,
+          seoDescription: true,
+        },
+      }),
+      prisma.blog.count({ where }),
+    ]);
+
+    return {
+      blogs: blogs.map(blog => ({
+        ...blog,
+        tags: JSON.parse(blog.tags || '[]'),
+      })),
+      total,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+    };
+  } catch (error) {
+    console.error('Database query error:', error);
+    return {
+      blogs: [],
+      total: 0,
+      currentPage: 1,
+      totalPages: 1,
+    };
   }
 }
 
@@ -145,11 +243,11 @@ function generateCategory(author: string): string {
 }
 
 /**
- * Get all blog posts
+ * Get all blog posts (server-side safe)
  */
 export async function getAllBlogs(): Promise<BlogPost[]> {
   try {
-    const data = await fetchFromAPI('blogs?published=true');
+    const data = await queryDatabase({ published: true });
     return data.blogs.map(transformDatabaseBlog);
   } catch (error) {
     console.error('Failed to fetch all blogs:', error);
@@ -158,13 +256,42 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
 }
 
 /**
- * Get blog post by slug
+ * Get blog post by slug (server-side safe)
  */
 export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    const blog = await fetchFromAPI(`blogs/${slug}`);
+    const blog = await prisma.blog.findUnique({
+      where: {
+        slug: slug,
+        isPublished: true
+      },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        excerpt: true,
+        content: true,
+        author: true,
+        thumbnail: true,
+        featuredImage: true,
+        tags: true,
+        category: true,
+        readTime: true,
+        viewCount: true,
+        isPublished: true,
+        publishedAt: true,
+        createdAt: true,
+        updatedAt: true,
+        seoTitle: true,
+        seoDescription: true,
+      },
+    });
+
     if (blog) {
-      return transformDatabaseBlog(blog);
+      return transformDatabaseBlog({
+        ...blog,
+        tags: JSON.parse(blog.tags || '[]'),
+      });
     }
     return null;
   } catch (error) {

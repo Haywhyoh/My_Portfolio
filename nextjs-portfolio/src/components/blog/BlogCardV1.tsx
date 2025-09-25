@@ -44,7 +44,9 @@ const BlogCardV1 = ({
           <Link href={`/blog/${slug}`}>
             {!imageError ? (
               <Image
-                src={`/assets/img/blog/${thumbnail}`}
+                src={thumbnail
+                  ? (thumbnail.startsWith('http') ? thumbnail : `/assets/img/blog/${thumbnail}`)
+                  : `/assets/img/blog/default-blog.jpg`}
                 alt={title}
                 width={400}
                 height={280}

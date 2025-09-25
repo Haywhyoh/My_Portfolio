@@ -27,7 +27,11 @@ const SingleBlogV1 = ({ blog }: { blog: DataType }) => {
             >
                 <div className="home-blog-thumb">
                     <Link href={`/blog/${slug}`}>
-                        <img src={`/assets/img/blog/${thumb}`} alt="Image not Found" />
+                        <img src={
+                            thumb
+                                ? (thumb.startsWith('http') ? thumb : `/assets/img/blog/${thumb}`)
+                                : `/assets/img/blog/default-blog.jpg`
+                        } alt="Image not Found" />
                     </Link>
                 </div>
                 <div className="content">

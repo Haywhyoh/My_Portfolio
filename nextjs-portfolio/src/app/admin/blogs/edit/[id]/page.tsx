@@ -175,7 +175,7 @@ export default function EditBlogPage() {
       <AdminLayout>
         <div className="text-center">
           <h3>Blog not found</h3>
-          <p>The blog post you're looking for doesn't exist.</p>
+          <p>The blog post you&apos;re looking for doesn&apos;t exist.</p>
           <button onClick={() => router.push('/admin/blogs')} className="btn btn-primary">
             Back to Blogs
           </button>

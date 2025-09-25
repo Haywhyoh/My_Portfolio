@@ -100,7 +100,9 @@ export default function BlogDetail({ post }: BlogDetailProps) {
               <div className="col-lg-10 offset-lg-1">
                 <div className="featured-image-wrapper">
                   <Image
-                    src={`/assets/img/blog/${post.featuredImage}`}
+                    src={post.featuredImage.startsWith('http')
+                      ? post.featuredImage
+                      : `/assets/img/blog/${post.featuredImage}`}
                     alt={post.title}
                     width={1200}
                     height={600}

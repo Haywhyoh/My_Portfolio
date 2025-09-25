@@ -82,7 +82,9 @@ export default function RelatedPosts({ currentPostId, limit = 3 }: RelatedPostsP
                 <Link href={`/blog/${post.slug}`} className="card-link">
                   <div className="card-image">
                     <Image
-                      src={post.thumbnail || `/assets/img/blog/default.jpg`}
+                      src={post.thumbnail
+                        ? (post.thumbnail.startsWith('http') ? post.thumbnail : `/assets/img/blog/${post.thumbnail}`)
+                        : `/assets/img/blog/default.jpg`}
                       alt={post.title}
                       width={400}
                       height={250}
