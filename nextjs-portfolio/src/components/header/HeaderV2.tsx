@@ -53,11 +53,9 @@ const HeaderV2 = () => {
                                     <Link className="smooth-menu" href="/projects">Portfolio</Link>
                                 </li>
                                 <li>
-                                    <Link className="smooth-menu" href="/resume">Resume</Link>
+                                    <Link className="smooth-menu" href="/blog">Blog</Link>
                                 </li>
-                                <li>
-                                    <Link className="smooth-menu" href="/pricing">Pricing</Link>
-                                </li>
+                               
                                 <li>
                                     <Link className="smooth-menu" href="/contact">Contact</Link>
                                 </li>
