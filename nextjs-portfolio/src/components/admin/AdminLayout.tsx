@@ -189,33 +189,46 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           display: flex;
           min-height: 100vh;
           background: #f8f9fa;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .admin-sidebar {
           width: 280px;
-          background: #2c3e50;
-          color: white;
+          background: white;
+          color: #333;
           display: flex;
           flex-direction: column;
           position: fixed;
           height: 100vh;
           z-index: 1000;
+          border-right: 1px solid #e9ecef;
+          box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar-header {
-          padding: 1.5rem;
-          border-bottom: 1px solid #34495e;
+          padding: 2rem 1.5rem;
+          border-bottom: 1px solid #e9ecef;
+          background: white;
         }
 
         .sidebar-brand {
-          color: white;
+          color: #333;
           text-decoration: none;
-          font-size: 1.25rem;
-          font-weight: 600;
+          font-size: 1.375rem;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          transition: all 0.3s ease;
         }
 
         .sidebar-brand:hover {
-          color: #3498db;
+          color: #007bff;
+        }
+
+        .sidebar-brand i {
+          color: #007bff;
+          margin-right: 0.75rem;
+          font-size: 1.5rem;
         }
 
         .sidebar-nav {
@@ -223,34 +236,78 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           padding: 1rem 0;
         }
 
-        .nav-link {
-          color: #bdc3c7;
-          padding: 0.75rem 1.5rem;
-          border-radius: 0;
-          transition: all 0.3s ease;
+        .nav {
+          list-style: none;
+          margin: 0;
+          padding: 0;
         }
 
-        .nav-link:hover,
+        .nav-item {
+          margin-bottom: 0.25rem;
+        }
+
+        .nav-link {
+          color: #6c757d;
+          padding: 0.75rem 1.5rem;
+          margin-bottom: 0.5rem;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+          border-radius: 0;
+        }
+
+        .nav-link:hover {
+          color: #333;
+          background: #f8f9fa;
+          border-right: 3px solid #6c757d;
+        }
+
         .nav-link.active {
-          color: white;
-          background: #3498db;
+          color: #333;
+          background: #e9ecef;
+          border-right: 3px solid #333;
+          font-weight: 600;
+        }
+
+        .nav-link i {
+          width: 20px;
+          text-align: center;
+          margin-right: 0.75rem;
+          font-size: 1rem;
         }
 
         .sidebar-footer {
           padding: 1.5rem;
-          border-top: 1px solid #34495e;
+          border-top: 1px solid #e9ecef;
+          background: #f8f9fa;
         }
 
         .user-info {
           display: flex;
           align-items: center;
           margin-bottom: 1rem;
+          padding: 0.75rem;
+          background: white;
+          border: 1px solid #e9ecef;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .user-avatar {
-          font-size: 2rem;
+          font-size: 1.5rem;
           margin-right: 0.75rem;
-          color: #3498db;
+          color: #007bff;
+          width: 40px;
+          height: 40px;
+          background: #e3f2fd;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #bbdefb;
         }
 
         .user-details {
@@ -260,19 +317,26 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         .user-name {
           font-weight: 600;
           margin-bottom: 0.25rem;
+          font-size: 0.9rem;
+          color: #333;
         }
 
         .user-email {
-          font-size: 0.875rem;
-          color: #bdc3c7;
+          font-size: 0.75rem;
+          color: #6c757d;
           margin-bottom: 0.25rem;
         }
 
         .user-role {
-          font-size: 0.75rem;
-          color: #3498db;
+          font-size: 0.65rem;
+          color: #007bff;
           text-transform: uppercase;
-          font-weight: 500;
+          font-weight: 600;
+          background: #e3f2fd;
+          padding: 2px 6px;
+          border-radius: 4px;
+          display: inline-block;
+          border: 1px solid #bbdefb;
         }
 
         .admin-main {
@@ -284,14 +348,15 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
         .admin-topbar {
           background: white;
-          border-bottom: 1px solid #dee2e6;
-          padding: 1rem 1.5rem;
+          border-bottom: 1px solid #e9ecef;
+          padding: 1.25rem 2rem;
           display: flex;
-          justify-content: between;
+          justify-content: space-between;
           align-items: center;
           position: sticky;
           top: 0;
           z-index: 100;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .topbar-left {
@@ -301,19 +366,57 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
         .page-title {
           margin: 0;
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: #2c3e50;
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: #333;
         }
 
         .topbar-right {
           display: flex;
           align-items: center;
+          gap: 1rem;
+        }
+
+        .topbar-right .btn {
+          border-radius: 6px;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          border: 1px solid #007bff;
+        }
+
+        .topbar-right .btn:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .user-dropdown .dropdown-toggle {
+          background: none;
+          border: none;
+          color: #333;
+          font-weight: 500;
+          padding: 0.5rem 1rem;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+          border: 1px solid #e9ecef;
+        }
+
+        .user-dropdown .dropdown-toggle:hover {
+          background: #f8f9fa;
+          border-color: #007bff;
         }
 
         .admin-content {
           flex: 1;
-          padding: 1.5rem;
+          padding: 2rem;
+          background: #f8f9fa;
+        }
+
+        .sidebar-toggle {
+          background: none;
+          border: none;
+          color: #333;
+          font-size: 1.25rem;
+          margin-right: 1rem;
         }
 
         @media (max-width: 991.98px) {
@@ -328,6 +431,18 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
           .admin-main {
             margin-left: 0;
+          }
+
+          .admin-topbar {
+            padding: 1rem;
+          }
+
+          .page-title {
+            font-size: 1.5rem;
+          }
+
+          .admin-content {
+            padding: 1rem;
           }
         }
       `}</style>

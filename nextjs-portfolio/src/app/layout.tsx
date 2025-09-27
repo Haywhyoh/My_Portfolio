@@ -20,6 +20,7 @@ import ClientProviders from '@/components/providers/ClientProviders'
 import SessionProvider from '@/components/SessionProvider'
 import HeaderV1 from '@/components/header/HeaderV1'
 import FooterV1 from '@/components/footer/FooterV1'
+import ConditionalLayout from '../components/Layouts/ConditionalLayout'
 
 export const metadata: Metadata = {
   title: 'Portfolio - Next.js',
@@ -35,11 +36,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SessionProvider>
-          <HeaderV1 />
-          <main>
+          <ConditionalLayout>
             {children}
-          </main>
-          <FooterV1 />
+          </ConditionalLayout>
           <ClientProviders />
         </SessionProvider>
       </body>

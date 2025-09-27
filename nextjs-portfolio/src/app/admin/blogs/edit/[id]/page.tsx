@@ -50,6 +50,7 @@ export default function EditBlogPage() {
   });
 
   const [tagInput, setTagInput] = useState('');
+  const [uploading, setUploading] = useState(false);
 
   // Quill editor configuration
   const quillModules = {
@@ -129,6 +130,50 @@ export default function EditBlogPage() {
       ...prev,
       tags: prev.tags.filter(tag => tag !== tagToRemove)
     }));
+  };
+
+  const handleImageUpload = async (file: File, type: 'thumbnail' | 'featuredImage') => {
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast.error('Please select a valid image file');
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error('Image size must be less than 5MB');
+      return;
+    }
+
+    setUploading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'blog_images'); // You'll need to create this preset in Cloudinary
+
+      const response = await fetch('https://api.cloudinary.com/v1_1/your-cloud-name/image/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Upload failed');
+      }
+
+      const data = await response.json();
+
+      // Update form data with the uploaded image URL
+      handleInputChange(type, data.secure_url);
+      toast.success('Image uploaded successfully!');
+    } catch (error: any) {
+      console.error('Upload error:', error);
+      toast.error('Failed to upload image. Please try again.');
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSubmit = async (action: 'draft' | 'publish') => {
@@ -429,33 +474,101 @@ export default function EditBlogPage() {
                     </div>
 
                     <div className="mb-3">
-                      <label htmlFor="thumbnail" className="form-label">
-                        Thumbnail URL
-                      </label>
-                      <input
-                        type="url"
-                        className="form-control"
-                        id="thumbnail"
-                        value={formData.thumbnail}
-                        onChange={(e) => handleInputChange('thumbnail', e.target.value)}
-                        placeholder="https://example.com/image.jpg"
-                        disabled={isSaving}
-                      />
+                      <label className="form-label">Thumbnail Image</label>
+                      <div className="image-upload-section">
+                        <div className="input-group mb-2">
+                          <input
+                            type="url"
+                            className="form-control"
+                            value={formData.thumbnail}
+                            onChange={(e) => handleInputChange('thumbnail', e.target.value)}
+                            placeholder="https://example.com/image.jpg or upload file"
+                            disabled={isSaving || uploading}
+                          />
+                          <label className="btn btn-outline-secondary" htmlFor="thumbnailFile">
+                            {uploading ? (
+                              <span className="spinner-border spinner-border-sm"></span>
+                            ) : (
+                              <><i className="fas fa-upload me-1"></i>Upload</>
+                            )}
+                          </label>
+                          <input
+                            type="file"
+                            id="thumbnailFile"
+                            className="d-none"
+                            accept="image/*"
+                            onChange={(e) => e.target.files?.[0] && handleImageUpload(e.target.files[0], 'thumbnail')}
+                            disabled={isSaving || uploading}
+                          />
+                        </div>
+                        {formData.thumbnail && (
+                          <div className="image-preview">
+                            <img
+                              src={formData.thumbnail}
+                              alt="Thumbnail preview"
+                              className="img-thumbnail"
+                              style={{ maxWidth: '150px', maxHeight: '100px', objectFit: 'cover' }}
+                            />
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger ms-2"
+                              onClick={() => handleInputChange('thumbnail', '')}
+                              disabled={isSaving}
+                            >
+                              <i className="fas fa-times"></i>
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
 
                     <div className="mb-3">
-                      <label htmlFor="featuredImage" className="form-label">
-                        Featured Image URL
-                      </label>
-                      <input
-                        type="url"
-                        className="form-control"
-                        id="featuredImage"
-                        value={formData.featuredImage}
-                        onChange={(e) => handleInputChange('featuredImage', e.target.value)}
-                        placeholder="https://example.com/featured-image.jpg"
-                        disabled={isSaving}
-                      />
+                      <label className="form-label">Featured Image</label>
+                      <div className="image-upload-section">
+                        <div className="input-group mb-2">
+                          <input
+                            type="url"
+                            className="form-control"
+                            value={formData.featuredImage}
+                            onChange={(e) => handleInputChange('featuredImage', e.target.value)}
+                            placeholder="https://example.com/featured-image.jpg or upload file"
+                            disabled={isSaving || uploading}
+                          />
+                          <label className="btn btn-outline-secondary" htmlFor="featuredImageFile">
+                            {uploading ? (
+                              <span className="spinner-border spinner-border-sm"></span>
+                            ) : (
+                              <><i className="fas fa-upload me-1"></i>Upload</>
+                            )}
+                          </label>
+                          <input
+                            type="file"
+                            id="featuredImageFile"
+                            className="d-none"
+                            accept="image/*"
+                            onChange={(e) => e.target.files?.[0] && handleImageUpload(e.target.files[0], 'featuredImage')}
+                            disabled={isSaving || uploading}
+                          />
+                        </div>
+                        {formData.featuredImage && (
+                          <div className="image-preview">
+                            <img
+                              src={formData.featuredImage}
+                              alt="Featured image preview"
+                              className="img-thumbnail"
+                              style={{ maxWidth: '200px', maxHeight: '120px', objectFit: 'cover' }}
+                            />
+                            <button
+                              type="button"
+                              className="btn btn-sm btn-outline-danger ms-2"
+                              onClick={() => handleInputChange('featuredImage', '')}
+                              disabled={isSaving}
+                            >
+                              <i className="fas fa-times"></i>
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </div>
 
                     <div className="mb-3">
@@ -611,6 +724,33 @@ export default function EditBlogPage() {
           background-color: transparent;
           border-bottom: 2px solid #0d6efd;
           color: #0d6efd;
+        }
+
+        .image-upload-section {
+          border: 1px solid #e9ecef;
+          border-radius: 0.375rem;
+          padding: 1rem;
+          background: #f8f9fa;
+        }
+
+        .image-preview {
+          display: flex;
+          align-items: center;
+          margin-top: 0.5rem;
+        }
+
+        .image-preview img {
+          border-radius: 0.375rem;
+        }
+
+        .image-upload-section .input-group {
+          margin-bottom: 0.5rem;
+        }
+
+        .image-upload-section .form-text {
+          font-size: 0.75rem;
+          color: #6c757d;
+          margin-top: 0.25rem;
         }
       `}</style>
     </AdminLayout>
