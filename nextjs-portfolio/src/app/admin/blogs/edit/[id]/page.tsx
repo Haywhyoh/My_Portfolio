@@ -141,36 +141,40 @@ export default function EditBlogPage() {
       return;
     }
 
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error('Image size must be less than 5MB');
+    // Validate file size (max 10MB to match API)
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error('Image size must be less than 10MB');
       return;
     }
 
     setUploading(true);
 
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('upload_preset', 'blog_images'); // You'll need to create this preset in Cloudinary
+      const uploadFormData = new FormData();
+      uploadFormData.append('file', file);
 
-      const response = await fetch('https://api.cloudinary.com/v1_1/your-cloud-name/image/upload', {
+      const response = await fetch('/api/upload', {
         method: 'POST',
-        body: formData,
+        body: uploadFormData,
       });
 
       if (!response.ok) {
-        throw new Error('Upload failed');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Upload failed');
       }
 
       const data = await response.json();
 
+      if (!data.success) {
+        throw new Error(data.error || 'Upload failed');
+      }
+
       // Update form data with the uploaded image URL
-      handleInputChange(type, data.secure_url);
+      handleInputChange(type, data.url);
       toast.success('Image uploaded successfully!');
     } catch (error: any) {
       console.error('Upload error:', error);
-      toast.error('Failed to upload image. Please try again.');
+      toast.error(error.message || 'Failed to upload image. Please try again.');
     } finally {
       setUploading(false);
     }

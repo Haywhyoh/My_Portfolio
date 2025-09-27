@@ -39,7 +39,7 @@ const HeaderV1 = () => {
                                 <i className="fa fa-bars" />
                             </button>
                             <Link className="navbar-brand" href="/">
-                                <img src="/assets/img/logo.png" className="logo" alt="Logo" />
+                                <img src="/assets/img/biglogo.png" className="logo" alt="Adedayo Samuel" />
                             </Link>
                         </div>
                         <div className={`collapse navbar-collapse collapse-mobile ${isOpen ? "show" : ""}`} id="navbar-menu">

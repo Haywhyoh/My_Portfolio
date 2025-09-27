@@ -25,7 +25,7 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                                 </p>
                                             </div>
                                             <div className="right">
-                                                <span>01/2025 – 04/2025</span>
+                                                <span>03/25 – present</span>
                                             </div>
                                         </div>
                                         <div className="timeline-body">
@@ -46,7 +46,7 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                                 </p>
                                             </div>
                                             <div className="right">
-                                                <span>06/2024 – 01/2025</span>
+                                                <span>06/24 – 03/25</span>
                                             </div>
                                         </div>
                                         <div className="timeline-body">
@@ -68,7 +68,7 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                                 </p>
                                             </div>
                                             <div className="right">
-                                                <span>06/2022 – 05/2023</span>
+                                                <span>06/22 – 05/23</span>
                                             </div>
                                         </div>
                                         <div className="timeline-body">
@@ -89,7 +89,7 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                                 </p>
                                             </div>
                                             <div className="right">
-                                                <span>02/2021 – 03/2022</span>
+                                                <span>02/21 – 03/22</span>
                                             </div>
                                         </div>
                                         <div className="timeline-body">
