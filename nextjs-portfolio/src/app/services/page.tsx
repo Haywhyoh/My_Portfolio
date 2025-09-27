@@ -9,18 +9,17 @@ export const metadata: Metadata = {
 export default function ServicePage() {
   return (
     <>
-      <div className="container default-padding">
+      <div className="container" style={{ paddingTop: '180px' }}>
         <div className="row">
           <div className="col-lg-8 offset-lg-2">
             <div className="site-heading text-center">
-              <h4 className="sub-title">What I Do</h4>
               <h1 className="title">My Services</h1>
               <p>I provide comprehensive web development and design solutions</p>
             </div>
           </div>
         </div>
       </div>
-      <ServicesV1 sectionClass="default-padding" hasTitle={false} />
+      <ServicesV1 sectionClass="" hasTitle={false} />
     </>
   )
 } 

@@ -74,7 +74,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   }
 
   // Generate structured data
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourportfolio.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://samueladedayo.com';
   const blogStructuredData = generateBlogPostStructuredData(blog, siteUrl);
   const breadcrumbStructuredData = generateBreadcrumbStructuredData([
     { name: 'Home', url: '/' },
@@ -83,14 +83,14 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   ], siteUrl);
 
   return (
-    <>
+    <div style={{ paddingTop: '100px' }}>
       {/* Structured Data */}
       <StructuredDataScript data={blogStructuredData} />
       <StructuredDataScript data={breadcrumbStructuredData} />
 
       {/* Blog Content */}
       <BlogDetail post={blog} />
-    </>
+    </div>
   );
 }
 

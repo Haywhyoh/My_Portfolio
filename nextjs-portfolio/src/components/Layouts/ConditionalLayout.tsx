@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import HeaderV1 from '@/components/header/HeaderV1';
+import HeaderV2 from '@/components/header/HeaderV2';
 import FooterV1 from '@/components/footer/FooterV1';
 
 interface ConditionalLayoutProps {
@@ -14,15 +15,31 @@ export default function ConditionalLayout({ children }: ConditionalLayoutProps) 
   // Check if the current path is an admin page
   const isAdminPage = pathname?.startsWith('/admin');
   
+  // Check if the current path is the home page
+  const isHomePage = pathname === '/';
+  
   // If it's an admin page, don't render header and footer
   if (isAdminPage) {
     return <>{children}</>;
   }
   
-  // For all other pages, render with header and footer
+  // For home page only, use HeaderV1
+  if (isHomePage) {
+    return (
+      <>
+        <HeaderV1 />
+        <main>
+          {children}
+        </main>
+        <FooterV1 />
+      </>
+    );
+  }
+  
+  // For all other pages, use HeaderV2
   return (
     <>
-      <HeaderV1 />
+      <HeaderV2 />
       <main>
         {children}
       </main>

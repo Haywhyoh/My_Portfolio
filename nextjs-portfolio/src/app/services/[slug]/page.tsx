@@ -43,5 +43,9 @@ export default function ServiceDetailsPage({ params }: ServicePageProps) {
     notFound()
   }
 
-  return <ServicesDetailsContent service={service} />
+  return (
+  <div style={{ paddingTop: '180px' }}>
+    <ServicesDetailsContent service={service} />
+  </div>
+  )
 }

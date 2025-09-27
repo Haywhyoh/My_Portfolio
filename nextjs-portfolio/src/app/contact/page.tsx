@@ -1,5 +1,6 @@
 import ContactV1 from '@/components/contact/ContactV1'
 import { Metadata } from 'next'
+import LayoutV2 from '@/components/Layouts/LayoutV2'
 
 export const metadata: Metadata = {
   title: 'Contact - Portfolio',
@@ -8,19 +9,8 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <>
-      <div className="container default-padding">
-        <div className="row">
-          <div className="col-lg-8 offset-lg-2">
-            <div className="site-heading text-center">
-              <h4 className="sub-title">Get In Touch</h4>
-              <h1 className="title">Contact Me</h1>
-              <p>Ready to start your next project? Let&apos;s work together!</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div style={{ paddingTop: '100px' }}>
       <ContactV1 sectionClass="default-padding" />
-    </>
+    </div>
   )
 } 
