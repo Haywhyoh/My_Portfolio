@@ -47,7 +47,7 @@ const HeaderV2 = () => {
                                     </ul>
                                 </li>
                                 <li>
-                                    <Link className="smooth-menu" href="/service">Services</Link>
+                                    <Link className="smooth-menu" href="/services">Services</Link>
                                 </li>
                                 <li>
                                     <Link className="smooth-menu" href="/projects">Portfolio</Link>
