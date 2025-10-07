@@ -1,11 +1,7 @@
-import xd from "/assets/img/icon/xd.png"
-import figma from "/assets/img/icon/figma.png"
-import wordpress from "/assets/img/icon/wordpress.png"
-import photoshop from "/assets/img/icon/photoshop.png"
-import diamon from "/assets/img/icon/diamon.png"
-import ai from "/assets/img/icon/ai.png"
+'use client';
+
 import CountUp from 'react-countup'
-import ReactWOW from "react-wow"
+// import ReactWOW from "react-wow" // Note: ReactWOW compatibility issue with Next.js
 
 const FactV1 = () => {
     return (
@@ -25,100 +21,102 @@ const FactV1 = () => {
                     <div className="fun-fact-style-two-items text-center">
 
                         {/* Single item */}
-                        <ReactWOW animation="fadeInUp">
-                            <div className="funfact-style-two-item">
-                                <div className="icon">
-                                    <img src={xd} alt="Image Not Found" />
-                                </div>
-                                <div className="fun-fact">
-                                    <div className="counter">
-                                        <div className="timer"><CountUp end={80} enableScrollSpy={true} /></div>
-                                        <div className="operator">%</div>
-                                    </div>
-                                    <span className="medium">Adobe XD</span>
+                        <div className="funfact-style-two-item">
+                            <div className="icon">
+                                <img src="/assets/img/gallery/react.png" alt="Image Not Found" />
+                            </div>
+                            <div className="fun-fact">
+                            <div className="counter">
+                                <span className="operator">ReactJs</span>
+                            </div>
+                                <div className="">
+                                    <div className="medium"><CountUp end={5} enableScrollSpy={true} />+years</div>
+                                    
                                 </div>
                             </div>
-                        </ReactWOW>
+                        </div>
 
                         {/* Single item */}
-                        <ReactWOW animation="fadeInUp" delay="100ms">
-                            <div className="funfact-style-two-item">
-                                <div className="icon">
-                                    <img src={figma} alt="Image Not Found" />
-                                </div>
-                                <div className="fun-fact">
-                                    <div className="counter">
-                                        <div className="timer"><CountUp end={90} enableScrollSpy={true} /></div>
-                                        <div className="operator">%</div>
-                                    </div>
-                                    <span className="medium">Figma</span>
+                        <div className="funfact-style-two-item">
+                            <div className="icon">
+                                <img src="/assets/img/gallery/node.png" alt="Image Not Found" />
+                            </div>
+                            <div className="fun-fact">
+                            <div className="counter">
+                                <span className="operator">NodeJs</span>
+                            </div>
+                                <div className="">
+                                    <div className="medium"><CountUp end={5} enableScrollSpy={true} />+years</div>
+                                    
                                 </div>
                             </div>
-                        </ReactWOW>
+                        </div>
 
                         {/* Single item */}
-                        <ReactWOW animation="fadeInUp" delay="200ms">
-                            <div className="funfact-style-two-item">
-                                <div className="icon">
-                                    <img src={wordpress} alt="Image Not Found" />
-                                </div>
-                                <div className="fun-fact">
-                                    <div className="counter">
-                                        <div className="timer"><CountUp end={70} enableScrollSpy={true} /></div>
-                                        <div className="operator">%</div>
-                                    </div>
-                                    <span className="medium">WordPress</span>
+                        <div className="funfact-style-two-item">
+                            <div className="icon">
+                                <img src="/assets/img/icon/wordpress.png" alt="Image Not Found" />
+                            </div>
+                            <div className="fun-fact">
+                            <div className="counter">
+                                <span className="operator">Wordpress</span>
+                            </div>
+                                <div className="">
+                                    <div className="medium"><CountUp end={6} enableScrollSpy={true} />+years</div>
+                                    
                                 </div>
                             </div>
-                        </ReactWOW>
+                        </div>
 
                         {/* Single item */}
-                        <ReactWOW animation="fadeInUp" delay="300ms">
-                            <div className="funfact-style-two-item wow fadeInUp">
-                                <div className="icon">
-                                    <img src={photoshop} alt="Image Not Found" />
-                                </div>
-                                <div className="fun-fact">
-                                    <div className="counter">
-                                        <div className="timer"><CountUp end={80} enableScrollSpy={true} /></div>
-                                        <div className="operator">%</div>
-                                    </div>
-                                    <span className="medium">Photoshop</span>
+                        <div className="funfact-style-two-item">
+                            <div className="icon">
+                                <img src="/assets/img/gallery/nextjs.png" alt="Image Not Found" />
+                            </div>
+                            <div className="fun-fact">
+                            <div className="counter">
+                                <span className="operator">NextJs</span>
+                            </div>
+                                <div className="">
+                                    <div className="medium"><CountUp end={3} enableScrollSpy={true} />+years</div>
+                                    
                                 </div>
                             </div>
-                        </ReactWOW>
+                            
+                        </div>
 
                         {/* Single item */}
-                        <ReactWOW animation="fadeInUp" delay="400ms">
-                            <div className="funfact-style-two-item">
-                                <div className="icon">
-                                    <img src={diamon} alt="Image Not Found" />
-                                </div>
-                                <div className="fun-fact">
-                                    <div className="counter">
-                                        <div className="timer"><CountUp end={60} enableScrollSpy={true} /></div>
-                                        <div className="operator">%</div>
-                                    </div>
-                                    <span className="medium">Sketch</span>
+                        <div className="funfact-style-two-item">
+                            <div className="icon">
+                                <img src="/assets/img/gallery/django.png" alt="Image Not Found" />
+                            </div>
+                            <div className="fun-fact">
+                            <div className="counter">
+                                <span className="operator">Django</span>
+                            </div>
+                                <div className="">
+                                    <div className="medium"><CountUp end={5} enableScrollSpy={true} />+years</div>
+                                    
                                 </div>
                             </div>
-                        </ReactWOW>
+                        </div>
+                        
 
                         {/* Single item */}
-                        <ReactWOW animation="fadeInUp" delay="500ms">
-                            <div className="funfact-style-two-item">
-                                <div className="icon">
-                                    <img src={ai} alt="Image Not Found" />
-                                </div>
-                                <div className="fun-fact">
-                                    <div className="counter">
-                                        <div className="timer"><CountUp end={90} enableScrollSpy={true} /></div>
-                                        <div className="operator">%</div>
-                                    </div>
-                                    <span className="medium">Illustrator</span>
+                        <div className="funfact-style-two-item">
+                            <div className="icon">
+                                <img src="/assets/img/gallery/py.png" alt="Image Not Found" />
+                            </div>
+                            <div className="fun-fact">
+                            <div className="counter">
+                                <span className="operator">Python</span>
+                            </div>
+                                <div className="">
+                                    <div className="medium"><CountUp end={5} enableScrollSpy={true} />+years</div>
+                                    
                                 </div>
                             </div>
-                        </ReactWOW>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -126,4 +124,4 @@ const FactV1 = () => {
     );
 };
 
-export default FactV1;
+export default FactV1; 

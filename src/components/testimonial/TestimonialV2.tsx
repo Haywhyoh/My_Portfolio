@@ -1,29 +1,94 @@
-import shape10 from "/assets/img/shape/10.png"
-import illustration2 from "/assets/img/illustration/2.png"
-import partner9Light from "/assets/img/partner/9-light.png"
-import illustration3 from "/assets/img/illustration/3.png"
-import illustration4 from "/assets/img/illustration/4.png"
+'use client';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Keyboard, Autoplay, Pagination, EffectFade } from 'swiper/modules';
+import { Keyboard, Autoplay, Pagination } from 'swiper/modules';
+import { TestimonialProps, Testimonial } from '@/lib/types';
+import { getTestimonialsForDisplay } from '@/lib/testimonials';
 
-interface DataType {
-    sectionClass?: string;
-}
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
-const TestimonialV2 = ({ sectionClass }: DataType) => {
+const TestimonialV2 = ({
+    sectionClass,
+    showOnlyFeatured = true,
+    maxItems = 6,
+    autoplay = true,
+    showPagination = true
+}: TestimonialProps) => {
+
+    // Get testimonials data
+    const testimonials = getTestimonialsForDisplay({
+        maxItems,
+        featuredOnly: showOnlyFeatured,
+        minRating: 4
+    });
+
+    // Render stars based on rating
+    const renderStars = (rating: number) => {
+        return Array.from({ length: 5 }, (_, index) => (
+            <i
+                key={index}
+                className={`fas fa-star ${index < rating ? '' : 'text-muted'}`}
+            />
+        ));
+    };
+
+    // Single testimonial card component for dark theme
+    const TestimonialCard = ({ testimonial, index }: { testimonial: Testimonial; index: number }) => (
+        <div className="testimonial-style-one dark-variant">
+            <div className="item">
+                <div className="thumb">
+                    <div className="inner">
+                        <img src={testimonial.avatar} alt={`${testimonial.name} - ${testimonial.company}`} />
+                    </div>
+                </div>
+                <div className="content">
+                    <div className="tm-review">
+                        <div className="top">
+                            <h5>Reviews On</h5>
+                            {renderStars(testimonial.rating)}
+                        </div>
+                        <div className="bottom">
+                            {/* Use light version of platform logo for dark theme */}
+                            <img
+                                src={testimonial.platformLogo.replace('.png', '-light.png').replace('.jpg', '-light.jpg').replace('.jpeg', '-light.jpeg') || testimonial.platformLogo}
+                                alt="Review Platform"
+                                onError={(e) => {
+                                    // Fallback to original image if light version doesn't exist
+                                    e.currentTarget.src = testimonial.platformLogo;
+                                }}
+                            />
+                            <p>{testimonial.platformRating}/ {testimonial.reviewCount} Reviews</p>
+                        </div>
+                    </div>
+                    <p>
+                        &ldquo;{testimonial.testimonial}&rdquo;
+                    </p>
+                    <div className="tm-footer">
+                        <div className="provider">
+                            <h4>{testimonial.name}</h4>
+                            <span>{testimonial.position}, {testimonial.company}</span>
+                        </div>
+                        <span>{String(index + 1).padStart(2, '0')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 
     return (
         <>
-            <div className={`testimonial-style-one-area default-padding ${sectionClass ? sectionClass : ""}`}>
+            <div className={`testimonial-style-one-area default-padding testimonial-dark-theme ${sectionClass ? sectionClass : ""}`}>
                 <div className="shape-left-top">
-                    <img src={shape10} alt="Image Not Found" />
+                    <img src="/assets/img/shape/10.png" alt="Image Not Found" />
                 </div>
                 <div className="container">
                     <div className="heading-left">
                         <div className="row">
                             <div className="col-xl-6">
-                                <h4 className="sub-title">Testimonials</h4>
-                                <h2 className="title">Clients Testimonials</h2>
+                                <h4 className="sub-title text-light">Testimonials</h4>
+                                <h2 className="title text-white">Clients Testimonials</h2>
                             </div>
                         </div>
                     </div>
@@ -32,155 +97,48 @@ const TestimonialV2 = ({ sectionClass }: DataType) => {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="testimonial-style-one-items">
-                                <Swiper
-                                    modules={[Keyboard, Autoplay, Pagination, EffectFade]}
-                                    direction={"horizontal"}
-                                    loop={true}
-                                    autoplay={true}
-                                    // pagination
-                                    pagination={{
-                                        el: '.swiper-pagination',
-                                        type: 'bullets',
-                                        clickable: true,
-                                    }}
-                                    // Navigation arrows
-                                    navigation={{
-                                        nextEl: ".swiper-button-next",
-                                        prevEl: ".swiper-button-prev"
-                                    }}
-                                >
-                                    <div className="swiper-wrapper">
-                                        {/* Single item */}
-                                        <SwiperSlide className="swiper-slide">
-                                            <div className="testimonial-style-one">
-                                                <div className="item">
-                                                    <div className="thumb">
-                                                        <div className="inner">
-                                                            <img src={illustration2} alt="Image Not Found" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="content">
-                                                        <div className="tm-review">
-                                                            <div className="top">
-                                                                <h5>Reviews On</h5>
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                            </div>
-                                                            <div className="bottom">
-                                                                <img src={partner9Light} alt="Image Not Found" />
-                                                                <p>4.9/ 60 Reviews</p>
-                                                            </div>
-                                                        </div>
-                                                        <p>
-                                                            {`"Thanks to your web agency team for their professional work. The
-                                                            website they created for my business exceeded my expectations, and
-                                                            my clients have given positive feedback about its design and
-                                                            user-friendliness."`}
-                                                        </p>
-                                                        <div className="tm-footer">
-                                                            <div className="provider">
-                                                                <h4>Brooklyn Simmons</h4>
-                                                                <span>UI/UX DESIGNER</span>
-                                                            </div>
-                                                            <span>01</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </SwiperSlide>
-
-                                        {/* Single item */}
-                                        <SwiperSlide className="swiper-slide">
-                                            <div className="testimonial-style-one">
-                                                <div className="item">
-                                                    <div className="thumb">
-                                                        <div className="inner">
-                                                            <img src={illustration3} alt="Image Not Found" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="content">
-                                                        <div className="tm-review">
-                                                            <div className="top">
-                                                                <h5>Reviews On</h5>
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                            </div>
-                                                            <div className="bottom">
-                                                                <img src={partner9Light} alt="Image Not Found" />
-                                                                <p>4.9/ 60 Reviews</p>
-                                                            </div>
-                                                        </div>
-                                                        <p>
-                                                            {`"Thanks to your web agency team for their professional work. The
-                                                            website they created for my business exceeded my expectations, and
-                                                            my clients have given positive feedback about its design and
-                                                            user-friendliness."`}
-                                                        </p>
-                                                        <div className="tm-footer">
-                                                            <div className="provider">
-                                                                <h4>Brooklyn Simmons</h4>
-                                                                <span>UI/UX DESIGNER</span>
-                                                            </div>
-                                                            <span>02</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </SwiperSlide>
-
-                                        {/* Single item */}
-                                        <SwiperSlide className="swiper-slide">
-                                            <div className="testimonial-style-one">
-                                                <div className="item">
-                                                    <div className="thumb">
-                                                        <div className="inner">
-                                                            <img src={illustration4} alt="Image Not Found" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="content">
-                                                        <div className="tm-review">
-                                                            <div className="top">
-                                                                <h5>Reviews On</h5>
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                                <i className="fas fa-star" />
-                                                            </div>
-                                                            <div className="bottom">
-                                                                <img src={partner9Light} alt="Image Not Found" />
-                                                                <p>4.9/ 60 Reviews</p>
-                                                            </div>
-                                                        </div>
-                                                        <p>
-                                                            {`"Thanks to your web agency team for their professional work. The
-                                                            website they created for my business exceeded my expectations, and
-                                                            my clients have given positive feedback about its design and
-                                                            user-friendliness."`}
-                                                        </p>
-                                                        <div className="tm-footer">
-                                                            <div className="provider">
-                                                                <h4>Brooklyn Simmons</h4>
-                                                                <span>UI/UX DESIGNER</span>
-                                                            </div>
-                                                            <span>03</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </SwiperSlide>
+                                {testimonials.length > 0 ? (
+                                    <Swiper
+                                        modules={[Keyboard, Autoplay, Pagination]}
+                                        direction="horizontal"
+                                        loop={testimonials.length > 1}
+                                        autoplay={autoplay ? {
+                                            delay: 5000,
+                                            disableOnInteraction: false,
+                                            pauseOnMouseEnter: true
+                                        } : false}
+                                        keyboard={{
+                                            enabled: true,
+                                            onlyInViewport: true
+                                        }}
+                                        pagination={showPagination ? {
+                                            el: '.testimonial-pagination .swiper-pagination',
+                                            type: 'bullets',
+                                            clickable: true,
+                                        } : false}
+                                        spaceBetween={30}
+                                        slidesPerView={1}
+                                        speed={600}
+                                        className="testimonials-swiper dark-theme"
+                                    >
+                                        {testimonials.map((testimonial, index) => (
+                                            <SwiperSlide key={testimonial.id}>
+                                                <TestimonialCard testimonial={testimonial} index={index} />
+                                            </SwiperSlide>
+                                        ))}
+                                    </Swiper>
+                                ) : (
+                                    <div className="no-testimonials text-center py-5">
+                                        <p className="text-light">No testimonials available at the moment.</p>
                                     </div>
-                                </Swiper>
-                                {/* Navigation */}
-                                <div className="testimonial-pagination">
-                                    <div className="swiper-pagination" />
-                                </div>
+                                )}
+
+                                {/* Pagination */}
+                                {showPagination && testimonials.length > 1 && (
+                                    <div className="testimonial-pagination dark-pagination">
+                                        <div className="swiper-pagination" />
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

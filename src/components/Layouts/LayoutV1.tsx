@@ -15,4 +15,4 @@ const LayoutV1 = ({ children }: LayoutProps) => {
     );
 };
 
-export default LayoutV1;
+export default LayoutV1; 

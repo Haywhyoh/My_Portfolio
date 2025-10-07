@@ -1,14 +1,14 @@
-import logo from "/assets/img/logo.png"
-import { Link } from "react-router-dom";
+'use client';
+
+import Link from "next/link";
 import useSidebarMenu from "../../hooks/useSidebarMenu";
 import useStickyMenu from "../../hooks/useStickyMenu";
-import useSubMenuToggle from "../../hooks/useSubMenuToggle";
+import ScrollContact from "./ScrollContact";
 
 const HeaderV2 = () => {
 
     const { isOpen, openMenu, closeMenu } = useSidebarMenu();
     const isMenuSticky = useStickyMenu();
-    const toggleSubMenu = useSubMenuToggle();
 
     return (
         <>
@@ -25,40 +25,51 @@ const HeaderV2 = () => {
                     </div>
                     <div className="container nav-box d-flex justify-content-between align-items-center">
                         <div className="navbar-header">
-                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu" onClick={openMenu}>
+                            <button
+                                type="button"
+                                className="navbar-toggle"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbar-menu"
+                                aria-controls="navbar-menu"
+                                aria-expanded={isOpen}
+                                aria-label="Toggle navigation"
+                                onClick={openMenu}
+                            >
                                 <i className="fa fa-bars" />
                             </button>
-                            <Link className="navbar-brand" to="/">
-                                <img src={logo} className="logo" alt="Logo" />
+                            <Link className="navbar-brand" href="/">
+                                <img src="/assets/img/biglogo.png" className="logo" alt="Adedayo Samuel" />
                             </Link>
                         </div>
                         <div className={`collapse navbar-collapse collapse-mobile ${isOpen ? "show" : ""}`} id="navbar-menu">
-                            <img src={logo} alt="Logo" />
-                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu" onClick={closeMenu}>
+                            <img src="/assets/img/logo.png" alt="Logo" />
+                            <button
+                                type="button"
+                                className="navbar-toggle"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbar-menu"
+                                aria-controls="navbar-menu"
+                                aria-expanded={isOpen}
+                                aria-label="Close navigation"
+                                onClick={closeMenu}
+                            >
                                 <i className="fa fa-times" />
                             </button>
                             <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                                <li className="dropdown">
-                                    <Link to="#" className="dropdown-toggle active" data-toggle="dropdown" onClick={toggleSubMenu}>Home</Link>
-                                    <ul className="dropdown-menu">
-                                        <li><Link to="/">Home Version Light</Link></li>
-                                        <li><Link to="/home-dark">Home Version Dark</Link></li>
-                                    </ul>
+                                <li>
+                                    <Link href="/" className="smooth-menu" onClick={closeMenu}>Home</Link>
                                 </li>
                                 <li>
-                                    <Link className="smooth-menu" to="/service">Services</Link>
+                                    <Link className="smooth-menu" href="/services" onClick={closeMenu}>Services</Link>
                                 </li>
                                 <li>
-                                    <Link className="smooth-menu" to="/projects">Portfolio</Link>
+                                    <Link className="smooth-menu" href="/projects" onClick={closeMenu}>Portfolio</Link>
                                 </li>
                                 <li>
-                                    <Link className="smooth-menu" to="/resume">Resume</Link>
+                                    <Link className="smooth-menu" href="/blog" onClick={closeMenu}>Blog</Link>
                                 </li>
                                 <li>
-                                    <Link className="smooth-menu" to="/pricing">Pricing</Link>
-                                </li>
-                                <li>
-                                    <Link className="smooth-menu" to="/contact">Contact</Link>
+                                    <Link className="smooth-menu" href="/contact" onClick={closeMenu}>Contact</Link>
                                 </li>
                             </ul>
                         </div>
@@ -66,9 +77,7 @@ const HeaderV2 = () => {
                             <div className="attr-right">
                                 <div className="attr-nav attr-box">
                                     <ul>
-                                        <li className="button">
-                                            <Link className="smooth-menu" to="/contact">{`Let's Talk`} <i className="fas fa-comment-alt" /></Link>
-                                        </li>
+                                        <ScrollContact closeMenu={closeMenu} />
                                     </ul>
                                 </div>
                             </div>

@@ -9,7 +9,10 @@
       "Bash(npm i:*)",
       "Bash(npx prisma init:*)",
       "Bash(npx prisma generate:*)",
-      "Bash(npx prisma:*)"
+      "Bash(npx prisma:*)",
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(xargs rm:*)"
     ],
     "deny": [],
     "ask": []

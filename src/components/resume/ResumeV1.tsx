@@ -1,4 +1,4 @@
-import ReactWOW from "react-wow";
+'use client';
 
 interface DataType {
     sectionClass?: string;
@@ -16,80 +16,108 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                 <div className="time-style-one-items">
 
                                     {/* Single Item */}
-                                    <ReactWOW animation="fadeInUp">
-                                        <div className="timeline-style-one-item">
-                                            <div className="timeline-header">
-                                                <div className="left">
-                                                    <h4>Lead Developer</h4>
-                                                    <p>
-                                                        Blockdots, London
-                                                    </p>
-                                                </div>
-                                                <div className="right">
-                                                    <span>2022 - Present</span>
-                                                </div>
-                                            </div>
-                                            <div className="timeline-body">
+                                    <div className="timeline-style-one-item">
+                                        <div className="timeline-header">
+                                            <div className="left">
+                                                <h4>Software Engineer</h4>
                                                 <p>
-                                                    The education should be very interactual. Ut tincidunt est ac dolor aliquam
-                                                    sodales. Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris
-                                                    hendrerit ante. sectors of the economy or areas of culture sed mauris hendrerit,
-                                                    laoreet smart software.
+                                                    CodeMyGig - Remote
                                                 </p>
                                             </div>
+                                            <div className="right">
+                                                <span>03/25 – present</span>
+                                            </div>
                                         </div>
-                                    </ReactWOW>
+                                        <div className="timeline-body">
+                                            <p>
+                                                Leading a 6-person contract development team, working on 3 different client projects, serving more than 8,000 users. 
+                                                Resolved an average of 20 medium bugs per iteration and encouraged TDD adoption, bringing 20% of code under test coverage.
+                                            </p>
+                                        </div>
+                                    </div>
 
                                     {/* Single Item */}
-                                    <ReactWOW animation="fadeInUp">
-                                        <div className="timeline-style-one-item">
-                                            <div className="timeline-header">
-                                                <div className="left">
-                                                    <h4>Full Stack Web Developer</h4>
-                                                    <p>
-                                                        Parsons, The New School
-                                                    </p>
-                                                </div>
-                                                <div className="right">
-                                                    <span>2021 - 2022</span>
-                                                </div>
-                                            </div>
-                                            <div className="timeline-body">
+                                    <div className="timeline-style-one-item">
+                                        <div className="timeline-header">
+                                            <div className="left">
+                                                <h4>Fullstack Engineer</h4>
                                                 <p>
-                                                    The education should be very interactual. Ut tincidunt est ac dolor aliquam
-                                                    sodales. Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris
-                                                    hendrerit ante. sectors of the economy or areas of culture sed mauris hendrerit,
-                                                    laoreet smart software.
+                                                    Hux Ventures - Remote, USA
                                                 </p>
                                             </div>
+                                            <div className="right">
+                                                <span>06/24 – 03/25</span>
+                                            </div>
                                         </div>
-                                    </ReactWOW>
+                                        <div className="timeline-body">
+                                            <p>
+                                                Led a 5-person team that delivered two web applications and SaaS, serving 13,000 combined users. 
+                                                Independently responsible for Staff and Partners dashboard with referral and affiliate system tracking earnings for over 200 partners.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                 
+                                    {/* Single Item */}
+                                    <div className="timeline-style-one-item">
+                                        <div className="timeline-header">
+                                            <div className="left">
+                                                <h4>Web Developer</h4>
+                                                <p>
+                                                    Probus Technologies - Lagos
+                                                </p>
+                                            </div>
+                                            <div className="right">
+                                                <span>06/22 – 05/23</span>
+                                            </div>
+                                        </div>
+                                        <div className="timeline-body">
+                                            <p>
+                                                Built and maintained static landing pages and React/WordPress websites for various clients. 
+                                                Developed unit tests using Pytest and Jest, created comprehensive API documentation to enhance developer understanding.
+                                            </p>
+                                        </div>
+                                    </div>
 
                                     {/* Single Item */}
-                                    <ReactWOW animation="fadeInUp">
                                         <div className="timeline-style-one-item">
-                                            <div className="timeline-header">
-                                                <div className="left">
-                                                    <h4>UI Designer</h4>
-                                                    <p>
-                                                        House of Life, Leeds
-                                                    </p>
-                                                </div>
-                                                <div className="right">
-                                                    <span>2018 - 2023</span>
-                                                </div>
-                                            </div>
-                                            <div className="timeline-body">
+                                        <div className="timeline-header">
+                                            <div className="left">
+                                                <h4>Software Engineer</h4>
                                                 <p>
-                                                    The education should be very interactual. Ut tincidunt est ac dolor aliquam
-                                                    sodales. Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris
-                                                    hendrerit ante. sectors of the economy or areas of culture sed mauris hendrerit,
-                                                    laoreet smart software.
+                                                    Remote - Internship
                                                 </p>
                                             </div>
+                                            <div className="right">
+                                                <span>02/21 – 03/22</span>
+                                            </div>
                                         </div>
-                                    </ReactWOW>
+                                        <div className="timeline-body">
+                                            <p>
+                                            Built dynamic web applications using React for the front end and Node.js for the back end. - Improved user experience by implementing responsive design and optimizing load times
+                                            </p>
+                                        </div>
+                                    </div>
 
+                                    <div className="timeline-style-one-item">
+                                        <div className="timeline-header">
+                                            <div className="left">
+                                                <h4>Independent Freelancer</h4>
+                                                <p>
+                                                   Upwork - Freelance
+                                                </p>
+                                            </div>
+                                            <div className="right">
+                                                <span>2019 - 2021</span>
+                                            </div>
+                                        </div>
+                                        <div className="timeline-body">
+                                            <p>
+                                                Managed 10+ clients, developing WordPress websites, landing pages, and writing SEO technical content. 
+                                                Built strong client relationships and delivered custom web solutions across diverse industries.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -98,79 +126,49 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
                                 <div className="time-style-one-items">
 
                                     {/* Single Item */}
-                                    <ReactWOW animation="fadeInUp">
-                                        <div className="timeline-style-one-item">
-                                            <div className="timeline-header">
-                                                <div className="left">
-                                                    <h4>Programming Course</h4>
-                                                    <p>
-                                                        Harverd University
-                                                    </p>
-                                                </div>
-                                                <div className="right">
-                                                    <span>2006 - 2014</span>
-                                                </div>
-                                            </div>
-                                            <div className="timeline-body">
+                                    <div className="timeline-style-one-item">
+                                        <div className="timeline-header">
+                                            <div className="left">
+                                                <h4>BSc. Electronics Engineering</h4>
                                                 <p>
-                                                    The education should be very interactual. Ut tincidunt est ac dolor aliquam
-                                                    sodales. Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris
-                                                    hendrerit ante. sectors of the economy or areas of culture sed mauris hendrerit,
-                                                    laoreet smart software.
+                                                    Obafemi Awolowo University
                                                 </p>
                                             </div>
+                                            <div className="right">
+                                                <span>2016 - 2021</span>
+                                            </div>
                                         </div>
-                                    </ReactWOW>
+                                        <div className="timeline-body">
+                                            <p>
+                                                Comprehensive study of electronic and electrical engineering principles, including circuit design, 
+                                                digital systems, and engineering mathematics. Strong foundation in problem-solving and analytical thinking.
+                                            </p>
+                                        </div>
+                                    </div>
 
                                     {/* Single Item */}
-                                    <ReactWOW animation="fadeInUp">
-                                        <div className="timeline-style-one-item">
-                                            <div className="timeline-header">
-                                                <div className="left">
-                                                    <h4>Graphic Design Course</h4>
-                                                    <p>
-                                                        Blockdots, London
-                                                    </p>
-                                                </div>
-                                                <div className="right">
-                                                    <span>2016 - 2020</span>
-                                                </div>
-                                            </div>
-                                            <div className="timeline-body">
+                                    <div className="timeline-style-one-item">
+                                        <div className="timeline-header">
+                                            <div className="left">
+                                                <h4>Full-Stack Engineering Diploma</h4>
                                                 <p>
-                                                    The education should be very interactual. Ut tincidunt est ac dolor aliquam
-                                                    sodales. Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris
-                                                    hendrerit ante. sectors of the economy or areas of culture sed mauris hendrerit,
-                                                    laoreet smart software.
+                                                    Holberton School
                                                 </p>
                                             </div>
+                                            <div className="right">
+                                                <span>2021 - 2022</span>
+                                            </div>
                                         </div>
-                                    </ReactWOW>
+                                        <div className="timeline-body">
+                                            <p>
+                                                Intensive 70 hours/week project-based learning program focused on full-stack software engineering. 
+                                                Mastered modern web technologies, algorithms, data structures, and collaborative development practices.
+                                            </p>
+                                        </div>
+                                    </div>
 
                                     {/* Single Item */}
-                                    <ReactWOW animation="fadeInUp">
-                                        <div className="timeline-style-one-item">
-                                            <div className="timeline-header">
-                                                <div className="left">
-                                                    <h4>Web design course</h4>
-                                                    <p>
-                                                        University of California
-                                                    </p>
-                                                </div>
-                                                <div className="right">
-                                                    <span>2012 - 2015</span>
-                                                </div>
-                                            </div>
-                                            <div className="timeline-body">
-                                                <p>
-                                                    The education should be very interactual. Ut tincidunt est ac dolor aliquam
-                                                    sodales. Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris
-                                                    hendrerit ante. sectors of the economy or areas of culture sed mauris hendrerit,
-                                                    laoreet smart software.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </ReactWOW>
+                              
                                 </div>
                             </div>
                         </div>
@@ -181,4 +179,4 @@ const ResumeV1 = ({ sectionClass }: DataType) => {
     );
 };
 
-export default ResumeV1;
+export default ResumeV1; 

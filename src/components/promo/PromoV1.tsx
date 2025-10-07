@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+'use client';
+
+import Link from "next/link";
 
 const PromoV1 = () => {
     return (
@@ -12,7 +14,7 @@ const PromoV1 = () => {
                                 <h4>For quick response: <a href="skype:example123?chat"><i className="fab fa-skype" /> Chat
                                     now</a></h4>
                                 <div className="button mt-40">
-                                    <Link className="btn-style-regular" to="/contact"><span>Hire Me Now </span> <i className="fas fa-arrow-right" /></Link>
+                                    <Link className="btn-style-regular" href="/contact"><span>Hire Me Now </span> <i className="fas fa-arrow-right" /></Link>
                                 </div>
                             </div>
                         </div>
@@ -23,4 +25,4 @@ const PromoV1 = () => {
     );
 };
 
-export default PromoV1;
+export default PromoV1; 

@@ -77,8 +77,8 @@ Sidebar heading:  22px 'Barlow', sans-serif
 	--dark-optional: #313030;
 	--dark-style-two: #1c1c1c;
 	--white: #ffffff;
-	--color-primary: #FFAE00;
-	--color-secondary: #F54200;
+	--color-primary: #1d4ed8;
+	--color-secondary: #e67e22;
 	--color-heading: #04000b;
 	--color-paragraph: #666666;
 	--box-shadow-primary: -1px 3px 10px 0 rgba(0, 0, 0, 0.6);
@@ -86,7 +86,9 @@ Sidebar heading:  22px 'Barlow', sans-serif
 	--box-shadow-regular: 0px 2px 12px 0px #e7e7e7;
 	--bg-gray: #ECF0F3;
 	--bg-gray-secondary: #F3F4F6;
-	--bg-gradient: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+	--bg-gradient: linear-gradient(135deg, #3b82f6, #1d4ed8);
+	--bg-gradient-reverse: linear-gradient(135deg, #1d4ed8, #3b82f6);
+	--bg-testimonial: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-primary) 100%);;
 }
 
 /* ============================================================== 
@@ -852,7 +854,7 @@ p {
 	display: inline-block;
 	width: 50px;
 	height: 2px;
-	background: var(--color-primary);
+	background: var(--bg-gradient);
 	position: relative;
 	z-index: 1;
 	left: 10px;
@@ -3055,6 +3057,10 @@ a.btn-round-animation:hover::after {
 	left: 0;
 	top: 0;
 	font-weight: 400;
+	background: var(--bg-gradient);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .cd-words-wrapper b.is-visible {
@@ -3182,6 +3188,10 @@ xclip
 	font-size: 70px;
 	font-weight: 700;
 	margin-bottom: 0;
+	background: var(--bg-gradient);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .banner-style-one-items h2 {
@@ -3378,7 +3388,7 @@ a.btn-style-one::after {
 	content: "";
 	height: 100%;
 	width: 100%;
-	background: url('/assets/img/shape/5.png');
+	background: url('/assets/img/shape/button.png');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -4345,7 +4355,7 @@ ul.list-style-one li::after {
 	height: 350px;
 	width: 350px;
 	min-width: 350px;
-	background: var(--bg-gradient);
+	background: var(--bg-testimonial);
 	border-radius: 50%;
 	display: inline-flex;
 	align-items: center;

@@ -1,4 +1,5 @@
 import { Link } from 'react-scroll';
+import NextLink from 'next/link';
 
 interface DataType {
     closeMenu?: () => void;
@@ -8,22 +9,25 @@ const ScrollMenu: React.FC<DataType> = ({ closeMenu }) => {
     return (
         <>
             <li>
-                <Link className="smooth-menu" to="services" offset={-50} onClick={closeMenu}>Services</Link>
+                <NextLink href="#services" className="smooth-menu" onClick={closeMenu}>Services</NextLink>
             </li>
             <li>
-                <Link className="smooth-menu" to="portfolio" offset={-50} onClick={closeMenu}>Portfolio</Link>
+                <NextLink href="#portfolio" className="smooth-menu" onClick={closeMenu}>Portfolio</NextLink>
             </li>
             <li>
-                <Link className="smooth-menu" to="resume" offset={-50} onClick={closeMenu}>Resume</Link>
+                <NextLink href="#resume" className="smooth-menu" onClick={closeMenu}>Resume</NextLink>
             </li>
             <li>
-                <Link className="smooth-menu" to="pricing" offset={-50} onClick={closeMenu}>Pricing</Link>
+                <NextLink href="/blog" className="smooth-menu" onClick={closeMenu}>Blog</NextLink>
             </li>
             <li>
-                <Link className="smooth-menu" to="contact" offset={-50} onClick={closeMenu}>Contact</Link>
+                <NextLink href="#pricing" className="smooth-menu" onClick={closeMenu}>Pricing</NextLink>
+            </li>
+            <li>
+                <NextLink href="#contact" className="smooth-menu" onClick={closeMenu}>Contact</NextLink>
             </li>
         </>
     );
 };
 
-export default ScrollMenu;
+export default ScrollMenu; 

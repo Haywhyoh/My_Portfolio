@@ -1,11 +1,4 @@
-import ReactWOW from "react-wow"
-import partner1 from "/assets/img/partner/1.png"
-import partner2 from "/assets/img/partner/2.png"
-import partner3 from "/assets/img/partner/3.png"
-import partner4 from "/assets/img/partner/4.png"
-import partner5 from "/assets/img/partner/5.png"
-import partner6 from "/assets/img/partner/6.png"
-import partner7 from "/assets/img/partner/7.png"
+'use client';
 
 const PartnerV1 = () => {
     return (
@@ -16,7 +9,7 @@ const PartnerV1 = () => {
                         <div className="col-lg-6 offset-lg-3">
                             <div className="site-heading text-center">
                                 <h4 className="sub-title">Partner</h4>
-                                <h2 className="title">With The World Premier 80+ Brands</h2>
+                                <h2 className="title">The Brands I&apos;ve Worked With</h2>
                             </div>
                         </div>
                     </div>
@@ -26,55 +19,40 @@ const PartnerV1 = () => {
                         <div className="col-lg-12">
                             <div className="partner-style-one-items">
                                 {/* Single Item */}
-                                <ReactWOW animation="fadeInLeft">
-                                    <div className="partner-style-one-item">
-                                        <img src={partner1} alt="Image Not Found" />
-                                    </div>
-                                </ReactWOW>
+                                <div className="partner-style-one-item">
+                                    <img src="/assets/img/partner/hillpad.png" alt="Image Not Found" />
+                                </div>
 
                                 {/* Single Item */}
-                                <ReactWOW animation="fadeInLeft">
-                                    <div className="partner-style-one-item">
-                                        <img src={partner2} alt="Image Not Found" />
-                                    </div>
-                                </ReactWOW>
+                                <div className="partner-style-one-item">
+                                    <img src="/assets/img/partner/beinitiative.png" alt="Image Not Found" />
+                                </div>
 
                                 {/* Single Item */}
-                                <ReactWOW animation="fadeInLeft">
-                                    <div className="partner-style-one-item">
-                                        <img src={partner3} alt="Image Not Found" />
-                                    </div>
-                                </ReactWOW>
+                                <div className="partner-style-one-item">
+                                    <img src="/assets/img/partner/mbuktu.png" alt="Image Not Found" />
+                                </div>
 
                                 {/* Single Item */}
-                                <ReactWOW animation="fadeInLeft">
-                                    <div className="partner-style-one-item">
-                                        <img src={partner4} alt="Image Not Found" />
-                                    </div>
-                                </ReactWOW>
-
+                                <div className="partner-style-one-item">
+                                    <img src="/assets/img/partner/tri.png" alt="Image Not Found" />
+                                </div>
                             </div>
                             <div className="partner-style-one-items">
                                 {/* Single Item */}
-                                <ReactWOW animation="fadeInLeft">
-                                    <div className="partner-style-one-item">
-                                        <img src={partner5} alt="Image Not Found" />
-                                    </div>
-                                </ReactWOW>
+                                <div className="partner-style-one-item">
+                                    <img src="/assets/img/partner/gra.png" alt="Image Not Found" />
+                                </div>
 
                                 {/* Single Item */}
-                                <ReactWOW animation="fadeInLeft">
-                                    <div className="partner-style-one-item">
-                                        <img src={partner6} alt="Image Not Found" />
-                                    </div>
-                                </ReactWOW>
+                                <div className="partner-style-one-item">
+                                    <img src="/assets/img/partner/6.png" alt="Image Not Found" />
+                                </div>
 
                                 {/* Single Item */}
-                                <ReactWOW animation="fadeInLeft">
-                                    <div className="partner-style-one-item">
-                                        <img src={partner7} alt="Image Not Found" />
-                                    </div>
-                                </ReactWOW>
+                                <div className="partner-style-one-item">
+                                    <img src="/assets/img/partner/7.png" alt="Image Not Found" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,4 +62,4 @@ const PartnerV1 = () => {
     );
 };
 
-export default PartnerV1;
+export default PartnerV1; 

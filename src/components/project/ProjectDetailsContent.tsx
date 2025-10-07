@@ -1,7 +1,6 @@
-import projects9 from "/assets/img/projects/9.jpg"
-import projects4 from "/assets/img/projects/4.jpg"
-import banner2 from "/assets/img/banner/2.jpg"
-import { Link } from "react-router-dom";
+'use client';
+
+import Link from "next/link";
 import { useEffect, useState } from 'react';
 
 interface DataType {
@@ -11,7 +10,7 @@ interface DataType {
 const ProjectDetailsContent = ({ projectData }: { projectData: DataType }) => {
     const { thumbFull } = projectData
 
-    // Image Scroll Animation 
+    // Image Scroll Animation
     const [scroll, setScroll] = useState(0);
 
     useEffect(() => {
@@ -80,10 +79,10 @@ const ProjectDetailsContent = ({ projectData }: { projectData: DataType }) => {
                     <div className="project-thumb mt-md--25 mt-xs--25">
                         <div className="row">
                             <div className="col-md-7">
-                                <img src={projects9} alt="Image Not Found" />
+                                <img src="/assets/img/projects/9.jpg" alt="Image Not Found" />
                             </div>
                             <div className="col-md-5">
-                                <img src={projects4} alt="Image Not Found" />
+                                <img src="/assets/img/projects/4.jpg" alt="Image Not Found" />
                             </div>
                         </div>
                     </div>
@@ -126,7 +125,7 @@ const ProjectDetailsContent = ({ projectData }: { projectData: DataType }) => {
                                         <li>Search engine optimization (seo)</li>
                                         <li>Public Relations</li>
                                     </ul>
-                                    <img src={banner2} alt="Image Not Found" />
+                                    <img src="/assets/img/banner/2.jpg" alt="Image Not Found" />
                                 </div>
                             </div>
                         </div>
@@ -155,16 +154,16 @@ const ProjectDetailsContent = ({ projectData }: { projectData: DataType }) => {
                         <div className="col-lg-12">
                             <div className="project-paginvation-items mt-xs--25 mt-md--25">
                                 <div className="project-previous">
-                                    <Link to="#">
+                                    <Link href="#">
                                         <div className="icon"><i className="fas fa-angle-double-left" /></div>
                                         <div className="nav-title"> Previous Post <h5>Discovery incommode</h5></div>
                                     </Link>
                                 </div>
                                 <div className="project-all">
-                                    <Link to="#"><i className="fas fa-th-large" /></Link>
+                                    <Link href="#"><i className="fas fa-th-large" /></Link>
                                 </div>
                                 <div className="project-next">
-                                    <Link to="#">
+                                    <Link href="#">
                                         <div className="nav-title">Next Post <h5>Discovery incommode</h5></div>
                                         <div className="icon"><i className="fas fa-angle-double-right" /></div>
                                     </Link>

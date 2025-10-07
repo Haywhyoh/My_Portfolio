@@ -1,8 +1,9 @@
+'use client';
+
 import ServicesData from "../../assets/jsonData/services/ServicesData.json"
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useState } from "react";
-import arrow from "/assets/img/icon/arrow.png";
-import ReactWOW from "react-wow";
+// import ReactWOW from "react-wow"; // Note: ReactWOW compatibility issue with Next.js
 
 interface DataType {
     sectionClass?: string;
@@ -38,18 +39,21 @@ const ServicesV1 = ({ sectionClass, hasTitle }: DataType) => {
                     <div className="row">
                         {ServicesData.map((service, index) => (
                             <div className={`col-xl-3 col-md-6 mb-30`} key={service.id}>
-                                <ReactWOW animation="fadeInUp">
-                                    <div className={`service-style-one-item ${activeIndex === index ? "active" : ""}`}
-                                        onMouseEnter={() => handleMouseEnter(index)}
-                                    >
-                                        <img src={`/assets/img/icon/${service.icon}`} alt="Image Not Found" />
-                                        <h4><Link to="/services-details">{service.title}</Link></h4>
-                                        <p>{service.text}</p>
-                                        <Link to="/services-details" className="btn-style-four">
-                                            <div className="icon"><img src={arrow} alt="Image Not Found" /></div> Read More
-                                        </Link>
-                                    </div>
-                                </ReactWOW>
+                                <div 
+                                    className={`service-style-one-item ${activeIndex === index ? "active" : ""} animate-on-scroll`}
+                                    onMouseEnter={() => handleMouseEnter(index)}
+                                    style={{
+                                        animationDelay: service.delay,
+                                        animation: 'fadeInUp 0.6s ease-out'
+                                    }}
+                                >
+                                    <img src={`/assets/img/icon/${service.icon}`} alt="Image Not Found" />
+                                    <h4><Link href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>{service.title}</Link></h4>
+                                    <p>{service.text}</p>
+                                    <Link href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`} className="btn-style-four">
+                                        <div className="icon"><img src="/assets/img/icon/arrow.png" alt="Image Not Found" /></div> Read More
+                                    </Link>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -59,4 +63,4 @@ const ServicesV1 = ({ sectionClass, hasTitle }: DataType) => {
     );
 };
 
-export default ServicesV1;
+export default ServicesV1; 

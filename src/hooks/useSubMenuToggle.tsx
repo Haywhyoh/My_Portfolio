@@ -19,4 +19,4 @@ const useSubMenuToggle = () => {
     return toggleSubMenu;
 };
 
-export default useSubMenuToggle;
+export default useSubMenuToggle; 

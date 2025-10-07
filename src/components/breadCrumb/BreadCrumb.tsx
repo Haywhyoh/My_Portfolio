@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 interface DataType {
     breadCrumb?: string;
@@ -15,7 +15,7 @@ const BreadCrumb = ({ breadCrumb, title }: DataType) => {
                             <h1>{title ? title : "Error Page"}</h1>
                             <nav aria-label="breadcrumb">
                                 <ol className="breadcrumb">
-                                    <li><Link to="#"><i className="fas fa-home" /> Home</Link></li>
+                                    <li><Link href="#"><i className="fas fa-home" /> Home</Link></li>
                                     <li className="active">{breadCrumb ? breadCrumb : "not-found"}</li>
                                 </ol>
                             </nav>

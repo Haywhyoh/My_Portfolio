@@ -1,17 +1,13 @@
+'use client';
+
 import { useEffect, useState } from 'react';
-import shape3 from "/assets/img/shape/3.png"
-import shape8 from "/assets/img/shape/8.png"
-import team14 from "/assets/img/team/14.jpg"
-import team15 from "/assets/img/team/15.jpg"
-import team16 from "/assets/img/team/16.jpg"
-import team17 from "/assets/img/team/17.jpg"
-import about1 from "/assets/img/about/1.jpg"
-import about2 from "/assets/img/about/2.jpg"
 import CountUp from 'react-countup';
-import ModalVideo from 'react-modal-video';
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ModalVideo from 'react-modal-video';
+import 'react-modal-video/css/modal-video.css';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutV1 = () => {
@@ -19,8 +15,11 @@ const AboutV1 = () => {
     // Modal Video
     const [isOpen, setOpen] = useState(false);
 
-    // Scroll Animation 
+    // Scroll Animation
     useEffect(() => {
+        // Check if document is available (client-side only)
+        if (typeof document === 'undefined') return;
+
         const upDown_Scroll = document.querySelector(".upDownScrol");
 
         if (upDown_Scroll) {
@@ -49,8 +48,8 @@ const AboutV1 = () => {
         <>
             <div id="about" className="about-style-one-area bg-gray default-padding">
                 <div className="shape-style-one">
-                    <img src={shape3} alt="Image Not Found" />
-                    <img className="upDownScrol" src={shape8} alt="Image Not Found" />
+                    <img src="/assets/img/shape/3.png" alt="Image Not Found" />
+                    <img className="upDownScrol" src="/assets/img/shape/8.png" alt="Image Not Found" />
                 </div>
                 <div className="container">
                     <div className="row">
@@ -58,29 +57,29 @@ const AboutV1 = () => {
                             <div className="fun-fact-style-one-items">
                                 <div className="fun-fact">
                                     <div className="counter">
-                                        <div className="timer"> <CountUp end={12} enableScrollSpy={true} /></div>
+                                        <div className="timer"> <CountUp end={5} enableScrollSpy={true} /></div>
                                         <div className="operator">+</div>
                                     </div>
                                     <span className="medium">Years of Experience</span>
                                 </div>
                                 <div className="fun-fact">
                                     <div className="counter">
-                                        <div className="timer"><CountUp end={138} enableScrollSpy={true} /></div>
+                                        <div className="timer"><CountUp end={25} enableScrollSpy={true} /></div>
                                         <div className="operator">+</div>
                                     </div>
-                                    <span className="medium">Projects completed on 30 countries</span>
+                                    <span className="medium">Projects Delivered Successfully</span>
                                 </div>
                             </div>
                             <div className="clieents-list mt-40">
                                 <div className="d-flex">
                                     <div className="thumb">
-                                        <img src={team14} alt="Image Not Found" />
-                                        <img src={team15} alt="Image Not Found" />
-                                        <img src={team16} alt="Image Not Found" />
-                                        <img src={team17} alt="Image Not Found" />
+                                        <img src="/assets/img/tony.jpeg" alt="Image Not Found" />
+                                        <img src="/assets/img/sam2.png" alt="Image Not Found" />
+                                        <img src="/assets/img/naolo.jpeg" alt="Image Not Found" />
+                                        <img src="/assets/img/john.jpg" alt="Image Not Found" />
                                     </div>
                                     <div className="info">
-                                        <h5>20K+ Clients</h5>
+                                        <h5>21K+ Users Served</h5>
                                     </div>
                                 </div>
                             </div>
@@ -88,9 +87,9 @@ const AboutV1 = () => {
                         <div className="col-lg-7 pl-80 pl-md-15 pl-xs-15">
                             <div className="about-style-one-info">
                                 <p>
-                                    As a skilled web developer, I specialize in creating responsive, user-friendly websites with a focus on modern design and efficient code. I excel in front-end development, with a deep understanding of HTML, CSS, JavaScript, and various frameworks. My passion is turning ideas into functional and aesthetically pleasing digital experiences.
+                                    As a seasoned Full-Stack Software Engineer with 5+ years of proven expertise in EdTech and SaaS industries, I deliver scalable, high-performance web applications that drive business growth. Having successfully led development teams serving over 21,000 combined users, I specialize in React, Next.js, Python, and Node.js ecosystems. My track record includes reducing client onboarding time by 40%, achieving 30K+ monthly impressions through strategic development, and leading cross-functional teams that consistently exceed project expectations and deadlines.
                                 </p>
-                                <Link className="btn-style-regular btn-border" to="#" ><span>Learn More</span> <i className="fas fa-arrow-right" /></Link>
+                                <Link className="btn-style-regular btn-border" href="#" ><span>Learn More</span> <i className="fas fa-arrow-right" /></Link>
                             </div>
                         </div>
                     </div>
@@ -98,8 +97,8 @@ const AboutV1 = () => {
                         <div className="row">
                             <div className="col-lg-8 pr-60 pr-md-15 pr-xs-15">
                                 <div className="img-container">
-                                    <img src={about1} alt="Image Not Found" />
-                                    <Link to="#" className="popup-youtube video-play-button" onClick={() => setOpen(true)} >
+                                    <img src="/assets/img/about/1.jpg" alt="Image Not Found" />
+                                    <Link href="#" className="popup-youtube video-play-button" onClick={() => setOpen(true)} >
                                         <i className="fas fa-play" />
                                         <div className="effect" />
                                     </Link>
@@ -107,7 +106,7 @@ const AboutV1 = () => {
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                <img src={about2} alt="Image Not Found" />
+                                <img src="/assets/img/about/developer.png" alt="Image Not Found" />
                             </div>
                         </div>
                     </div>
@@ -117,4 +116,4 @@ const AboutV1 = () => {
     );
 };
 
-export default AboutV1;
+export default AboutV1; 

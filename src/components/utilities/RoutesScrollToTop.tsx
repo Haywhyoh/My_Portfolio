@@ -1,17 +1,22 @@
+'use client';
+
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 
 const RoutesScrollToTop = () => {
-    // Extracts pathname property (key) from an object
-    const { pathname } = useLocation();
+    // Extracts pathname from Next.js router
+    const pathname = usePathname();
 
     // Automatically scrolls to top whenever pathname changes
     useEffect(() => {
-        window.scrollTo(0, 0);
+        // Check if window is available (client-side only)
+        if (typeof window !== 'undefined') {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }
     }, [pathname]);
 
     // Return null since this component does not need to render anything
     return null;
 }
 
-export default RoutesScrollToTop;
+export default RoutesScrollToTop; 

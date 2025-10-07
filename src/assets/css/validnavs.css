@@ -92,10 +92,31 @@ Version: 1.0
 	box-shadow: var(--box-shadow-secondary);
 }
 
-.navbar .navbar-collapse.collapse {
-	display: block !important;
-	float: left;
-	flex: inherit;
+/* CRITICAL FIX: Hide navbar collapse by default - higher specificity to override Bootstrap */
+.navbar .navbar-collapse.collapse.collapse-mobile:not(.show) {
+	display: none !important;
+	position: absolute;
+	left: -9999px;
+	visibility: hidden;
+}
+
+/* Show on desktop screens */
+@media (min-width: 992px) {
+	.navbar .navbar-collapse.collapse.collapse-mobile {
+		display: flex !important;
+		position: static !important;
+		left: auto !important;
+		visibility: visible !important;
+		flex: 1;
+		justify-content: center;
+	}
+
+	.navbar .navbar-collapse.collapse.collapse-mobile:not(.show) {
+		display: flex !important;
+		position: static !important;
+		left: auto !important;
+		visibility: visible !important;
+	}
 }
 
 .navbar .collapse.navbar-collapse.center {

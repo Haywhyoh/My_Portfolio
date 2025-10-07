@@ -1,6 +1,7 @@
-import shape from "/assets/img/shape/9.png"
-import { Link } from "react-router-dom";
-import IsotopeGallery from '../project/IsotopeGallery.js'
+'use client';
+
+import Link from "next/link";
+import IsotopeGallery from '../project/IsotopeGallery'
 
 interface DataType {
     sectionClass?: string;
@@ -12,7 +13,7 @@ const PortfolioV1 = ({ sectionClass, hasTitle }: DataType) => {
         <>
             <div id="portfolio" className={`portfolio-style-one-area ${sectionClass ? sectionClass : ""}`}>
                 <div className="shape-top-left">
-                    <img src={shape} alt="Image Not Found" />
+                    <img src="/assets/img/shape/9.png" alt="Image Not Found" />
                 </div>
 
                 {hasTitle &&
@@ -38,7 +39,7 @@ const PortfolioV1 = ({ sectionClass, hasTitle }: DataType) => {
                                 <div className="col-lg-12 text-center">
                                     <div className="load-more-info text-center mt-60 mt-xs-30">
                                         <p>
-                                            Are you interested to show more portfolios? <Link to="#" >Load More</Link>
+                                            Are you interested to show more portfolios? <Link href="#">Load More</Link>
                                         </p>
                                     </div>
                                 </div>
@@ -51,4 +52,4 @@ const PortfolioV1 = ({ sectionClass, hasTitle }: DataType) => {
     );
 };
 
-export default PortfolioV1;
+export default PortfolioV1; 
