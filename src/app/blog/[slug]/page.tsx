@@ -44,24 +44,24 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
       title: blog.seoTitle || blog.title,
       description: blog.seoDescription || blog.excerpt,
       type: 'article',
-      publishedTime: blog.publishedAt,
-      modifiedTime: blog.updatedAt || blog.publishedAt,
+      publishedTime: blog.publishedAt || undefined,
+      modifiedTime: blog.updatedAt || blog.publishedAt || undefined,
       authors: [blog.author],
       tags: blog.tags,
-      images: [
+      images: blog.featuredImage || blog.thumbnail ? [
         {
-          url: blog.featuredImage || blog.thumbnail,
+          url: blog.featuredImage || blog.thumbnail!,
           width: 1200,
           height: 630,
           alt: blog.title,
         },
-      ],
+      ] : [],
     },
     twitter: {
       card: 'summary_large_image',
       title: blog.seoTitle || blog.title,
       description: blog.seoDescription || blog.excerpt,
-      images: [blog.featuredImage || blog.thumbnail],
+      images: blog.featuredImage || blog.thumbnail ? [blog.featuredImage || blog.thumbnail!] : [],
     },
   };
 }

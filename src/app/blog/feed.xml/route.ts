@@ -21,7 +21,7 @@ export async function GET() {
       <description><![CDATA[${blog.excerpt}]]></description>
       <link>${baseUrl}/blog/${blog.slug}</link>
       <guid isPermaLink="true">${baseUrl}/blog/${blog.slug}</guid>
-      <pubDate>${new Date(blog.publishedAt).toUTCString()}</pubDate>
+      <pubDate>${blog.publishedAt ? new Date(blog.publishedAt).toUTCString() : new Date().toUTCString()}</pubDate>
       <author>${blog.author}</author>
       <category>${blog.category}</category>
       ${blog.tags.map(tag => `<category>${tag}</category>`).join('')}
