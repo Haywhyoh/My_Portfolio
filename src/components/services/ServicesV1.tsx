@@ -2,6 +2,7 @@
 
 import ServicesData from "../../assets/jsonData/services/ServicesData.json"
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 // import ReactWOW from "react-wow"; // Note: ReactWOW compatibility issue with Next.js
 
@@ -47,11 +48,11 @@ const ServicesV1 = ({ sectionClass, hasTitle }: DataType) => {
                                         animation: 'fadeInUp 0.6s ease-out'
                                     }}
                                 >
-                                    <img src={`/assets/img/icon/${service.icon}`} alt="Image Not Found" />
+                                    <Image src={`/assets/img/icon/${service.icon}`} alt="Service Icon" width={60} height={60} />
                                     <h4><Link href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}>{service.title}</Link></h4>
                                     <p>{service.text}</p>
                                     <Link href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`} className="btn-style-four">
-                                        <div className="icon"><img src="/assets/img/icon/arrow.png" alt="Image Not Found" /></div> Read More
+                                        <div className="icon"><Image src="/assets/img/icon/arrow.png" alt="Arrow Icon" width={16} height={16} /></div> Read More
                                     </Link>
                                 </div>
                             </div>

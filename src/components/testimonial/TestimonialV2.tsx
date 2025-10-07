@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Autoplay, Pagination } from 'swiper/modules';
 import { TestimonialProps, Testimonial } from '@/lib/types';
 import { getTestimonialsForDisplay } from '@/lib/testimonials';
+import Image from 'next/image';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -40,7 +41,7 @@ const TestimonialV2 = ({
             <div className="item">
                 <div className="thumb">
                     <div className="inner">
-                        <img src={testimonial.avatar} alt={`${testimonial.name} - ${testimonial.company}`} />
+                        <Image src={testimonial.avatar} alt={`${testimonial.name} - ${testimonial.company}`} width={80} height={80} />
                     </div>
                 </div>
                 <div className="content">
@@ -51,9 +52,11 @@ const TestimonialV2 = ({
                         </div>
                         <div className="bottom">
                             {/* Use light version of platform logo for dark theme */}
-                            <img
+                            <Image
                                 src={testimonial.platformLogo.replace('.png', '-light.png').replace('.jpg', '-light.jpg').replace('.jpeg', '-light.jpeg') || testimonial.platformLogo}
                                 alt="Review Platform"
+                                width={120}
+                                height={40}
                                 onError={(e) => {
                                     // Fallback to original image if light version doesn't exist
                                     e.currentTarget.src = testimonial.platformLogo;
@@ -81,7 +84,7 @@ const TestimonialV2 = ({
         <>
             <div className={`testimonial-style-one-area default-padding testimonial-dark-theme ${sectionClass ? sectionClass : ""}`}>
                 <div className="shape-left-top">
-                    <img src="/assets/img/shape/10.png" alt="Image Not Found" />
+                    <Image src="/assets/img/shape/10.png" alt="Shape" width={200} height={200} />
                 </div>
                 <div className="container">
                     <div className="heading-left">

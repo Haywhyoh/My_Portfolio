@@ -12,7 +12,7 @@ export default function NotFound() {
                             <h1>404</h1>
                             <h2>Sorry Page Was Not Found!</h2>
                             <p>
-                                The page you're looking for doesn't exist. Feel free to explore my portfolio projects, check out my services, or get in touch to discuss potential collaborations.
+                                The page you&apos;re looking for doesn&apos;t exist. Feel free to explore my portfolio projects, check out my services, or get in touch to discuss potential collaborations.
                             </p>
                             <Link className="btn mt-20 btn-md btn-theme" href="/">Back to home</Link>
                         </div>

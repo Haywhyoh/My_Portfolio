@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getOptimizedImageUrl, extractPublicId, isCloudinaryUrl } from '@/lib/cloudinary';
 import { OptimizedImage } from '@/components/OptimizedImage';
 
@@ -79,13 +79,7 @@ export default function ImageTransformer({
 
   const publicId = isCloudinaryUrl(imageUrl) ? extractPublicId(imageUrl) : null;
 
-  useEffect(() => {
-    if (publicId) {
-      generateTransformedUrl();
-    }
-  }, [settings, publicId]);
-
-  const generateTransformedUrl = () => {
+  const generateTransformedUrl = useCallback(() => {
     if (!publicId) return;
 
     setIsTransforming(true);
@@ -133,7 +127,13 @@ export default function ImageTransformer({
     } finally {
       setIsTransforming(false);
     }
-  };
+  }, [publicId, settings]);
+
+  useEffect(() => {
+    if (publicId) {
+      generateTransformedUrl();
+    }
+  }, [settings, publicId, generateTransformedUrl]);
 
   const resetSettings = () => {
     setSettings({

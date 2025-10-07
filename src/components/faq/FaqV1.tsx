@@ -12,7 +12,7 @@ const FaqV1 = () => {
                             <div className="thumb-style-one">
                                 <img src="/assets/img/about/girl.jpg" alt="Image Not Found" />
                                 <div className="chat-card">
-                                    <p>{`Can't find what your are loking for you?`}</p>
+                                    <p>{`Can&apos;t find what your are loking for you?`}</p>
                                     <h5>I would like to chat with you</h5>
                                     <Link href="#"><i className="fab fa-facebook-messenger" /></Link>
                                     <img src="/assets/img/shape/12.png" alt="Image Not Found" />
@@ -33,7 +33,7 @@ const FaqV1 = () => {
                                         <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                                             <div className="accordion-body">
                                                 <p>
-                                                    Yes, I'm open to both full-time positions and freelance projects! Whether you're looking for a dedicated team member or need help with a specific project, I'm flexible and ready to contribute. I enjoy both the stability of full-time roles and the variety that freelance work brings.
+                                                    Yes, I&apos;m open to both full-time positions and freelance projects! Whether you&apos;re looking for a dedicated team member or need help with a specific project, I&apos;m flexible and ready to contribute. I enjoy both the stability of full-time roles and the variety that freelance work brings.
                                                 </p>
                                             </div>
                                         </div>
@@ -47,7 +47,7 @@ const FaqV1 = () => {
                                         <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                                             <div className="accordion-body">
                                                 <p>
-                                                    I'm a full-stack developer specializing in the Python and TypeScript ecosystems. On the backend, I work with Python (Django, FastAPI, Flask) and Node.js. For frontend, I use React, Next.js, and TypeScript. I'm also experienced with databases like PostgreSQL and MongoDB, cloud platforms, and modern development practices.
+                                                    I&apos;m a full-stack developer specializing in the Python and TypeScript ecosystems. On the backend, I work with Python (Django, FastAPI, Flask) and Node.js. For frontend, I use React, Next.js, and TypeScript. I&apos;m also experienced with databases like PostgreSQL and MongoDB, cloud platforms, and modern development practices.
                                                 </p>
                                             </div>
                                         </div>
@@ -61,7 +61,7 @@ const FaqV1 = () => {
                                         <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
                                             <div className="accordion-body">
                                                 <p>
-                                                    I believe in clear communication and realistic timelines. I provide regular updates on project progress, use project management tools for transparency, and prefer to set achievable deadlines rather than overpromise. I'm available for meetings via video calls, Slack, or email based on your preference.
+                                                    I believe in clear communication and realistic timelines. I provide regular updates on project progress, use project management tools for transparency, and prefer to set achievable deadlines rather than overpromise. I&apos;m available for meetings via video calls, Slack, or email based on your preference.
                                                 </p>
                                             </div>
                                         </div>
@@ -75,7 +75,7 @@ const FaqV1 = () => {
                                         <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
                                             <div className="accordion-body">
                                                 <p>
-                                                    Absolutely! I have experience integrating with existing development teams and working with legacy codebases. I'm comfortable with code reviews, following established coding standards, and collaborating using Git workflows. I can quickly adapt to your team's processes and contribute effectively from day one.
+                                                    Absolutely! I have experience integrating with existing development teams and working with legacy codebases. I&apos;m comfortable with code reviews, following established coding standards, and collaborating using Git workflows. I can quickly adapt to your team&apos;s processes and contribute effectively from day one.
                                                 </p>
                                             </div>
                                         </div>

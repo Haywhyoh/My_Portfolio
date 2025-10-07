@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 
 interface FileItem {
   publicId: string;
@@ -166,10 +167,12 @@ export default function FileManager({
                       onClick={() => setSelectedFile(file.url)}
                     >
                       <div className="file-preview">
-                        <img
+                        <Image
                           src={file.transformations.thumbnail}
                           alt={getFileName(file.publicId)}
                           className="file-image"
+                          width={100}
+                          height={100}
                           loading="lazy"
                         />
                         <div className="file-overlay">
