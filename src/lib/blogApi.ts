@@ -112,7 +112,7 @@ export const blogApi = {
   async unpublishBlog(id: number): Promise<BlogPost> {
     return this.updateBlog(id, {
       isPublished: false,
-      publishedAt: null
+      publishedAt: undefined
     });
   },
 };

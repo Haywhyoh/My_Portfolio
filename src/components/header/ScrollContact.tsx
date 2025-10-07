@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 
-const Link = dynamic(() => import('react-scroll').then(mod => ({ default: mod.Link })), { ssr: false });
+const Link = dynamic(() => import('react-scroll').then(mod => ({ default: mod.Link as any })), { ssr: false });
 
 interface DataType {
     closeMenu?: () => void;

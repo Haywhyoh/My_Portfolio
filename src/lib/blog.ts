@@ -164,6 +164,7 @@ function transformDatabaseBlog(dbBlog: any): BlogPost {
     }),
     publishedAt: dbBlog.publishedAt || dbBlog.createdAt,
     updatedAt: dbBlog.updatedAt,
+    createdAt: dbBlog.createdAt,
     thumbnail: dbBlog.thumbnail || '',
     featuredImage: dbBlog.featuredImage || dbBlog.thumbnail || '',
     tags,

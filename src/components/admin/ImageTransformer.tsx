@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { getOptimizedImageUrl, extractPublicId, isCloudinaryUrl } from '@/lib/cloudinary';
-import { OptimizedImage } from '@/components/OptimizedImage';
+import OptimizedImage from '@/components/OptimizedImage';
 
 interface ImageTransformerProps {
   imageUrl: string;

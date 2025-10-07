@@ -83,7 +83,7 @@ export default function BlogDetail({ post }: BlogDetailProps) {
                     <div className="author-avatar-placeholder">{post.author?.charAt(0) || 'A'}</div>
                     <span className="author-name">{post.author}</span>
                   </div>
-                  <span className="meta-date">{formatDate(post.publishedAt || post.date)}</span>
+                  <span className="meta-date">{formatDate(post.publishedAt || post.date || new Date().toISOString())}</span>
                   <span className="meta-read-time">{formatReadTime(post.readTime || 5)}</span>
                 </div>
               </div>

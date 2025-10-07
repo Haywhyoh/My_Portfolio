@@ -7,6 +7,7 @@ import Image from "next/image";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ModalVideo from 'react-modal-video';
+const ModalVideoComponent = ModalVideo as any;
 import 'react-modal-video/css/modal-video.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -103,7 +104,7 @@ const AboutV1 = () => {
                                         <i className="fas fa-play" />
                                         <div className="effect" />
                                     </Link>
-                                    <ModalVideo channel='youtube' isOpen={isOpen} videoId="aTC_RNYtEb0" onClose={() => setOpen(false)} />
+                                    <ModalVideoComponent channel='youtube' isOpen={isOpen} videoId="aTC_RNYtEb0" onClose={() => setOpen(false)} />
                                 </div>
                             </div>
                             <div className="col-lg-4">

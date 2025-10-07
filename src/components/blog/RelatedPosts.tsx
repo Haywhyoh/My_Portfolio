@@ -100,7 +100,7 @@ export default function RelatedPosts({ currentPostId, limit = 3 }: RelatedPostsP
                     <div className="post-meta">
                       <span className="post-date">
                         <i className="far fa-calendar-alt"></i>
-                        {formatDate(post.publishedAt)}
+                        {formatDate(post.publishedAt || new Date().toISOString())}
                       </span>
                       <span className="post-read-time">
                         <i className="far fa-clock"></i>

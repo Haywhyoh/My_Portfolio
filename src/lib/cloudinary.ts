@@ -183,7 +183,7 @@ export async function searchImages(options: {
 
     const result = await cloudinary.search
       .expression(searchQuery.join(' AND ') || 'resource_type:image')
-      .sort_by([['created_at', 'desc']])
+      .sort_by('created_at', 'desc')
       .max_results(options.maxResults || 20)
       .next_cursor(options.nextCursor)
       .execute();

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import ImageUpload from './ImageUpload';
-import { OptimizedImage } from '@/components/OptimizedImage';
+import OptimizedImage from '@/components/OptimizedImage';
 
 interface MediaItem {
   publicId: string;
