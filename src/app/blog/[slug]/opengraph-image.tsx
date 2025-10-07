@@ -1,5 +1,4 @@
 import { ImageResponse } from 'next/og';
-import { getBlogBySlug } from '@/lib/blog';
 
 export const runtime = 'edge';
 
@@ -11,9 +10,29 @@ export const size = {
 
 export const contentType = 'image/png';
 
+// Simple blog data fetch without heavy dependencies
+async function getBlogData(slug: string) {
+  try {
+    const response = await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/blogs/${slug}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    
+    if (!response.ok) {
+      return null;
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching blog data:', error);
+    return null;
+  }
+}
+
 export default async function Image({ params }: { params: { slug: string } }) {
   try {
-    const blog = await getBlogBySlug(params.slug);
+    const blog = await getBlogData(params.slug);
 
     if (!blog) {
       return new ImageResponse(
@@ -213,11 +232,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
                       color: 'rgba(255, 255, 255, 0.7)',
                     }}
                   >
-                    {blog.publishedAt ? new Date(blog.publishedAt).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    }) : 'Not published'}
+                    {blog.publishedAt ? new Date(blog.publishedAt).toLocaleDateString() : 'Not published'}
                   </div>
                 </div>
               </div>
