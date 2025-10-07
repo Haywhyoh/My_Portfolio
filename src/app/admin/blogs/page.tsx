@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { blogApi } from '@/lib/blogApi';
 import { BlogPost } from '@/lib/types';
@@ -18,9 +19,9 @@ export default function BlogManagementPage() {
 
   useEffect(() => {
     loadBlogs();
-  }, [currentPage, searchQuery, filterStatus]);
+  }, [loadBlogs]);
 
-  const loadBlogs = async () => {
+  const loadBlogs = useCallback(async () => {
     try {
       setIsLoading(true);
 
@@ -46,7 +47,7 @@ export default function BlogManagementPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [currentPage, searchQuery, filterStatus]);
 
   const handleDelete = async (blogId: number) => {
     if (!confirm('Are you sure you want to delete this blog post? This action cannot be undone.')) {
@@ -290,9 +291,11 @@ export default function BlogManagementPage() {
                       <td>
                         <div className="d-flex align-items-center">
                           {blog.thumbnail && (
-                            <img
+                            <Image
                               src={blog.thumbnail}
                               alt=""
+                              width={40}
+                              height={40}
                               className="me-2 rounded"
                               style={{ width: '40px', height: '40px', objectFit: 'cover' }}
                             />

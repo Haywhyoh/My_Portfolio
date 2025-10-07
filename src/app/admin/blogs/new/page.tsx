@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { blogApi } from '@/lib/blogApi';
 import { CreateBlogRequest } from '@/lib/types';
@@ -477,9 +478,11 @@ export default function NewBlogPage() {
                   </h6>
                 </div>
                 <div className="card-body p-0">
-                  <img
+                  <Image
                     src={formData.thumbnail}
                     alt="Thumbnail"
+                    width={400}
+                    height={200}
                     className="img-fluid"
                     style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                   />

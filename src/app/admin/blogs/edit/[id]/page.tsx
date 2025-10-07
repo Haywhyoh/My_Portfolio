@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { blogApi } from '@/lib/blogApi';
 import { BlogPost, UpdateBlogRequest } from '@/lib/types';
@@ -77,9 +78,9 @@ export default function EditBlogPage() {
     if (blogId) {
       loadBlog();
     }
-  }, [blogId]);
+  }, [blogId, loadBlog]);
 
-  const loadBlog = async () => {
+  const loadBlog = useCallback(async () => {
     try {
       setIsLoading(true);
       const blogData = await blogApi.getBlog(blogId);
@@ -106,7 +107,7 @@ export default function EditBlogPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [blogId, router]);
 
   const handleInputChange = (field: keyof BlogFormData, value: any) => {
     setFormData(prev => ({
@@ -507,9 +508,11 @@ export default function EditBlogPage() {
                         </div>
                         {formData.thumbnail && (
                           <div className="image-preview">
-                            <img
+                            <Image
                               src={formData.thumbnail}
                               alt="Thumbnail preview"
+                              width={150}
+                              height={100}
                               className="img-thumbnail"
                               style={{ maxWidth: '150px', maxHeight: '100px', objectFit: 'cover' }}
                             />
@@ -556,9 +559,11 @@ export default function EditBlogPage() {
                         </div>
                         {formData.featuredImage && (
                           <div className="image-preview">
-                            <img
+                            <Image
                               src={formData.featuredImage}
                               alt="Featured image preview"
+                              width={200}
+                              height={120}
                               className="img-thumbnail"
                               style={{ maxWidth: '200px', maxHeight: '120px', objectFit: 'cover' }}
                             />
@@ -685,9 +690,11 @@ export default function EditBlogPage() {
                   </h6>
                 </div>
                 <div className="card-body p-0">
-                  <img
+                  <Image
                     src={formData.thumbnail}
                     alt="Thumbnail"
+                    width={400}
+                    height={200}
                     className="img-fluid"
                     style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                   />
