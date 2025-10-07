@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import ScrollMenu from "./ScrollMenu";
 import useSidebarMenu from "../../hooks/useSidebarMenu";
 import useStickyMenu from "../../hooks/useStickyMenu";
@@ -39,11 +40,11 @@ const HeaderV1 = () => {
                                 <i className="fa fa-bars" />
                             </button>
                             <Link className="navbar-brand" href="/">
-                                <img src="/assets/img/biglogo.png" className="logo" alt="Adedayo Samuel" />
+                                <Image src="/assets/img/biglogo.png" className="logo" alt="Adedayo Samuel" width={200} height={60} />
                             </Link>
                         </div>
                         <div className={`collapse navbar-collapse collapse-mobile ${isOpen ? "show" : ""}`} id="navbar-menu">
-                            <img src="/assets/img/logo.png" alt="Logo" />
+                            <Image src="/assets/img/logo.png" alt="Logo" width={120} height={40} />
                             <button
                                 type="button"
                                 className="navbar-toggle"

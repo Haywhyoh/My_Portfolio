@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 
 interface DataType {
     sectionClass?: string;
@@ -135,8 +136,8 @@ const ContactV1 = ({ sectionClass }: DataType) => {
                                 </div>
                             </div>
                             <div className="col-lg-5 contact-illustration">
-                                <img src="/assets/img/illustration/contact.png" alt="Image Not Found" />
-                                <img src="/assets/img/shape/9.png" alt="Image Not Found" />
+                                <Image src="/assets/img/illustration/contact.png" alt="Contact illustration" width={400} height={400} />
+                                <Image src="/assets/img/shape/9.png" alt="Shape" width={200} height={200} />
                             </div>
                         </div>
                     </div>

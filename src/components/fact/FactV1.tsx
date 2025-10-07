@@ -1,6 +1,7 @@
 'use client';
 
 import CountUp from 'react-countup'
+import Image from 'next/image'
 // import ReactWOW from "react-wow" // Note: ReactWOW compatibility issue with Next.js
 
 const FactV1 = () => {
@@ -23,7 +24,7 @@ const FactV1 = () => {
                         {/* Single item */}
                         <div className="funfact-style-two-item">
                             <div className="icon">
-                                <img src="/assets/img/gallery/react.png" alt="Image Not Found" />
+                                <Image src="/assets/img/gallery/react.png" alt="React" width={60} height={60} />
                             </div>
                             <div className="fun-fact">
                             <div className="counter">
@@ -39,7 +40,7 @@ const FactV1 = () => {
                         {/* Single item */}
                         <div className="funfact-style-two-item">
                             <div className="icon">
-                                <img src="/assets/img/gallery/node.png" alt="Image Not Found" />
+                                <Image src="/assets/img/gallery/node.png" alt="Node.js" width={60} height={60} />
                             </div>
                             <div className="fun-fact">
                             <div className="counter">
@@ -55,7 +56,7 @@ const FactV1 = () => {
                         {/* Single item */}
                         <div className="funfact-style-two-item">
                             <div className="icon">
-                                <img src="/assets/img/icon/wordpress.png" alt="Image Not Found" />
+                                <Image src="/assets/img/icon/wordpress.png" alt="WordPress" width={60} height={60} />
                             </div>
                             <div className="fun-fact">
                             <div className="counter">
@@ -71,7 +72,7 @@ const FactV1 = () => {
                         {/* Single item */}
                         <div className="funfact-style-two-item">
                             <div className="icon">
-                                <img src="/assets/img/gallery/nextjs.png" alt="Image Not Found" />
+                                <Image src="/assets/img/gallery/nextjs.png" alt="Next.js" width={60} height={60} />
                             </div>
                             <div className="fun-fact">
                             <div className="counter">
@@ -88,7 +89,7 @@ const FactV1 = () => {
                         {/* Single item */}
                         <div className="funfact-style-two-item">
                             <div className="icon">
-                                <img src="/assets/img/gallery/django.png" alt="Image Not Found" />
+                                <Image src="/assets/img/gallery/django.png" alt="Django" width={60} height={60} />
                             </div>
                             <div className="fun-fact">
                             <div className="counter">
@@ -105,7 +106,7 @@ const FactV1 = () => {
                         {/* Single item */}
                         <div className="funfact-style-two-item">
                             <div className="icon">
-                                <img src="/assets/img/gallery/py.png" alt="Image Not Found" />
+                                <Image src="/assets/img/gallery/py.png" alt="Python" width={60} height={60} />
                             </div>
                             <div className="fun-fact">
                             <div className="counter">

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import SocialShareV1 from '../social/SocialShareV1';
 import { ReactTyped } from 'react-typed';
 
@@ -48,9 +49,9 @@ const BannerV1 = () => {
                                     </div>
                                 </div>
                                 <div className="thumb">
-                                    <img src="/assets/img/banner/ayomide.png" alt="Image Not Found" />
-                                    <img src="/assets/img/shape/bg.png" alt="Image Not Found" />
-                                    <img src="/assets/img/shape/3.png" alt="Image Not Found" />
+                                    <Image src="/assets/img/banner/ayomide.png" alt="Profile" width={400} height={500} />
+                                    <Image src="/assets/img/shape/bg.png" alt="Background" width={400} height={500} />
+                                    <Image src="/assets/img/shape/3.png" alt="Shape" width={200} height={200} />
                                 </div>
                             </div>
                         </div>

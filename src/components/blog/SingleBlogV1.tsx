@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { generateSlug } from "@/lib/blog";
 
 interface DataType {
@@ -27,11 +28,11 @@ const SingleBlogV1 = ({ blog }: { blog: DataType }) => {
             >
                 <div className="home-blog-thumb">
                     <Link href={`/blog/${slug}`}>
-                        <img src={
+                        <Image src={
                             thumb
                                 ? (thumb.startsWith('http') ? thumb : `/assets/img/blog/${thumb}`)
                                 : `/assets/img/blog/default-blog.jpg`
-                        } alt="Image not Found" />
+                        } alt="Blog thumbnail" width={400} height={250} />
                     </Link>
                 </div>
                 <div className="content">

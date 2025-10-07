@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from 'react';
+import Image from "next/image";
 
 interface DataType {
     thumbFull?: any;
@@ -32,7 +33,7 @@ const ProjectDetailsContent = ({ projectData }: { projectData: DataType }) => {
                         <div className="animation-zoom-banner" id="js-hero"
                             style={{ width: `${100 + scroll / 18}%` }}
                         >
-                            <img src={`/assets/img/projects/${thumbFull}`} alt="Image Not Found"/>
+                            <Image src={`/assets/img/projects/${thumbFull}`} alt="Project" width={800} height={600}/>
                         </div>
                     </div>
                 </div>
@@ -79,10 +80,10 @@ const ProjectDetailsContent = ({ projectData }: { projectData: DataType }) => {
                     <div className="project-thumb mt-md--25 mt-xs--25">
                         <div className="row">
                             <div className="col-md-7">
-                                <img src="/assets/img/projects/9.jpg" alt="Image Not Found" />
+                                <Image src="/assets/img/projects/9.jpg" alt="Project" width={400} height={300} />
                             </div>
                             <div className="col-md-5">
-                                <img src="/assets/img/projects/4.jpg" alt="Image Not Found" />
+                                <Image src="/assets/img/projects/4.jpg" alt="Project" width={400} height={300} />
                             </div>
                         </div>
                     </div>
@@ -125,7 +126,7 @@ const ProjectDetailsContent = ({ projectData }: { projectData: DataType }) => {
                                         <li>Search engine optimization (seo)</li>
                                         <li>Public Relations</li>
                                     </ul>
-                                    <img src="/assets/img/banner/2.jpg" alt="Image Not Found" />
+                                    <Image src="/assets/img/banner/2.jpg" alt="Banner" width={600} height={400} />
                                 </div>
                             </div>
                         </div>

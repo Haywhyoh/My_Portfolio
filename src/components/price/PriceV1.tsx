@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 
 interface DataType {
     sectionClass?: string;
@@ -12,7 +13,7 @@ const PriceV1 = ({ sectionClass, hasTitle }: DataType) => {
         <>
             <div id="pricing" className={`pricing-style-one-area ${sectionClass ? sectionClass : ""}`}>
                 <div className="shape-right-top">
-                    <img src="/assets/img/shape/15.png" alt="Image Not Found" />
+                    <Image src="/assets/img/shape/15.png" alt="Shape" width={200} height={200} />
                 </div>
 
                 {hasTitle &&

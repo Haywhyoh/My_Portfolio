@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 
 const FaqV1 = () => {
     return (
@@ -10,12 +11,12 @@ const FaqV1 = () => {
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="thumb-style-one">
-                                <img src="/assets/img/about/girl.jpg" alt="Image Not Found" />
+                                <Image src="/assets/img/about/girl.jpg" alt="FAQ illustration" width={400} height={500} />
                                 <div className="chat-card">
                                     <p>{`Can&apos;t find what your are loking for you?`}</p>
                                     <h5>I would like to chat with you</h5>
                                     <Link href="#"><i className="fab fa-facebook-messenger" /></Link>
-                                    <img src="/assets/img/shape/12.png" alt="Image Not Found" />
+                                    <Image src="/assets/img/shape/12.png" alt="Shape" width={100} height={100} />
                                 </div>
                             </div>
                         </div>

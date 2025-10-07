@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 
 interface ImageUploadProps {
   onUpload: (url: string) => void;
@@ -159,7 +160,7 @@ export default function ImageUpload({
       >
         {currentImage && !uploading ? (
           <div className="current-image">
-            <img src={currentImage} alt="Current" className="preview-image" />
+            <Image src={currentImage} alt="Current" className="preview-image" width={200} height={200} />
             <div className="image-overlay">
               <div className="overlay-content">
                 <i className="fas fa-edit fa-2x mb-2"></i>

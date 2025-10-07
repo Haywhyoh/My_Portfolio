@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import PortfolioData from "../../assets/jsonData/portfolio/PortfolioData.json"
 import Link from "next/link";
+import Image from "next/image";
 
 const IsotopeGallery = () => {
     const galleryRef = useRef<HTMLDivElement | null>(null);
@@ -67,7 +68,7 @@ const IsotopeGallery = () => {
                 {PortfolioData.map(portfolio => (
                     <div className="gallery-item" key={portfolio.id}>
                         <div className="gallery-style-one">
-                            <img src={`/assets/img/projects/${portfolio.thumb}`} alt="Thumb" onLoad={handleImageLoad} />
+                            <Image src={`/assets/img/projects/${portfolio.thumb}`} alt="Thumb" width={400} height={300} onLoad={handleImageLoad} />
                             <div className="info">
                                 <div className="overlay">
                                     <div className="content">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const FooterV1 = () => {
     return (
@@ -8,7 +9,7 @@ const FooterV1 = () => {
                     <div className="row">
                         <div className="col-lg-8 offset-lg-2">
                             <div className="footer-items text-center">
-                                <Link href="/" className="footer-logot"><img src="/assets/img/logo.png" alt="Image Not Found" /></Link>
+                                <Link href="/" className="footer-logot"><Image src="/assets/img/logo.png" alt="Logo" width={150} height={50} /></Link>
                                 <ul className="foter-menu">
                                     <li><Link href="/">Home</Link></li>
                                     <li><Link href="/service">Services</Link></li>

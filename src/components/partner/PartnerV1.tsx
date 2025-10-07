@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 const PartnerV1 = () => {
     return (
         <>
@@ -20,38 +22,38 @@ const PartnerV1 = () => {
                             <div className="partner-style-one-items">
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/hillpad.png" alt="Image Not Found" />
+                                    <Image src="/assets/img/partner/hillpad.png" alt="Hillpad" width={120} height={60} />
                                 </div>
 
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/beinitiative.png" alt="Image Not Found" />
+                                    <Image src="/assets/img/partner/beinitiative.png" alt="Be Initiative" width={120} height={60} />
                                 </div>
 
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/mbuktu.png" alt="Image Not Found" />
+                                    <Image src="/assets/img/partner/mbuktu.png" alt="Mbuktu" width={120} height={60} />
                                 </div>
 
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/tri.png" alt="Image Not Found" />
+                                    <Image src="/assets/img/partner/tri.png" alt="Tri" width={120} height={60} />
                                 </div>
                             </div>
                             <div className="partner-style-one-items">
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/gra.png" alt="Image Not Found" />
+                                    <Image src="/assets/img/partner/gra.png" alt="Gra" width={120} height={60} />
                                 </div>
 
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/6.png" alt="Image Not Found" />
+                                    <Image src="/assets/img/partner/6.png" alt="Partner 6" width={120} height={60} />
                                 </div>
 
                                 {/* Single Item */}
                                 <div className="partner-style-one-item">
-                                    <img src="/assets/img/partner/7.png" alt="Image Not Found" />
+                                    <Image src="/assets/img/partner/7.png" alt="Partner 7" width={120} height={60} />
                                 </div>
                             </div>
                         </div>

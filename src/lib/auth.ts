@@ -1,63 +1,71 @@
-import { getServerSession } from 'next-auth/next';
-import { NextRequest, NextResponse } from 'next/server';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { prisma } from '@/lib/prisma';
+import bcrypt from 'bcryptjs';
 
-export async function getSession() {
-  return await getServerSession(authOptions);
-}
+export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(prisma) as any,
+  providers: [
+    CredentialsProvider({
+      name: 'credentials',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' }
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          return null;
+        }
 
-export async function getCurrentUser() {
-  const session = await getSession();
-  return session?.user;
-}
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email
+          }
+        });
 
-export async function requireAuth() {
-  const session = await getSession();
+        if (!user) {
+          return null;
+        }
 
-  if (!session?.user) {
-    throw new Error('Unauthorized');
-  }
+        const isPasswordValid = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
 
-  return session.user;
-}
+        if (!isPasswordValid) {
+          return null;
+        }
 
-export async function requireAdmin() {
-  const user = await requireAuth();
-
-  if (user.role !== 'admin') {
-    throw new Error('Forbidden: Admin access required');
-  }
-
-  return user;
-}
-
-// Middleware function to protect API routes
-export function withAuth(handler: Function) {
-  return async (request: NextRequest, context?: any) => {
-    try {
-      await requireAuth();
-      return handler(request, context);
-    } catch (error) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-  };
-}
-
-// Middleware function to protect admin-only API routes
-export function withAdmin(handler: Function) {
-  return async (request: NextRequest, context?: any) => {
-    try {
-      await requireAdmin();
-      return handler(request, context);
-    } catch (error) {
-      const status = error.message === 'Unauthorized' ? 401 : 403;
-      return NextResponse.json(
-        { error: error.message },
-        { status }
-      );
-    }
-  };
-}
+        return {
+          id: user.id.toString(),
+          email: user.email,
+          name: user.username,
+          role: user.role,
+        };
+      }
+    })
+  ],
+  session: {
+    strategy: 'jwt',
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.sub!;
+        session.user.role = token.role as string;
+      }
+      return session;
+    },
+  },
+  pages: {
+    signIn: '/admin/login',
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+};
