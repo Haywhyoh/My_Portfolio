@@ -213,11 +213,11 @@ export default async function Image({ params }: { params: { slug: string } }) {
                       color: 'rgba(255, 255, 255, 0.7)',
                     }}
                   >
-                    {new Date(blog.publishedAt).toLocaleDateString('en-US', {
+                    {blog.publishedAt ? new Date(blog.publishedAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
-                    })}
+                    }) : 'Not published'}
                   </div>
                 </div>
               </div>

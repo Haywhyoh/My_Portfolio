@@ -74,12 +74,6 @@ export default function EditBlogPage() {
     'link', 'image', 'video', 'blockquote', 'code-block', 'align'
   ];
 
-  useEffect(() => {
-    if (blogId) {
-      loadBlog();
-    }
-  }, [blogId, loadBlog]);
-
   const loadBlog = useCallback(async () => {
     try {
       setIsLoading(true);
@@ -108,6 +102,12 @@ export default function EditBlogPage() {
       setIsLoading(false);
     }
   }, [blogId, router]);
+
+  useEffect(() => {
+    if (blogId) {
+      loadBlog();
+    }
+  }, [blogId, loadBlog]);
 
   const handleInputChange = (field: keyof BlogFormData, value: any) => {
     setFormData(prev => ({

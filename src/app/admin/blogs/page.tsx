@@ -17,10 +17,6 @@ export default function BlogManagementPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [selectedBlogs, setSelectedBlogs] = useState<number[]>([]);
 
-  useEffect(() => {
-    loadBlogs();
-  }, [loadBlogs]);
-
   const loadBlogs = useCallback(async () => {
     try {
       setIsLoading(true);
@@ -48,6 +44,10 @@ export default function BlogManagementPage() {
       setIsLoading(false);
     }
   }, [currentPage, searchQuery, filterStatus]);
+
+  useEffect(() => {
+    loadBlogs();
+  }, [loadBlogs]);
 
   const handleDelete = async (blogId: number) => {
     if (!confirm('Are you sure you want to delete this blog post? This action cannot be undone.')) {
