@@ -20,6 +20,11 @@ const nextConfig = {
   optimizeFonts: true,
   // Improve build performance
   swcMinify: true,
+  // Optimize for Edge Functions
+  experimental: {
+    // Reduce bundle size for Edge Functions
+    optimizePackageImports: ['next/og'],
+  },
 }
 
 module.exports = nextConfig 

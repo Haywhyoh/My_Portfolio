@@ -13,10 +13,16 @@ export const contentType = 'image/png';
 // Simple blog data fetch without heavy dependencies
 async function getBlogData(slug: string) {
   try {
-    const response = await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/blogs/${slug}`, {
+    const baseUrl = process.env.NEXTAUTH_URL || process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : 'http://localhost:3000';
+    
+    const response = await fetch(`${baseUrl}/api/blogs/${slug}`, {
       headers: {
         'Content-Type': 'application/json',
       },
+      // Add timeout to prevent hanging
+      signal: AbortSignal.timeout(5000),
     });
     
     if (!response.ok) {
