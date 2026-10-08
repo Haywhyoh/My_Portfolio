@@ -4,8 +4,8 @@ import { motion, type Variants } from 'framer-motion';
 import { ArrowUpRight, Download, Sparkles } from 'lucide-react';
 import Container from '@/components/site/Container';
 import Button from '@/components/site/Button';
+import HeroStats from '@/components/home/HeroStats';
 import { siteConfig } from '@/lib/siteConfig';
-import { stats } from '@/lib/resumeData';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 18 },
@@ -71,22 +71,7 @@ export default function Hero() {
             </Button>
           </motion.div>
 
-          <motion.dl
-            initial="hidden"
-            animate="show"
-            custom={4}
-            variants={fadeUp}
-            className="tw-mt-14 tw-grid tw-grid-cols-2 tw-gap-6 sm:tw-grid-cols-4"
-          >
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <dt className="tw-font-display tw-text-2xl tw-font-semibold tw-text-white sm:tw-text-3xl">
-                  {stat.value}
-                </dt>
-                <dd className="tw-mt-1 tw-text-xs tw-text-mist-400 sm:tw-text-sm">{stat.label}</dd>
-              </div>
-            ))}
-          </motion.dl>
+          <HeroStats />
         </div>
 
         <motion.div
