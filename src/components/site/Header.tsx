@@ -50,7 +50,8 @@ export default function Header() {
 
         <nav className="tw-hidden tw-items-center tw-gap-8 lg:tw-flex">
           {siteConfig.nav.map((item) => {
-            const active = pathname === item.href || (item.href !== '/' && pathname?.startsWith(item.href));
+            const isHashLink = item.href.includes('#');
+            const active = !isHashLink && (pathname === item.href || pathname?.startsWith(item.href));
             return (
               <Link
                 key={item.href}
