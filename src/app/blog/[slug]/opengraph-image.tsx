@@ -36,9 +36,10 @@ async function getBlogData(slug: string) {
   }
 }
 
-export default async function Image({ params }: { params: { slug: string } }) {
+export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   try {
-    const blog = await getBlogData(params.slug);
+    const { slug } = await params;
+    const blog = await getBlogData(slug);
 
     if (!blog) {
       return new ImageResponse(

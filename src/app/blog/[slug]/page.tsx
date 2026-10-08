@@ -10,9 +10,9 @@ import {
 } from '@/lib/structured-data';
 
 interface BlogDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Generate static params for all blog posts
@@ -26,7 +26,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for each blog post
 export async function generateMetadata({ params }: BlogDetailPageProps): Promise<Metadata> {
-  const blog = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     return {
@@ -67,7 +68,8 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
-  const blog = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     notFound();

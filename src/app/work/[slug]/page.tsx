@@ -18,15 +18,16 @@ import { siteConfig } from '@/lib/siteConfig';
 import { projectJsonLd } from '@/lib/seo';
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
-  const project = getCaseStudyBySlug(params.slug) ?? getMoreProjectBySlug(params.slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getCaseStudyBySlug(slug) ?? getMoreProjectBySlug(slug);
   if (!project) return {};
 
   const description = project.summary;
@@ -34,26 +35,27 @@ export function generateMetadata({ params }: PageProps): Metadata {
   return {
     title: project.name,
     description,
-    alternates: { canonical: `${siteConfig.url}/work/${params.slug}` },
+    alternates: { canonical: `${siteConfig.url}/work/${slug}` },
     openGraph: {
       title: `${project.name} | ${siteConfig.name}`,
       description,
-      url: `${siteConfig.url}/work/${params.slug}`,
+      url: `${siteConfig.url}/work/${slug}`,
       images: ['heroImage' in project ? project.heroImage : project.thumb],
     },
   };
 }
 
-export default function CaseStudyPage({ params }: PageProps) {
-  const caseStudy = getCaseStudyBySlug(params.slug);
-  const lightProject = !caseStudy ? getMoreProjectBySlug(params.slug) : undefined;
+export default async function CaseStudyPage({ params }: PageProps) {
+  const { slug } = await params;
+  const caseStudy = getCaseStudyBySlug(slug);
+  const lightProject = !caseStudy ? getMoreProjectBySlug(slug) : undefined;
 
   if (!caseStudy && !lightProject) {
     notFound();
   }
 
   const allSlugsOrdered = [...caseStudies.map((c) => c.slug), ...moreProjects.map((p) => p.slug)];
-  const currentIndex = allSlugsOrdered.indexOf(params.slug);
+  const currentIndex = allSlugsOrdered.indexOf(slug);
   const prevSlug = allSlugsOrdered[(currentIndex - 1 + allSlugsOrdered.length) % allSlugsOrdered.length];
   const nextSlug = allSlugsOrdered[(currentIndex + 1) % allSlugsOrdered.length];
   const prevProject = getCaseStudyBySlug(prevSlug) ?? getMoreProjectBySlug(prevSlug);

@@ -10,8 +10,8 @@ import { BlogPost, UpdateBlogRequest } from '@/lib/types';
 import { toast } from 'react-toastify';
 
 // Dynamic import for ReactQuill to avoid SSR issues
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import 'react-quill/dist/quill.snow.css';
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
+import 'react-quill-new/dist/quill.snow.css';
 
 interface BlogFormData {
   title: string;

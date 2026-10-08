@@ -4,9 +4,9 @@ import ServicesDetailsContent from '@/components/services/ServicesDetailsContent
 import ServicesData from '@/assets/jsonData/services/ServicesData.json'
 
 interface ServicePageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 // Generate static params for all services
@@ -18,8 +18,9 @@ export async function generateStaticParams() {
 
 // Generate metadata for each service
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+  const { slug } = await params;
   const service = ServicesData.find(
-    (s) => s.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') === params.slug
+    (s) => s.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') === slug
   )
 
   if (!service) {
@@ -34,9 +35,10 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   }
 }
 
-export default function ServiceDetailsPage({ params }: ServicePageProps) {
+export default async function ServiceDetailsPage({ params }: ServicePageProps) {
+  const { slug } = await params;
   const service = ServicesData.find(
-    (s) => s.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') === params.slug
+    (s) => s.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') === slug
   )
 
   if (!service) {

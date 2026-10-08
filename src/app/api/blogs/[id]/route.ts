@@ -3,14 +3,14 @@ import { prisma } from '@/lib/prisma';
 import { generateSlug } from '@/lib/blog';
 
 interface Params {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function GET(request: NextRequest, { params }: Params) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const isNumericId = !isNaN(Number(id));
 
     const blog = await prisma.blog.findFirst({
@@ -52,7 +52,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 
 export async function PUT(request: NextRequest, { params }: Params) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
     const {
       title,
@@ -161,7 +161,7 @@ export async function PUT(request: NextRequest, { params }: Params) {
 
 export async function DELETE(request: NextRequest, { params }: Params) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const blogId = parseInt(id);
 
     if (isNaN(blogId)) {
