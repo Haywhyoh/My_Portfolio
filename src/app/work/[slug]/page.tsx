@@ -29,7 +29,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const project = getCaseStudyBySlug(params.slug) ?? getMoreProjectBySlug(params.slug);
   if (!project) return {};
 
-  const description = 'summary' in project ? project.summary : project.summary;
+  const description = project.summary;
 
   return {
     title: project.name,
