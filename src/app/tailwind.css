@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------
+   Scoped resets for the new design system.
+   Everything here is scoped under #tw-root so it never leaks
+   into the legacy Bootstrap-driven admin dashboard / blog views.
+   ----------------------------------------------------------------*/
+#tw-root {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#tw-root ::selection {
+  background-color: #6d5bff;
+  color: #ffffff;
+}
+
+#tw-root .tw-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+#tw-root .tw-no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Noise/grain overlay used behind hero sections */
+#tw-root .tw-grain {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.05;
+}
+
+#tw-root .tw-text-balance {
+  text-wrap: balance;
+}
+
+#tw-root .tw-link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+#tw-root .tw-link-underline:hover {
+  background-size: 100% 1px;
+}
