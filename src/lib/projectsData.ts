@@ -36,6 +36,42 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: 'noslop',
+    name: 'NoSlop',
+    tagline: "An AI coding tutor that won't hand you the answer — it makes you earn it, inside a real Docker sandbox.",
+    tags: ['AI Agent', 'EdTech', 'Docker / Sandboxing'],
+    role: 'Founding Engineer — platform, sandbox infra & AI tutor',
+    year: '2025 — Present',
+    liveUrl: 'https://noslop.codemygig.com',
+    heroImage: '/assets/img/work/noslop-hero.png',
+    featured: true,
+    accent: 'accent',
+    summary:
+      'NoSlop teaches programming — and other technical skills — with the Socratic method: an AI coach asks questions before giving answers, while learners write real code in Docker-backed sandboxes and only advance once they prove they understand.',
+    problem:
+      "Most 'learn to code' platforms either hand over the solution outright (so nothing sticks) or trap learners in toy editors that don't resemble real engineering work. There was also no good way for instructors to author multi-language, project-based curricula without an engineer hardcoding every course.",
+    solution:
+      'I built NoSlop around three systems: an admin layer where instructors author multi-language, milestone-based courses and projects; a containerized execution layer that spins up isolated Docker sandboxes per learner so code actually runs and tests actually execute; and an AI tutor that applies the Socratic method — asking pre-code questions, escalating hints progressively, and only unlocking the next milestone once an AI review confirms real understanding, not pasted code.',
+    features: [
+      'Admin-authored, multi-language courses with milestone-based project structure',
+      'Per-learner Docker sandboxes for real code execution and automated test running',
+      'Monaco-based in-browser code editor wired directly into the sandbox',
+      'Socratic AI tutor: pre-code questions and progressive hints instead of solution dumps',
+      'AI review gate that verifies understanding before unlocking the next milestone',
+      'Hands-on Socratic learning tracks for both coding and non-coding subjects',
+      'Persistent accounts so learners resume exactly where they left off',
+    ],
+    stack: [
+      'Next.js', 'TypeScript', 'NestJS', 'Docker', 'PostgreSQL',
+      'Monaco Editor', 'OpenAI / LLM orchestration', 'Container-based code execution',
+    ],
+    results: [
+      'Live platform pairing AI tutoring with real, Docker-executed code instead of a sandboxed toy editor',
+      'Course and project authoring is fully admin-driven — new multi-language curricula ship without a code deploy',
+      'Mastery-gated progression: learners cannot skip ahead without demonstrating understanding to the AI reviewer',
+    ],
+  },
+  {
     slug: 'botglam',
     name: 'Botglam',
     tagline: 'An AI WhatsApp assistant that runs beauty businesses — bookings, payments, and follow-ups, hands-free.',
