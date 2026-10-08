@@ -20,6 +20,12 @@ const nextConfig = {
   optimizeFonts: true,
   // Improve build performance
   swcMinify: true,
+  async redirects() {
+    return [
+      { source: '/projects', destination: '/work', permanent: true },
+      { source: '/project-details/:id', destination: '/work', permanent: true },
+    ];
+  },
   // Optimize for Edge Functions
   experimental: {
     // Reduce bundle size for Edge Functions

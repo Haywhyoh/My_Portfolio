@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Github, Linkedin, Twitter, ArrowUpRight, Mail } from 'lucide-react';
+import { ArrowUpRight, Mail } from 'lucide-react';
 import Container from './Container';
+import { GithubIcon, LinkedinIcon, TwitterIcon } from './BrandIcons';
 import { siteConfig } from '@/lib/siteConfig';
 
 export default function Footer() {
@@ -17,13 +18,13 @@ export default function Footer() {
             </p>
             <div className="tw-mt-6 tw-flex tw-items-center tw-gap-3">
               <SocialIcon href={siteConfig.social.github} label="GitHub">
-                <Github className="tw-h-4 tw-w-4" />
+                <GithubIcon />
               </SocialIcon>
               <SocialIcon href={siteConfig.social.linkedin} label="LinkedIn">
-                <Linkedin className="tw-h-4 tw-w-4" />
+                <LinkedinIcon />
               </SocialIcon>
               <SocialIcon href={siteConfig.social.twitter} label="Twitter / X">
-                <Twitter className="tw-h-4 tw-w-4" />
+                <TwitterIcon />
               </SocialIcon>
               <SocialIcon href={`mailto:${siteConfig.email}`} label="Email">
                 <Mail className="tw-h-4 tw-w-4" />

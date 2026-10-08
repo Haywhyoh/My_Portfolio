@@ -37,9 +37,8 @@ export const siteConfig = {
     twitter: 'https://twitter.com/haywhyoh',
   },
   nav: [
-    { label: 'Home', href: '/' },
     { label: 'Work', href: '/work' },
-    { label: 'About', href: '/about' },
+    { label: 'About', href: '/#about' },
     { label: 'Resume', href: '/resume' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },
