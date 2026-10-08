@@ -19,10 +19,10 @@ export default function ConditionalLayout({ children }: ConditionalLayoutProps) 
   }
 
   return (
-    <>
+    <div className="tw-min-h-screen tw-bg-ink-950 tw-text-mist-200">
       <Header />
-      <main className="tw-min-h-screen tw-bg-ink-950">{children}</main>
+      <main>{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }

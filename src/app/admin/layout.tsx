@@ -1,4 +1,8 @@
 import type { Metadata } from 'next';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../assets/css/font-awesome.min.css';
+import './admin.css';
+import BootstrapJS from '@/components/providers/BootstrapJS';
 
 export const metadata: Metadata = {
   title: 'Admin - Portfolio',
@@ -12,6 +16,7 @@ export default function AdminRootLayout({
 }) {
   return (
     <div className="admin-root">
+      <BootstrapJS />
       {children}
     </div>
   );

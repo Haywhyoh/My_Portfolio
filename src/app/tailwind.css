@@ -8,8 +8,85 @@
    into the legacy Bootstrap-driven admin dashboard / blog views.
    ----------------------------------------------------------------*/
 #tw-root {
+  --font-display: var(--font-sans);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  color: #c9cfdd;
+}
+
+#tw-root .tw-prose {
+  color: #aab2c6;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+#tw-root .tw-prose h1,
+#tw-root .tw-prose h2,
+#tw-root .tw-prose h3,
+#tw-root .tw-prose h4 {
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 2rem 0 0.75rem;
+}
+#tw-root .tw-prose h2 {
+  font-size: 1.5rem;
+}
+#tw-root .tw-prose h3 {
+  font-size: 1.25rem;
+}
+#tw-root .tw-prose p {
+  margin: 0 0 1.15rem;
+}
+#tw-root .tw-prose a {
+  color: #a594ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#tw-root .tw-prose a:hover {
+  color: #ffffff;
+}
+#tw-root .tw-prose strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+#tw-root .tw-prose ul,
+#tw-root .tw-prose ol {
+  margin: 0 0 1.15rem;
+  padding-left: 1.25rem;
+}
+#tw-root .tw-prose li {
+  margin-bottom: 0.4rem;
+}
+#tw-root .tw-prose code {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.875em;
+  color: #00e6a8;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.375rem;
+  padding: 0.15em 0.4em;
+}
+#tw-root .tw-prose pre {
+  background: #0a0c12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 0 0 1.5rem;
+}
+#tw-root .tw-prose pre code {
+  background: transparent;
+  padding: 0;
+  color: #c9cfdd;
+}
+#tw-root .tw-prose hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+#tw-root .tw-prose img {
+  border-radius: 1rem;
+  margin: 1.5rem 0;
 }
 
 #tw-root ::selection {

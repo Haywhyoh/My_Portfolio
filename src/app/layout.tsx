@@ -1,22 +1,7 @@
 import type { Metadata } from 'next'
 import { Sora, JetBrains_Mono } from 'next/font/google'
-// Third-party CSS imports first
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'swiper/css'
-import 'swiper/css/bundle'
-import 'react-modal-video/css/modal-video.css'
 import 'react-toastify/dist/ReactToastify.css'
-import 'react-photo-view/dist/react-photo-view.css'
-
-// Custom CSS imports - order matters for proper overrides
-import '../assets/css/font-awesome.min.css'
-import '../assets/css/animate.css'
-import '../assets/css/validnavs.css'
-import '../assets/css/unit-test.css'
-import '../assets/css/helper.css'
-import '../assets/css/style.css'
 import './globals.css'
-// New design-system styles (Tailwind, scoped under #tw-root)
 import './tailwind.css'
 
 import ClientProviders from '@/components/providers/ClientProviders'
@@ -124,4 +109,4 @@ export default function RootLayout({
       </body>
     </html>
   )
-} 
+}

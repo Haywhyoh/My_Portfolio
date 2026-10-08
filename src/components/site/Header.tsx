@@ -32,9 +32,9 @@ export default function Header() {
   return (
     <header
       className={`tw-sticky tw-top-0 tw-z-50 tw-w-full tw-transition-all tw-duration-300 ${
-        scrolled
-          ? 'tw-border-b tw-border-white/10 tw-bg-ink-950/80 tw-backdrop-blur-xl'
-          : 'tw-border-b tw-border-transparent tw-bg-transparent'
+        scrolled || open
+          ? 'tw-border-b tw-border-white/10 tw-bg-ink-950/95 tw-shadow-[0_12px_40px_-20px_rgba(0,0,0,0.8)] tw-backdrop-blur-xl'
+          : 'tw-border-b tw-border-transparent tw-bg-ink-950'
       }`}
     >
       <Container className="tw-flex tw-h-16 tw-items-center tw-justify-between sm:tw-h-20">
