@@ -30,19 +30,7 @@ export default function Hero() {
 
       <Container className="tw-relative tw-grid tw-grid-cols-1 tw-items-center tw-gap-16 lg:tw-grid-cols-[1.15fr_0.85fr]">
         <div>
-          <motion.div
-            initial="hidden"
-            animate="show"
-            custom={0}
-            variants={fadeUp}
-            className="tw-mb-6 tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-px-4 tw-py-1.5 tw-text-xs tw-font-medium tw-text-mist-200"
-          >
-            <span className="tw-relative tw-flex tw-h-2 tw-w-2">
-              <span className="tw-absolute tw-inline-flex tw-h-full tw-w-full tw-animate-ping tw-rounded-full tw-bg-glow-500 tw-opacity-75" />
-              <span className="tw-relative tw-inline-flex tw-h-2 tw-w-2 tw-rounded-full tw-bg-glow-500" />
-            </span>
-            {siteConfig.availability}
-          </motion.div>
+          
 
           <motion.h1
             initial="hidden"
@@ -51,7 +39,7 @@ export default function Hero() {
             variants={fadeUp}
             className="tw-text-balance tw-text-4xl tw-font-semibold tw-leading-[1.1] tw-tracking-tight tw-text-white sm:tw-text-5xl lg:tw-text-6xl"
           >
-            Full-stack engineer who ships{' '}
+            I ships{' '}
             <span className="tw-bg-gradient-to-r tw-from-accent-300 tw-via-accent-400 tw-to-glow-500 tw-bg-clip-text tw-text-transparent">
               products, not prototypes.
             </span>
@@ -66,7 +54,6 @@ export default function Hero() {
           >
             I&apos;m {siteConfig.name.split(' ')[0]} {siteConfig.name.split(' ')[1]} — a {siteConfig.role.toLowerCase()}{' '}
             with 5+ years building SaaS, AI-powered automation, and marketplace platforms end to end: database to deploy.
-            Recent work includes an AI WhatsApp assistant live with 1,000+ businesses, and marketplaces serving 20,000+ users.
           </motion.p>
 
           <motion.div
