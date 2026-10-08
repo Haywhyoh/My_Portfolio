@@ -2,100 +2,63 @@
 
 import { useState, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Search, X } from 'lucide-react';
 import { BlogSearchProps } from '@/lib/types';
 
 const BlogSearch = ({
   onSearch,
-  placeholder = "Search blog posts...",
-  initialValue = "",
-  variant = "default"
+  placeholder = 'Search posts…',
+  initialValue = '',
 }: BlogSearchProps) => {
   const [searchQuery, setSearchQuery] = useState(initialValue);
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const handleSubmit = useCallback((e: React.FormEvent) => {
+  const pushParams = useCallback(
+    (query: string) => {
+      const params = new URLSearchParams(searchParams);
+      if (query.trim()) {
+        params.set('search', query.trim());
+      } else {
+        params.delete('search');
+      }
+      params.delete('page');
+      const queryString = params.toString();
+      router.push(queryString ? `/blog?${queryString}` : '/blog');
+      onSearch(query.trim());
+    },
+    [searchParams, router, onSearch]
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Create new search params
-    const params = new URLSearchParams(searchParams);
-
-    if (searchQuery.trim()) {
-      params.set('search', searchQuery.trim());
-    } else {
-      params.delete('search');
-    }
-
-    // Reset to first page when searching
-    params.delete('page');
-
-    // Update URL
-    const queryString = params.toString();
-    const newUrl = queryString ? `/blog?${queryString}` : '/blog';
-    router.push(newUrl);
-
-    // Call parent handler
-    onSearch(searchQuery.trim());
-  }, [searchQuery, searchParams, router, onSearch]);
-
-  const handleClear = () => {
-    setSearchQuery('');
-
-    // Clear search from URL
-    const params = new URLSearchParams(searchParams);
-    params.delete('search');
-    params.delete('page');
-
-    const queryString = params.toString();
-    const newUrl = queryString ? `/blog?${queryString}` : '/blog';
-    router.push(newUrl);
-
-    onSearch('');
-  };
-
-  const getSearchClasses = () => {
-    if (variant === 'hero') {
-      return 'blog-search-widget hero-search';
-    }
-    return 'blog-search-widget';
+    pushParams(searchQuery);
   };
 
   return (
-    <div className={getSearchClasses()}>
-      <form onSubmit={handleSubmit} className="search-form">
-        <div className="input-group search-input-group">
-          <span className="input-group-text search-icon">
-            <i className="fas fa-search"></i>
-          </span>
-          <input
-            type="text"
-            className="form-control search-input"
-            placeholder={placeholder}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          {searchQuery && (
-            <button
-              type="button"
-              onClick={handleClear}
-              className="btn btn-outline-secondary clear-btn"
-              aria-label="Clear search"
-            >
-              <i className="fas fa-times"></i>
-            </button>
-          )}
-          {variant !== 'hero' && (
-            <button
-              type="submit"
-              className="btn btn-primary search-btn"
-              aria-label="Search"
-            >
-              Search
-            </button>
-          )}
-        </div>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="tw-relative tw-w-full">
+      <Search className="tw-pointer-events-none tw-absolute tw-left-4 tw-top-1/2 tw-h-4 tw-w-4 -tw-translate-y-1/2 tw-text-mist-400" />
+      <input
+        type="search"
+        placeholder={placeholder}
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="tw-w-full tw-rounded-full tw-border tw-border-white/10 tw-bg-white/5 tw-py-3 tw-pl-11 tw-pr-12 tw-text-sm tw-text-white tw-outline-none placeholder:tw-text-mist-400 focus:tw-border-accent-400"
+      />
+      {searchQuery && (
+        <button
+          type="button"
+          onClick={() => {
+            setSearchQuery('');
+            pushParams('');
+          }}
+          aria-label="Clear search"
+          className="tw-absolute tw-right-3 tw-top-1/2 tw-flex tw-h-7 tw-w-7 -tw-translate-y-1/2 tw-items-center tw-justify-center tw-rounded-full tw-text-mist-400 hover:tw-text-white"
+        >
+          <X className="tw-h-4 tw-w-4" />
+        </button>
+      )}
+    </form>
   );
 };
 

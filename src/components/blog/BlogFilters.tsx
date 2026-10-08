@@ -10,138 +10,72 @@ const BlogFilters = ({
   selectedTag,
   onCategoryChange,
   onTagChange,
-  variant = "default"
 }: BlogFiltersProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const handleCategoryClick = (category: string) => {
+  const updateUrl = (mutate: (params: URLSearchParams) => void) => {
     const params = new URLSearchParams(searchParams);
-
-    if (category === BLOG_CONFIG.DEFAULT_CATEGORY) {
-      params.delete('category');
-    } else {
-      params.set('category', category);
-    }
-
-    // Clear tag and reset page
-    params.delete('tag');
+    mutate(params);
     params.delete('page');
-
     const queryString = params.toString();
-    const newUrl = queryString ? `/blog?${queryString}` : '/blog';
-    router.push(newUrl);
+    router.push(queryString ? `/blog?${queryString}` : '/blog');
+  };
 
+  const handleCategoryClick = (category: string) => {
+    updateUrl((params) => {
+      if (category === BLOG_CONFIG.DEFAULT_CATEGORY) {
+        params.delete('category');
+      } else {
+        params.set('category', category);
+      }
+      params.delete('tag');
+    });
     onCategoryChange(category === BLOG_CONFIG.DEFAULT_CATEGORY ? undefined : category);
+    onTagChange(undefined);
   };
 
   const handleTagClick = (tag: string) => {
-    const params = new URLSearchParams(searchParams);
-
-    if (selectedTag === tag) {
-      // Toggle off if already selected
-      params.delete('tag');
-      onTagChange(undefined);
-    } else {
-      params.set('tag', tag);
-      onTagChange(tag);
-    }
-
-    // Clear category and reset page
-    params.delete('category');
-    params.delete('page');
-
-    const queryString = params.toString();
-    const newUrl = queryString ? `/blog?${queryString}` : '/blog';
-    router.push(newUrl);
+    const next = selectedTag === tag ? undefined : tag;
+    updateUrl((params) => {
+      if (next) {
+        params.set('tag', next);
+      } else {
+        params.delete('tag');
+      }
+      params.delete('category');
+    });
+    onTagChange(next);
+    onCategoryChange(undefined);
   };
 
-  const getFilterClasses = () => {
-    if (variant === 'hero') {
-      return 'blog-filters hero-filters';
-    }
-    return 'blog-filters';
-  };
-
-  const getButtonClasses = () => {
-    if (variant === 'hero') {
-      return 'btn btn-outline-light dropdown-toggle w-100 hero-filter-btn';
-    }
-    return 'btn btn-outline-primary dropdown-toggle w-100';
-  };
+  const chip = (active: boolean) =>
+    `tw-rounded-full tw-px-3 tw-py-1.5 tw-text-xs tw-font-medium tw-transition-colors ${
+      active
+        ? 'tw-bg-accent-500 tw-text-white'
+        : 'tw-bg-white/5 tw-text-mist-300 hover:tw-bg-white/10 hover:tw-text-white'
+    }`;
 
   return (
-    <div className={getFilterClasses()}>
-      {/* Filter Dropdown */}
-      <div className="dropdown">
+    <div className="tw-flex tw-flex-wrap tw-gap-2">
+      {categories.map((category) => (
         <button
-          className={getButtonClasses()}
+          key={category}
           type="button"
-          id="blogFiltersDropdown"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
+          className={chip(
+            selectedCategory === category ||
+              (category === BLOG_CONFIG.DEFAULT_CATEGORY && !selectedCategory && !selectedTag)
+          )}
+          onClick={() => handleCategoryClick(category)}
         >
-          <i className="fas fa-filter me-2"></i>
-          {selectedCategory || selectedTag || 'Tags'}
+          {category}
         </button>
-        <ul className="dropdown-menu w-100" aria-labelledby="blogFiltersDropdown">
-          {/* Categories */}
-          <li><h6 className="dropdown-header">Categories</h6></li>
-          {categories.map((category) => (
-            <li key={category}>
-              <button
-                className={`dropdown-item ${
-                  (selectedCategory === category) ||
-                  (category === BLOG_CONFIG.DEFAULT_CATEGORY && !selectedCategory)
-                    ? 'active'
-                    : ''
-                }`}
-                onClick={() => handleCategoryClick(category)}
-              >
-                <i className="fas fa-folder me-2"></i>
-                {category}
-              </button>
-            </li>
-          ))}
-
-          {tags.length > 0 && (
-            <>
-              <li><hr className="dropdown-divider" /></li>
-              <li><h6 className="dropdown-header">Tags</h6></li>
-              {tags.slice(0, 8).map((tag) => (
-                <li key={tag}>
-                  <button
-                    className={`dropdown-item ${selectedTag === tag ? 'active' : ''}`}
-                    onClick={() => handleTagClick(tag)}
-                  >
-                    <i className="fas fa-tag me-2"></i>
-                    {tag}
-                  </button>
-                </li>
-              ))}
-            </>
-          )}
-
-          {(selectedCategory || selectedTag) && (
-            <>
-              <li><hr className="dropdown-divider" /></li>
-              <li>
-                <button
-                  className="dropdown-item text-danger"
-                  onClick={() => {
-                    router.push('/blog');
-                    onCategoryChange(undefined);
-                    onTagChange(undefined);
-                  }}
-                >
-                  <i className="fas fa-times me-2"></i>
-                  Clear All Filters
-                </button>
-              </li>
-            </>
-          )}
-        </ul>
-      </div>
+      ))}
+      {tags.slice(0, 8).map((tag) => (
+        <button key={tag} type="button" className={chip(selectedTag === tag)} onClick={() => handleTagClick(tag)}>
+          #{tag}
+        </button>
+      ))}
     </div>
   );
 };

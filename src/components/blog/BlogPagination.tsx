@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { PaginationProps } from '@/lib/types';
 import { generatePaginationUrl } from '@/lib/pagination';
 
@@ -10,7 +11,6 @@ const BlogPagination = ({
   totalPages,
   basePath,
   maxPageButtons = 5,
-  showInfo = true
 }: PaginationProps) => {
   const searchParams = useSearchParams();
 
@@ -18,7 +18,6 @@ const BlogPagination = ({
     return null;
   }
 
-  // Calculate visible pages
   const halfRange = Math.floor(maxPageButtons / 2);
   let startPage = Math.max(1, currentPage - halfRange);
   let endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
@@ -27,101 +26,46 @@ const BlogPagination = ({
     startPage = Math.max(1, endPage - maxPageButtons + 1);
   }
 
-  const visiblePages = Array.from(
-    { length: endPage - startPage + 1 },
-    (_, i) => startPage + i
-  );
-
+  const visiblePages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
   const generateUrl = (page: number) => generatePaginationUrl(basePath, page, searchParams);
 
+  const itemClass = (active?: boolean, disabled?: boolean) =>
+    `tw-inline-flex tw-h-10 tw-min-w-10 tw-items-center tw-justify-center tw-rounded-full tw-px-3 tw-text-sm tw-transition-colors ${
+      disabled
+        ? 'tw-pointer-events-none tw-text-mist-400/40'
+        : active
+          ? 'tw-bg-accent-500 tw-text-white'
+          : 'tw-text-mist-300 hover:tw-bg-white/10 hover:tw-text-white'
+    }`;
+
   return (
-    <div className="blog-pagination-wrapper">
-      {showInfo && (
-        <div className="pagination-info text-center mb-3">
-          <p className="text-muted">
-            Page {currentPage} of {totalPages}
-          </p>
-        </div>
+    <nav aria-label="Blog pagination" className="tw-mt-12 tw-flex tw-items-center tw-justify-center tw-gap-1">
+      {currentPage === 1 ? (
+        <span className={itemClass(false, true)}>
+          <ChevronLeft className="tw-h-4 tw-w-4" />
+        </span>
+      ) : (
+        <Link href={generateUrl(currentPage - 1)} className={itemClass()}>
+          <ChevronLeft className="tw-h-4 tw-w-4" />
+        </Link>
       )}
 
-      <nav aria-label="Blog pagination" className="pagination-nav">
-        <ul className="pagination justify-content-center">
-          {/* Previous Button */}
-          <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-            {currentPage === 1 ? (
-              <span className="page-link">
-                <i className="fas fa-angle-double-left"></i>
-              </span>
-            ) : (
-              <Link href={generateUrl(currentPage - 1)} className="page-link">
-                <i className="fas fa-angle-double-left"></i>
-              </Link>
-            )}
-          </li>
+      {visiblePages.map((pageNum) => (
+        <Link key={pageNum} href={generateUrl(pageNum)} className={itemClass(pageNum === currentPage)}>
+          {pageNum}
+        </Link>
+      ))}
 
-          {/* First page if not visible */}
-          {startPage > 1 && (
-            <>
-              <li className="page-item">
-                <Link href={generateUrl(1)} className="page-link">
-                  1
-                </Link>
-              </li>
-              {startPage > 2 && (
-                <li className="page-item disabled">
-                  <span className="page-link">...</span>
-                </li>
-              )}
-            </>
-          )}
-
-          {/* Visible page numbers */}
-          {visiblePages.map((pageNum) => (
-            <li
-              key={pageNum}
-              className={`page-item ${currentPage === pageNum ? 'active' : ''}`}
-            >
-              {currentPage === pageNum ? (
-                <span className="page-link">{pageNum}</span>
-              ) : (
-                <Link href={generateUrl(pageNum)} className="page-link">
-                  {pageNum}
-                </Link>
-              )}
-            </li>
-          ))}
-
-          {/* Last page if not visible */}
-          {endPage < totalPages && (
-            <>
-              {endPage < totalPages - 1 && (
-                <li className="page-item disabled">
-                  <span className="page-link">...</span>
-                </li>
-              )}
-              <li className="page-item">
-                <Link href={generateUrl(totalPages)} className="page-link">
-                  {totalPages}
-                </Link>
-              </li>
-            </>
-          )}
-
-          {/* Next Button */}
-          <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-            {currentPage === totalPages ? (
-              <span className="page-link">
-                <i className="fas fa-angle-double-right"></i>
-              </span>
-            ) : (
-              <Link href={generateUrl(currentPage + 1)} className="page-link">
-                <i className="fas fa-angle-double-right"></i>
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
-    </div>
+      {currentPage === totalPages ? (
+        <span className={itemClass(false, true)}>
+          <ChevronRight className="tw-h-4 tw-w-4" />
+        </span>
+      ) : (
+        <Link href={generateUrl(currentPage + 1)} className={itemClass()}>
+          <ChevronRight className="tw-h-4 tw-w-4" />
+        </Link>
+      )}
+    </nav>
   );
 };
 

@@ -5,35 +5,28 @@ import { getAllBlogs } from '@/lib/blog';
 import {
   generateBlogListingStructuredData,
   generateWebsiteStructuredData,
-  StructuredDataScript
+  StructuredDataScript,
 } from '@/lib/structured-data';
+import Container from '@/components/site/Container';
+import { siteConfig } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Blog - Web Development Insights',
-  description: 'Discover insights on React, Next.js, web development, and modern software engineering practices.',
-  keywords: ['blog', 'web development', 'react', 'nextjs', 'javascript', 'typescript', 'programming'],
-  openGraph: {
-    title: 'Blog - Web Development Insights',
-    description: 'Discover insights on React, Next.js, web development, and modern software engineering practices.',
-    type: 'website'
-  }
+  title: 'Blog',
+  description: 'Notes on React, Next.js, and shipping production software.',
+  alternates: { canonical: `${siteConfig.url}/blog` },
 };
 
 export default async function BlogPage() {
-  // Get blog data for structured data
   const blogs = await getAllBlogs();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourportfolio.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
 
   const blogListingStructuredData = generateBlogListingStructuredData(blogs, siteUrl);
   const websiteStructuredData = generateWebsiteStructuredData(siteUrl);
 
   return (
     <>
-      {/* Structured Data */}
       <StructuredDataScript data={blogListingStructuredData} />
       <StructuredDataScript data={websiteStructuredData} />
-
-      {/* Blog Listing Content */}
       <Suspense fallback={<BlogListingFallback />}>
         <BlogListingContent />
       </Suspense>
@@ -43,35 +36,15 @@ export default async function BlogPage() {
 
 function BlogListingFallback() {
   return (
-    <div className="blog-listing-skeleton">
-      {/* Search and Filters Skeleton */}
-      <div className="mb-4">
-        <div className="row">
-          <div className="col-lg-8">
-            <div className="skeleton-search-bar"></div>
-          </div>
-          <div className="col-lg-4">
-            <div className="skeleton-filters"></div>
-          </div>
+    <section className="tw-py-16 sm:tw-py-24">
+      <Container>
+        <div className="tw-h-10 tw-w-48 tw-animate-pulse tw-rounded tw-bg-white/5" />
+        <div className="tw-mt-10 tw-grid tw-grid-cols-1 tw-gap-6 sm:tw-grid-cols-2 lg:tw-grid-cols-3">
+          {[...Array(6)].map((_, index) => (
+            <div key={index} className="tw-h-80 tw-animate-pulse tw-rounded-3xl tw-bg-white/5" />
+          ))}
         </div>
-      </div>
-
-      {/* Blog Grid Skeleton */}
-      <div className="row">
-        {[...Array(9)].map((_, index) => (
-          <div key={index} className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
-            <div className="blog-skeleton">
-              <div className="skeleton-thumb"></div>
-              <div className="skeleton-content">
-                <div className="skeleton-meta"></div>
-                <div className="skeleton-title"></div>
-                <div className="skeleton-excerpt"></div>
-                <div className="skeleton-button"></div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+      </Container>
+    </section>
   );
 }

@@ -6,54 +6,32 @@ import BlogCardV1 from './BlogCardV1';
 const BlogGrid = ({ posts, loading = false }: BlogGridProps) => {
   if (loading) {
     return (
-      <>
-        {[...Array(9)].map((_, index) => (
-          <div key={index} className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
-            <div className="blog-skeleton">
-              <div className="skeleton-thumb"></div>
-              <div className="skeleton-content">
-                <div className="skeleton-meta"></div>
-                <div className="skeleton-title"></div>
-                <div className="skeleton-excerpt"></div>
-                <div className="skeleton-button"></div>
-              </div>
-            </div>
-          </div>
+      <div className="tw-grid tw-grid-cols-1 tw-gap-6 sm:tw-grid-cols-2 lg:tw-grid-cols-3">
+        {[...Array(6)].map((_, index) => (
+          <div
+            key={index}
+            className="tw-h-80 tw-animate-pulse tw-rounded-3xl tw-border tw-border-white/10 tw-bg-white/5"
+          />
         ))}
-      </>
+      </div>
     );
   }
 
   if (!posts || posts.length === 0) {
     return (
-      <div className="col-lg-12">
-        <div className="no-posts-found">
-          <div className="text-center py-5">
-            <i className="fas fa-search fa-3x text-muted mb-3"></i>
-            <h3>No Blog Posts Found</h3>
-            <p className="text-muted">
-              No blog posts match your current filters. Try adjusting your search criteria.
-            </p>
-          </div>
-        </div>
+      <div className="tw-rounded-3xl tw-border tw-border-white/10 tw-bg-ink-900/40 tw-px-6 tw-py-16 tw-text-center">
+        <h3 className="tw-text-lg tw-font-semibold tw-text-white">No posts found</h3>
+        <p className="tw-mt-2 tw-text-sm tw-text-mist-400">Try a different search or clear the current filters.</p>
       </div>
     );
   }
 
   return (
-    <>
-      {posts.map((post, index) => (
-        <div key={post.id} className="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
-          <BlogCardV1
-            post={post}
-            variant={index === 0 ? 'featured' : 'default'}
-            showExcerpt={true}
-            showReadTime={true}
-            showAuthor={true}
-          />
-        </div>
+    <div className="tw-grid tw-grid-cols-1 tw-gap-6 sm:tw-grid-cols-2 lg:tw-grid-cols-3">
+      {posts.map((post) => (
+        <BlogCardV1 key={post.id} post={post} showExcerpt showReadTime />
       ))}
-    </>
+    </div>
   );
 };
 

@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getBlogBySlug, getAllBlogs } from '@/lib/blog';
 import BlogDetail from '@/components/blog/BlogDetail';
-import { generateSlug } from '@/lib/blog';
 import {
   generateBlogPostStructuredData,
   generateBreadcrumbStructuredData,
@@ -85,14 +84,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   ], siteUrl);
 
   return (
-    <div style={{ paddingTop: '100px' }}>
-      {/* Structured Data */}
+    <>
       <StructuredDataScript data={blogStructuredData} />
       <StructuredDataScript data={breadcrumbStructuredData} />
-
-      {/* Blog Content */}
       <BlogDetail post={blog} />
-    </div>
+    </>
   );
 }
 
