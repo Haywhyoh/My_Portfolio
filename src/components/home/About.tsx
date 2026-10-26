@@ -1,12 +1,13 @@
+import Image from 'next/image';
 import Container from '@/components/site/Container';
 import SectionHeading from '@/components/site/SectionHeading';
-import { skillGroups } from '@/lib/resumeData';
+import { siteConfig } from '@/lib/siteConfig';
 
 export default function About() {
   return (
-    <section id="about" className="tw-border-t tw-border-white/10 tw-bg-ink-950 tw-py-20 sm:tw-py-28">
+    <section id="about" className="tw-scroll-mt-20 tw-border-t tw-border-white/10 tw-bg-ink-950 tw-py-20 sm:tw-py-28">
       <Container>
-        <div className="tw-grid tw-grid-cols-1 tw-gap-16 lg:tw-grid-cols-[1fr_1.1fr]">
+        <div className="tw-grid tw-grid-cols-1 tw-items-center tw-gap-12 lg:tw-grid-cols-[1.15fr_0.85fr] lg:tw-gap-16">
           <div>
             <SectionHeading
               eyebrow="About me"
@@ -31,28 +32,31 @@ export default function About() {
             </div>
           </div>
 
-          <div className="tw-grid tw-grid-cols-1 tw-gap-5 sm:tw-grid-cols-2">
-            {skillGroups.map((group) => (
-              <div
-                key={group.label}
-                className="tw-rounded-2xl tw-border tw-border-white/10 tw-bg-white/[0.03] tw-p-5 tw-shadow-card tw-transition-colors hover:tw-border-accent-400/40"
-              >
-                <p className="tw-font-mono tw-text-xs tw-uppercase tw-tracking-[0.18em] tw-text-accent-400">
-                  {group.label}
-                </p>
-                <div className="tw-mt-4 tw-flex tw-flex-wrap tw-gap-2">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="tw-rounded-full tw-bg-white/5 tw-px-3 tw-py-1 tw-text-sm tw-text-mist-200"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+          <figure className="tw-relative tw-m-0 tw-mx-auto tw-w-full tw-max-w-md lg:tw-mx-0 lg:tw-max-w-none">
+            <div
+              aria-hidden
+              className="tw-pointer-events-none tw-absolute -tw-bottom-3 -tw-right-3 tw-hidden tw-h-full tw-w-full tw-rounded-[1.75rem] tw-border tw-border-white/20 sm:tw-block"
+            />
+            <div className="tw-relative tw-overflow-hidden tw-rounded-[1.75rem] tw-border tw-border-white/10 tw-bg-ink-800 tw-shadow-card">
+              <Image
+                src="/assets/img/potrait.png"
+                alt={`Portrait of ${siteConfig.name}`}
+                width={894}
+                height={800}
+                className="tw-block tw-h-auto tw-w-full"
+                sizes="(min-width: 1024px) 38vw, 28rem"
+              />
+            </div>
+            <figcaption className="tw-absolute tw-inset-x-3 tw-bottom-3 tw-flex tw-items-center tw-justify-between tw-gap-3 tw-rounded-2xl tw-border tw-border-white/10 tw-bg-ink-950/80 tw-px-4 tw-py-3 tw-backdrop-blur-md">
+              <div>
+                <p className="tw-m-0 tw-text-sm tw-font-medium tw-text-white">{siteConfig.name}</p>
+                <p className="tw-m-0 tw-mt-0.5 tw-text-xs tw-text-mist-300">{siteConfig.role}</p>
               </div>
-            ))}
-          </div>
+              <p className="tw-m-0 tw-shrink-0 tw-font-mono tw-text-[11px] tw-uppercase tw-tracking-[0.16em] tw-text-mist-300">
+                Lagos
+              </p>
+            </figcaption>
+          </figure>
         </div>
       </Container>
     </section>
