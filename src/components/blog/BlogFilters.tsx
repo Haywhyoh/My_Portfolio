@@ -52,7 +52,7 @@ const BlogFilters = ({
   const chip = (active: boolean) =>
     `tw-rounded-full tw-px-3 tw-py-1.5 tw-text-xs tw-font-medium tw-transition-colors ${
       active
-        ? 'tw-bg-accent-500 tw-text-white'
+        ? 'tw-bg-white tw-text-ink-950'
         : 'tw-bg-white/5 tw-text-mist-300 hover:tw-bg-white/10 hover:tw-text-white'
     }`;
 

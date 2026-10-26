@@ -4,7 +4,6 @@ import { motion, type Variants } from 'framer-motion';
 import { ArrowUpRight, Download, Sparkles } from 'lucide-react';
 import Container from '@/components/site/Container';
 import Button from '@/components/site/Button';
-import HeroStats from '@/components/home/HeroStats';
 import { siteConfig } from '@/lib/siteConfig';
 
 const fadeUp: Variants = {
@@ -18,13 +17,13 @@ const fadeUp: Variants = {
 
 export default function Hero() {
   return (
-    <section className="tw-relative tw-overflow-hidden tw-pb-20 tw-pt-16 sm:tw-pb-28 sm:tw-pt-24">
+    <section className="tw-relative tw-overflow-hidden tw-pb-16 tw-pt-16 sm:tw-pb-20 sm:tw-pt-24">
       <div className="tw-grain tw-pointer-events-none tw-absolute tw-inset-0" />
       <div
         className="tw-pointer-events-none tw-absolute tw-inset-x-0 tw-top-[-10%] tw-h-[600px]"
         style={{
           background:
-            'radial-gradient(650px circle at 50% 0%, rgba(109,91,255,0.22), transparent 65%)',
+            'radial-gradient(650px circle at 50% 0%, rgba(255,255,255,0.08), transparent 65%)',
         }}
       />
 
@@ -39,10 +38,7 @@ export default function Hero() {
             variants={fadeUp}
             className="tw-text-balance tw-text-4xl tw-font-semibold tw-leading-[1.1] tw-tracking-tight tw-text-white sm:tw-text-5xl lg:tw-text-6xl"
           >
-            I ships{' '}
-            <span className="tw-bg-gradient-to-r tw-from-accent-300 tw-via-accent-400 tw-to-glow-500 tw-bg-clip-text tw-text-transparent">
-              products, not prototypes.
-            </span>
+            I ships products, not prototypes.
           </motion.h1>
 
           <motion.p
@@ -70,8 +66,6 @@ export default function Hero() {
               Download résumé <Download className="tw-h-4 tw-w-4" />
             </Button>
           </motion.div>
-
-          <HeroStats />
         </div>
 
         <motion.div
@@ -82,9 +76,9 @@ export default function Hero() {
         >
           <div className="tw-rounded-2xl tw-border tw-border-white/10 tw-bg-ink-900/80 tw-shadow-card tw-backdrop-blur">
             <div className="tw-flex tw-items-center tw-gap-2 tw-border-b tw-border-white/10 tw-px-4 tw-py-3">
-              <span className="tw-h-2.5 tw-w-2.5 tw-rounded-full tw-bg-red-400/70" />
-              <span className="tw-h-2.5 tw-w-2.5 tw-rounded-full tw-bg-yellow-400/70" />
-              <span className="tw-h-2.5 tw-w-2.5 tw-rounded-full tw-bg-green-400/70" />
+              <span className="tw-h-2.5 tw-w-2.5 tw-rounded-full tw-bg-white/25" />
+              <span className="tw-h-2.5 tw-w-2.5 tw-rounded-full tw-bg-white/45" />
+              <span className="tw-h-2.5 tw-w-2.5 tw-rounded-full tw-bg-white/70" />
               <span className="tw-ml-2 tw-font-mono tw-text-xs tw-text-mist-400">status.ts</span>
             </div>
             <div className="tw-space-y-2 tw-px-5 tw-py-5 tw-font-mono tw-text-[13px] tw-leading-relaxed">

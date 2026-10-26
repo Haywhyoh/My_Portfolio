@@ -42,7 +42,7 @@ export default function Header() {
           href="/"
           className="tw-group tw-flex tw-items-center tw-gap-2 tw-font-display tw-text-lg tw-font-semibold tw-text-white"
         >
-          <span className="tw-flex tw-h-9 tw-w-9 tw-items-center tw-justify-center tw-rounded-xl tw-bg-accent-500 tw-font-mono tw-text-sm tw-text-white tw-shadow-glow tw-transition-transform tw-group-hover:-tw-rotate-6">
+          <span className="tw-flex tw-h-9 tw-w-9 tw-items-center tw-justify-center tw-rounded-xl tw-bg-white tw-font-mono tw-text-sm tw-text-ink-950 tw-shadow-glow tw-transition-transform tw-group-hover:-tw-rotate-6">
             AS
           </span>
           <span className="tw-hidden sm:tw-inline">Ayomide Samuel</span>

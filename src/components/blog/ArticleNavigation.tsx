@@ -151,18 +151,18 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
           padding: 28px;
           background: white;
           border-radius: 16px;
-          box-shadow: 0 8px 25px rgba(99, 102, 241, 0.08);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
           text-decoration: none;
           color: inherit;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           height: 100%;
-          border: 1px solid rgba(99, 102, 241, 0.1);
+          border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .nav-link:hover {
           transform: translateY(-4px);
-          box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
-          border-color: rgba(99, 102, 241, 0.2);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+          border-color: rgba(0, 0, 0, 0.2);
         }
 
         .nav-link.disabled {
@@ -178,12 +178,12 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
           justify-content: center;
           width: 56px;
           height: 56px;
-          background: linear-gradient(135deg, #6366f1, #8b5cf6);
+          background: #111111;
           color: white;
           border-radius: 50%;
           font-size: 20px;
           flex-shrink: 0;
-          box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .nav-content {
@@ -195,7 +195,7 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
           font-size: 13px;
           font-weight: 600;
           text-transform: uppercase;
-          color: #8b5cf6;
+          color: #111111;
           margin-bottom: 10px;
           letter-spacing: 0.8px;
         }
@@ -235,19 +235,19 @@ export default function ArticleNavigation({ postId }: ArticleNavigationProps) {
           align-items: center;
           gap: 12px;
           padding: 24px;
-          background: linear-gradient(135deg, #6366f1, #8b5cf6);
+          background: #111111;
           color: white;
           border-radius: 16px;
           text-decoration: none;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           min-width: 140px;
-          box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .back-link:hover {
-          background: linear-gradient(135deg, #4f46e5, #7c3aed);
+          background: #000000;
           transform: translateY(-4px);
-          box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
         }
 
         .back-link i {

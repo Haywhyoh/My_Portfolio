@@ -34,7 +34,7 @@ const BlogPagination = ({
       disabled
         ? 'tw-pointer-events-none tw-text-mist-400/40'
         : active
-          ? 'tw-bg-accent-500 tw-text-white'
+          ? 'tw-bg-white tw-text-ink-950'
           : 'tw-text-mist-300 hover:tw-bg-white/10 hover:tw-text-white'
     }`;
 

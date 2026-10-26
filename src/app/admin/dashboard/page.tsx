@@ -287,7 +287,7 @@ export default function AdminDashboard() {
         }
 
         .welcome-card {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
         }
 
         .card {

@@ -16,7 +16,7 @@ export default function CTASection({
         className="tw-pointer-events-none tw-absolute tw-inset-0 tw-opacity-70"
         style={{
           background:
-            'radial-gradient(600px circle at 20% 20%, rgba(109,91,255,0.18), transparent 60%), radial-gradient(500px circle at 80% 80%, rgba(0,230,168,0.12), transparent 60%)',
+            'radial-gradient(600px circle at 20% 20%, rgba(255,255,255,0.07), transparent 60%), radial-gradient(500px circle at 80% 80%, rgba(255,255,255,0.04), transparent 60%)',
         }}
       />
       <Container className="tw-relative tw-text-center">

@@ -93,7 +93,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             display: 'flex',
             flexDirection: 'column',
             backgroundColor: '#1a1a1a',
-            backgroundImage: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            backgroundImage: 'linear-gradient(135deg, #0a0a0a 0%, #1f1f1f 100%)',
             position: 'relative',
           }}
         >
@@ -105,7 +105,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%)',
+              background: 'radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%)',
             }}
           />
           
