@@ -64,6 +64,7 @@ module.exports = {
       animation: {
         'fade-up': 'fadeUp 0.7s ease forwards',
         marquee: 'marquee 32s linear infinite',
+        'marquee-slow': 'marquee 70s linear infinite',
         blink: 'blink 1s steps(1) infinite',
       },
       keyframes: {

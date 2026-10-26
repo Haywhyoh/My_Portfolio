@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, Star } from 'lucide-react';
 import Container from '@/components/site/Container';
 import SectionHeading from '@/components/site/SectionHeading';
@@ -59,16 +59,14 @@ function PersonMark({ review }: { review: ClientReview }) {
   );
 }
 
-function ReviewCard({ review, large }: { review: ClientReview; large: boolean }) {
+function ReviewCard({ review }: { review: ClientReview }) {
   const upwork = review.source === 'upwork';
 
   return (
     <article
-      className={`tw-flex tw-h-full tw-flex-col tw-rounded-3xl tw-border tw-border-white/10 tw-bg-ink-900/70 tw-p-6 tw-shadow-card tw-transition-colors hover:tw-border-white/25 sm:tw-p-7 ${
-        large ? 'xl:tw-p-8' : ''
-      }`}
+      className="tw-flex tw-w-[min(82vw,26rem)] tw-flex-shrink-0 tw-flex-col tw-rounded-3xl tw-border tw-border-white/10 tw-bg-ink-900/80 tw-p-6 tw-shadow-card tw-transition-colors hover:tw-border-white/25 sm:tw-p-7"
       style={
-        large
+        review.featured
           ? {
               backgroundImage:
                 'radial-gradient(420px circle at 0% 0%, rgba(20,168,0,0.14), transparent 58%)',
@@ -93,11 +91,7 @@ function ReviewCard({ review, large }: { review: ClientReview; large: boolean })
         </span>
       </div>
 
-      <blockquote
-        className={`tw-m-0 tw-mt-5 tw-flex-1 tw-text-pretty tw-font-medium tw-leading-relaxed tw-text-white ${
-          large ? 'tw-text-xl sm:tw-text-2xl sm:tw-leading-snug' : 'tw-text-[15px] sm:tw-text-base'
-        }`}
-      >
+      <blockquote className="tw-m-0 tw-mt-5 tw-text-pretty tw-text-[15px] tw-font-medium tw-leading-relaxed tw-text-white sm:tw-text-base">
         <span aria-hidden className="tw-mr-1 tw-text-white/35">
           “
         </span>
@@ -133,7 +127,8 @@ function ReviewCard({ review, large }: { review: ClientReview; large: boolean })
         </ul>
       )}
 
-      <footer className="tw-mt-6 tw-flex tw-items-center tw-gap-3 tw-border-t tw-border-white/10 tw-pt-5">
+      <div className="tw-mt-6 tw-flex-1" aria-hidden />
+      <footer className="tw-flex tw-items-center tw-gap-3 tw-border-t tw-border-white/10 tw-pt-5">
         <PersonMark review={review} />
         <div className="tw-min-w-0">
           <p className="tw-m-0 tw-line-clamp-2 tw-text-sm tw-font-semibold tw-text-white">{review.name}</p>
@@ -163,6 +158,47 @@ function EarlierLine({
         {contract} · {period}
       </span>
     </span>
+  );
+}
+
+function ReviewLane({ reviews, hidden = false }: { reviews: ClientReview[]; hidden?: boolean }) {
+  return (
+    <div className="tw-flex tw-shrink-0 tw-items-stretch tw-gap-4 tw-pr-4" aria-hidden={hidden}>
+      {reviews.map((review) => (
+        <ReviewCard key={review.id} review={review} />
+      ))}
+    </div>
+  );
+}
+
+function ReviewTrack({ reviews, animated }: { reviews: ClientReview[]; animated: boolean }) {
+  if (!animated) {
+    return (
+      <div className="tw-no-scrollbar tw-mt-8 tw-flex tw-snap-x tw-snap-mandatory tw-gap-4 tw-overflow-x-auto tw-pb-4">
+        {reviews.map((review) => (
+          <div key={review.id} className="tw-snap-start">
+            <ReviewCard review={review} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="tw-relative tw-mt-8 tw-ml-[calc(50%-50vw)] tw-w-screen tw-overflow-hidden tw-py-1">
+      <div
+        aria-hidden
+        className="tw-pointer-events-none tw-absolute tw-inset-y-0 tw-left-0 tw-z-10 tw-w-12 tw-bg-gradient-to-r tw-from-ink-950 tw-to-transparent sm:tw-w-24"
+      />
+      <div
+        aria-hidden
+        className="tw-pointer-events-none tw-absolute tw-inset-y-0 tw-right-0 tw-z-10 tw-w-12 tw-bg-gradient-to-l tw-from-ink-950 tw-to-transparent sm:tw-w-24"
+      />
+      <div className="tw-flex tw-w-max tw-animate-marquee-slow tw-items-stretch hover:tw-[animation-play-state:paused] focus-within:tw-[animation-play-state:paused]">
+        <ReviewLane reviews={reviews} />
+        <ReviewLane reviews={reviews} hidden />
+      </div>
+    </div>
   );
 }
 
@@ -270,28 +306,7 @@ export default function Reviews() {
           })}
         </div>
 
-        <motion.div
-          layout
-          className={`tw-mt-6 tw-grid tw-grid-cols-1 tw-gap-4 md:tw-grid-cols-2 ${
-            filter === 'all' ? 'xl:tw-grid-cols-12' : 'xl:tw-grid-cols-3'
-          }`}
-        >
-          <AnimatePresence mode="popLayout" initial={false}>
-            {visible.map((review) => (
-              <motion.div
-                key={review.id}
-                layout
-                initial={reduce ? false : { opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reduce ? undefined : { opacity: 0, scale: 0.98 }}
-                transition={{ duration: reduce ? 0 : 0.28, ease: 'easeOut' }}
-                className={filter === 'all' ? review.layout : ''}
-              >
-                <ReviewCard review={review} large={Boolean(review.featured && filter === 'all')} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <ReviewTrack key={filter} reviews={visible} animated={!reduce} />
 
         <div className="tw-mt-14 tw-border-t tw-border-white/10 tw-pt-8">
           <p className="tw-m-0 tw-font-mono tw-text-xs tw-uppercase tw-tracking-[0.2em] tw-text-mist-400">
