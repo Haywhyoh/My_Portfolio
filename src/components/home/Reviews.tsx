@@ -27,16 +27,19 @@ const proofStats = [
 
 function Stars({ rating }: { rating: number }) {
   return (
-    <span className="tw-inline-flex tw-items-center tw-gap-0.5" aria-label={`${rating.toFixed(1)} out of 5`}>
+    <span className="tw-inline-flex tw-shrink-0 tw-items-center tw-gap-0.5" aria-label={`${rating.toFixed(1)} out of 5`}>
       {Array.from({ length: 5 }, (_, index) => {
-        const fill = Math.min(Math.max(rating - index, 0), 1);
+        const filled = rating >= index + 1;
+        const partial = !filled && rating > index;
         return (
-          <span key={index} className="tw-relative tw-block tw-h-3.5 tw-w-3.5" aria-hidden>
-            <Star className="tw-h-3.5 tw-w-3.5 tw-text-white/20" strokeWidth={1.75} />
-            <span className="tw-absolute tw-inset-y-0 tw-left-0 tw-overflow-hidden" style={{ width: `${fill * 100}%` }}>
-              <Star className="tw-h-3.5 tw-w-3.5 tw-fill-white tw-text-white" strokeWidth={1.75} />
-            </span>
-          </span>
+          <Star
+            key={index}
+            aria-hidden
+            strokeWidth={1.75}
+            className={`tw-h-3 tw-w-3 tw-shrink-0 ${
+              filled || partial ? 'tw-fill-white tw-text-white' : 'tw-fill-transparent tw-text-white/25'
+            }`}
+          />
         );
       })}
     </span>
@@ -46,15 +49,15 @@ function Stars({ rating }: { rating: number }) {
 function PersonMark({ review }: { review: ClientReview }) {
   if (review.avatar) {
     return (
-      <span className="tw-relative tw-block tw-h-11 tw-w-11 tw-flex-shrink-0 tw-overflow-hidden tw-rounded-full tw-bg-ink-800 tw-ring-1 tw-ring-white/15">
-        <Image src={review.avatar} alt="" fill sizes="44px" className="tw-object-cover" />
+      <span className="tw-relative tw-block tw-h-8 tw-w-8 tw-flex-shrink-0 tw-overflow-hidden tw-rounded-full tw-bg-ink-800 tw-ring-1 tw-ring-white/15">
+        <Image src={review.avatar} alt="" fill sizes="32px" className="tw-object-cover" />
       </span>
     );
   }
 
   return (
-    <span className="tw-flex tw-h-11 tw-w-11 tw-flex-shrink-0 tw-items-center tw-justify-center tw-rounded-full tw-bg-[#14a800]/15 tw-text-[#6dce5b] tw-ring-1 tw-ring-[#14a800]/40">
-      <UpworkIcon className="tw-h-5 tw-w-5" />
+    <span className="tw-flex tw-h-8 tw-w-8 tw-flex-shrink-0 tw-items-center tw-justify-center tw-rounded-full tw-bg-[#14a800]/15 tw-text-[#6dce5b] tw-ring-1 tw-ring-[#14a800]/40">
+      <UpworkIcon className="tw-h-3.5 tw-w-3.5" />
     </span>
   );
 }
@@ -64,7 +67,7 @@ function ReviewCard({ review }: { review: ClientReview }) {
 
   return (
     <article
-      className="tw-flex tw-w-[min(82vw,26rem)] tw-flex-shrink-0 tw-flex-col tw-rounded-3xl tw-border tw-border-white/10 tw-bg-ink-900/80 tw-p-6 tw-shadow-card tw-transition-colors hover:tw-border-white/25 sm:tw-p-7"
+      className="tw-flex tw-w-[min(72vw,18.5rem)] tw-flex-shrink-0 tw-flex-col tw-self-stretch tw-rounded-2xl tw-border tw-border-white/10 tw-bg-ink-900 tw-p-4 tw-shadow-card tw-transition-colors hover:tw-border-white/25"
       style={
         review.featured
           ? {
@@ -74,24 +77,24 @@ function ReviewCard({ review }: { review: ClientReview }) {
           : undefined
       }
     >
-      <div className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+      <div className="tw-relative tw-z-10 tw-flex tw-shrink-0 tw-items-center tw-justify-between tw-gap-2">
         <span
-          className={`tw-inline-flex tw-items-center tw-gap-1.5 tw-rounded-full tw-px-2.5 tw-py-1 tw-font-mono tw-text-[10px] tw-uppercase tw-tracking-[0.16em] ${
+          className={`tw-inline-flex tw-shrink-0 tw-items-center tw-gap-1.5 tw-rounded-full tw-px-2 tw-py-1 tw-font-mono tw-text-[10px] tw-uppercase tw-tracking-[0.16em] ${
             upwork
               ? 'tw-bg-[#14a800]/15 tw-text-[#7dce6a]'
               : 'tw-bg-white/5 tw-text-mist-300'
           }`}
         >
           {upwork ? <UpworkIcon className="tw-h-3 tw-w-3" /> : null}
-          {upwork ? 'Upwork' : 'Direct client'}
+          {upwork ? 'Upwork' : 'Direct'}
         </span>
-        <span className="tw-inline-flex tw-items-center tw-gap-2">
-          <span className="tw-font-mono tw-text-xs tw-text-white">{review.rating.toFixed(1)}</span>
+        <span className="tw-inline-flex tw-shrink-0 tw-items-center tw-gap-1.5 tw-whitespace-nowrap">
+          <span className="tw-font-mono tw-text-xs tw-leading-none tw-text-white">{review.rating.toFixed(1)}</span>
           <Stars rating={review.rating} />
         </span>
       </div>
 
-      <blockquote className="tw-m-0 tw-mt-5 tw-text-pretty tw-text-[15px] tw-font-medium tw-leading-relaxed tw-text-white sm:tw-text-base">
+      <blockquote className="tw-relative tw-z-0 tw-m-0 tw-mt-3 tw-min-w-0 tw-break-words tw-text-sm tw-font-medium tw-leading-snug tw-text-white">
         <span aria-hidden className="tw-mr-1 tw-text-white/35">
           “
         </span>
@@ -102,7 +105,7 @@ function ReviewCard({ review }: { review: ClientReview }) {
       </blockquote>
 
       {review.tags && review.tags.length > 0 && (
-        <ul className="tw-m-0 tw-mt-5 tw-flex tw-list-none tw-flex-wrap tw-gap-2 tw-p-0">
+        <ul className="tw-m-0 tw-mt-3 tw-flex tw-list-none tw-flex-wrap tw-gap-1.5 tw-p-0">
           {review.tags.map((tag) => (
             <li
               key={tag}
@@ -115,7 +118,7 @@ function ReviewCard({ review }: { review: ClientReview }) {
       )}
 
       {review.endorsements && review.endorsements.length > 0 && (
-        <ul className="tw-m-0 tw-mt-4 tw-flex tw-list-none tw-flex-wrap tw-gap-1.5 tw-p-0">
+        <ul className="tw-m-0 tw-mt-2.5 tw-flex tw-list-none tw-flex-wrap tw-gap-1 tw-p-0">
           {review.endorsements.map((item) => (
             <li
               key={item}
@@ -127,12 +130,12 @@ function ReviewCard({ review }: { review: ClientReview }) {
         </ul>
       )}
 
-      <div className="tw-mt-6 tw-flex-1" aria-hidden />
-      <footer className="tw-flex tw-items-center tw-gap-3 tw-border-t tw-border-white/10 tw-pt-5">
+      <div className="tw-min-h-4 tw-flex-1" aria-hidden />
+      <footer className="tw-mt-4 tw-flex tw-shrink-0 tw-items-center tw-gap-2.5 tw-border-t tw-border-white/10 tw-pt-3">
         <PersonMark review={review} />
         <div className="tw-min-w-0">
-          <p className="tw-m-0 tw-line-clamp-2 tw-text-sm tw-font-semibold tw-text-white">{review.name}</p>
-          <p className="tw-m-0 tw-mt-0.5 tw-truncate tw-text-xs tw-text-mist-400">{review.detail}</p>
+          <p className="tw-m-0 tw-line-clamp-2 tw-text-[13px] tw-font-semibold tw-leading-tight tw-text-white">{review.name}</p>
+          <p className="tw-m-0 tw-mt-0.5 tw-truncate tw-text-[11px] tw-text-mist-400">{review.detail}</p>
         </div>
       </footer>
     </article>
@@ -163,7 +166,7 @@ function EarlierLine({
 
 function ReviewLane({ reviews, hidden = false }: { reviews: ClientReview[]; hidden?: boolean }) {
   return (
-    <div className="tw-flex tw-shrink-0 tw-items-stretch tw-gap-4 tw-pr-4" aria-hidden={hidden}>
+    <div className="tw-flex tw-shrink-0 tw-items-stretch tw-gap-3 tw-pr-3" aria-hidden={hidden}>
       {reviews.map((review) => (
         <ReviewCard key={review.id} review={review} />
       ))}
@@ -174,9 +177,9 @@ function ReviewLane({ reviews, hidden = false }: { reviews: ClientReview[]; hidd
 function ReviewTrack({ reviews, animated }: { reviews: ClientReview[]; animated: boolean }) {
   if (!animated) {
     return (
-      <div className="tw-no-scrollbar tw-mt-8 tw-flex tw-snap-x tw-snap-mandatory tw-gap-4 tw-overflow-x-auto tw-pb-4">
+      <div className="tw-no-scrollbar tw-mt-8 tw-flex tw-snap-x tw-snap-mandatory tw-items-stretch tw-gap-3 tw-overflow-x-auto tw-pb-4">
         {reviews.map((review) => (
-          <div key={review.id} className="tw-snap-start">
+          <div key={review.id} className="tw-flex tw-snap-start">
             <ReviewCard review={review} />
           </div>
         ))}
