@@ -125,14 +125,3 @@
 #tw-root .tw-text-balance {
   text-wrap: balance;
 }
-
-#tw-root .tw-link-underline {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 0.3s ease;
-}
-#tw-root .tw-link-underline:hover {
-  background-size: 100% 1px;
-}
