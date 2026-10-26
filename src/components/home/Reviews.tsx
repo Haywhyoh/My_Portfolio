@@ -94,7 +94,7 @@ function ReviewCard({ review }: { review: ClientReview }) {
         </span>
       </div>
 
-      <blockquote className="tw-relative tw-z-0 tw-m-0 tw-mt-3 tw-min-w-0 tw-break-words tw-text-sm tw-font-medium tw-leading-snug tw-text-white">
+      <blockquote className="tw-relative tw-z-0 tw-m-0 tw-mt-4 tw-min-w-0 tw-break-words tw-text-sm tw-font-medium tw-leading-snug tw-text-white">
         <span aria-hidden className="tw-mr-1 tw-text-white/35">
           “
         </span>
