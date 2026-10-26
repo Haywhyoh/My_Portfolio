@@ -43,7 +43,7 @@ export const caseStudies: CaseStudy[] = [
     role: 'Founding Engineer — platform, sandbox infra & AI tutor',
     year: '2025 — Present',
     liveUrl: 'https://noslop.codemygig.com',
-    heroImage: '/assets/img/work/noslop-hero.png',
+    heroImage: '/assets/img/projects/noslop.codemygig.com.jpg',
     featured: true,
     accent: 'accent',
     summary:
@@ -79,7 +79,7 @@ export const caseStudies: CaseStudy[] = [
     role: 'Founding Engineer — product, backend & AI assistant',
     year: '2025 — Present',
     liveUrl: 'https://botglam.com',
-    heroImage: '/assets/img/work/botglam-hero.png',
+    heroImage: '/assets/img/projects/botglam.com.jpg',
     featured: true,
     accent: 'rose',
     summary:
@@ -117,7 +117,7 @@ export const caseStudies: CaseStudy[] = [
     role: 'Full-Stack Developer',
     year: '2025',
     liveUrl: 'https://bountybarnhq.com',
-    heroImage: '/assets/img/work/bountybarn-hero.png',
+    heroImage: '/assets/img/projects/bountybarnhq.com.jpg',
     featured: true,
     accent: 'amber',
     summary:
@@ -147,7 +147,7 @@ export const caseStudies: CaseStudy[] = [
     role: 'Full-Stack Developer',
     year: '2025',
     liveUrl: 'https://madlas.com',
-    heroImage: '/assets/img/work/madlas-hero.png',
+    heroImage: '/assets/img/projects/madlas.com.jpg',
     featured: true,
     accent: 'amber',
     summary:
@@ -207,7 +207,7 @@ export const caseStudies: CaseStudy[] = [
     role: 'Full-Stack Developer',
     year: '2024',
     liveUrl: 'https://balanceselfcare.ca',
-    heroImage: '/assets/img/work/balanceselfcare-hero.png',
+    heroImage: '/assets/img/projects/balanceselfcare.ca.jpg',
     featured: true,
     accent: 'glow',
     summary:
@@ -249,7 +249,7 @@ export const moreProjects: MoreProject[] = [
     tagline: 'An online course marketplace connecting top schools with learners.',
     tags: ['EdTech', 'Marketplace'],
     liveUrl: 'https://hillpad.com',
-    thumb: '/assets/img/projects/1.png',
+    thumb: '/assets/img/projects/hillpad.com.jpg',
     role: 'Frontend Engineer → Full-Stack Developer',
     year: '2024 – 2025',
     summary:
@@ -262,7 +262,7 @@ export const moreProjects: MoreProject[] = [
     tagline: 'A music beat marketplace for producers and artists.',
     tags: ['Music', 'Marketplace'],
     liveUrl: 'https://graviitalbeats.com',
-    thumb: '/assets/img/projects/2.png',
+    thumb: '/assets/img/projects/graviitalbeats.com.jpg',
     role: 'Full-Stack Developer',
     year: '2025',
     summary:
@@ -293,6 +293,32 @@ export const moreProjects: MoreProject[] = [
       'A content and community platform built to help a community initiative reach and organize its members online.',
     stack: ['React', 'Node.js'],
   },
+  {
+    slug: 'critikhub',
+    name: 'CritikHub',
+    tagline: 'A music desk where fans, artists, and industry pros rate records — and the culture around them.',
+    tags: ['Music', 'Community', 'Early Access'],
+    liveUrl: 'https://critikhub.com',
+    thumb: '/assets/img/projects/critikhub.com.jpg',
+    role: 'Full-Stack Developer',
+    year: '2026',
+    summary:
+      'An early-access music platform built around rating cards and a waitlist: fans and industry people review records, compare scores, and find music that is actually being talked about.',
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+  },
+  {
+    slug: 'codemygig',
+    name: 'CodeMyGig',
+    tagline: 'The studio site for a software agency that takes a product from the first call to launch.',
+    tags: ['Agency', 'Marketing Site'],
+    liveUrl: 'https://codemygig.com',
+    thumb: '/assets/img/projects/codemygig.com.jpg',
+    role: 'Software Engineer',
+    year: '2025',
+    summary:
+      'Public site for the CodeMyGig studio — services, selected work, training, and a direct path from a consultation to a build.',
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+  },
 ];
 
 export function getAllSlugs() {
@@ -309,3 +335,65 @@ export function getCaseStudyBySlug(slug: string) {
 export function getMoreProjectBySlug(slug: string) {
   return moreProjects.find((p) => p.slug === slug);
 }
+
+/** MacBook frames shot at 3142×1804. Anything else is a plain screenshot. */
+export function isDeviceMockup(src: string) {
+  return /\/assets\/img\/projects\/[^/]+\.jpe?g$/i.test(src);
+}
+
+export interface ShowcaseProject {
+  slug: string;
+  name: string;
+  tagline: string;
+  tags: string[];
+  role: string;
+  year: string;
+  liveUrl?: string;
+  image: string;
+}
+
+const showcaseSlugs = [
+  'noslop',
+  'botglam',
+  'hillpad',
+  'madlas',
+  'critikhub',
+  'bountybarn',
+  'balance-self-care',
+  'graviitalbeats',
+  'codemygig',
+];
+
+export const showcaseProjects: ShowcaseProject[] = showcaseSlugs.flatMap((slug) => {
+  const study = caseStudies.find((item) => item.slug === slug);
+  if (study) {
+    return [
+      {
+        slug: study.slug,
+        name: study.name,
+        tagline: study.tagline,
+        tags: study.tags,
+        role: study.role,
+        year: study.year,
+        liveUrl: study.liveUrl,
+        image: study.heroImage,
+      },
+    ];
+  }
+
+  const project = moreProjects.find((item) => item.slug === slug);
+  if (!project) return [];
+
+  return [
+    {
+      slug: project.slug,
+      name: project.name,
+      tagline: project.tagline,
+      tags: project.tags,
+      role: project.role,
+      year: project.year,
+      liveUrl: project.liveUrl,
+      image: project.thumb,
+    },
+  ];
+});

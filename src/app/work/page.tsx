@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import Container from '@/components/site/Container';
 import SectionHeading from '@/components/site/SectionHeading';
 import CTASection from '@/components/site/CTASection';
 import { caseStudies, moreProjects } from '@/lib/projectsData';
+import ProjectFrame from '@/components/project/ProjectFrame';
 import { siteConfig } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
@@ -42,16 +42,11 @@ export default function WorkPage() {
                 href={`/work/${project.slug}`}
                 className="tw-group tw-relative tw-overflow-hidden tw-rounded-3xl tw-border tw-border-white/10 tw-bg-ink-900/60 tw-shadow-card tw-transition-all tw-duration-300 hover:-tw-translate-y-1 hover:tw-border-accent-400/50"
               >
-                <div className="tw-relative tw-aspect-[16/10] tw-w-full tw-overflow-hidden tw-bg-ink-800">
-                  <Image
-                    src={project.heroImage}
-                    alt={`${project.name} preview`}
-                    fill
-                    className="tw-object-cover tw-object-top tw-transition-transform tw-duration-500 tw-group-hover:tw-scale-[1.03]"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                  />
-                  <div className="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-ink-950 tw-via-ink-950/10 tw-to-transparent" />
-                </div>
+                <ProjectFrame
+                  src={project.heroImage}
+                  alt={`${project.name} on a laptop`}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                />
                 <div className="tw-p-6 sm:tw-p-7">
                   <div className="tw-flex tw-flex-wrap tw-gap-2">
                     {project.tags.map((tag) => (
@@ -77,22 +72,19 @@ export default function WorkPage() {
       <section className="tw-border-t tw-border-white/10 tw-bg-ink-900/40 tw-py-20 sm:tw-py-24">
         <Container>
           <SectionHeading eyebrow="More projects" title="A few more things I've built." />
-          <div className="tw-mt-10 tw-grid tw-grid-cols-1 tw-gap-5 sm:tw-grid-cols-2 lg:tw-grid-cols-4">
+          <div className="tw-mt-10 tw-grid tw-grid-cols-1 tw-gap-5 sm:tw-grid-cols-2 lg:tw-grid-cols-3">
             {moreProjects.map((project) => (
               <Link
                 key={project.slug}
                 href={`/work/${project.slug}`}
                 className="tw-group tw-overflow-hidden tw-rounded-2xl tw-border tw-border-white/10 tw-bg-ink-950 tw-shadow-card tw-transition-all hover:-tw-translate-y-1 hover:tw-border-accent-400/40"
               >
-                <div className="tw-relative tw-aspect-[4/3] tw-w-full tw-overflow-hidden tw-bg-ink-800">
-                  <Image
-                    src={project.thumb}
-                    alt={`${project.name} preview`}
-                    fill
-                    className="tw-object-cover tw-transition-transform tw-duration-500 tw-group-hover:tw-scale-105"
-                    sizes="(min-width: 1024px) 25vw, 50vw"
-                  />
-                </div>
+                <ProjectFrame
+                  src={project.thumb}
+                  alt={`${project.name} preview`}
+                  sizes="(min-width: 1024px) 33vw, 50vw"
+                  fallbackClassName="tw-aspect-[4/3]"
+                />
                 <div className="tw-p-4">
                   <h3 className="tw-text-base tw-font-semibold tw-text-white">{project.name}</h3>
                   <p className="tw-mt-1 tw-text-xs tw-text-mist-400">{project.tagline}</p>

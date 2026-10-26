@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
@@ -16,6 +15,7 @@ import {
 } from '@/lib/projectsData';
 import { siteConfig } from '@/lib/siteConfig';
 import { projectJsonLd } from '@/lib/seo';
+import ProjectFrame from '@/components/project/ProjectFrame';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -102,10 +102,16 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </Container>
         </section>
 
-        <section className="tw-py-0">
+        <section className="tw-pb-4 tw-pt-2">
           <Container>
-            <div className="tw-relative tw-mt-[-1px] tw-aspect-[16/9] tw-w-full tw-overflow-hidden tw-rounded-3xl tw-border tw-border-white/10 tw-shadow-card sm:tw-aspect-[16/8]">
-              <Image src={caseStudy.heroImage} alt={`${caseStudy.name} screenshot`} fill className="tw-object-cover tw-object-top" priority />
+            <div className="tw-overflow-hidden tw-rounded-3xl tw-border tw-border-white/10 tw-shadow-card">
+              <ProjectFrame
+                src={caseStudy.heroImage}
+                alt={`${caseStudy.name} on a laptop`}
+                sizes="(min-width: 1280px) 1200px, 100vw"
+                priority
+                fallbackClassName="tw-aspect-[16/9]"
+              />
             </div>
           </Container>
         </section>
@@ -199,10 +205,16 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </Container>
       </section>
 
-      <section>
+      <section className="tw-pb-4 tw-pt-2">
         <Container>
-          <div className="tw-relative tw-mt-[-1px] tw-aspect-[16/9] tw-w-full tw-overflow-hidden tw-rounded-3xl tw-border tw-border-white/10 tw-shadow-card">
-            <Image src={project.thumb} alt={`${project.name} preview`} fill className="tw-object-cover" />
+          <div className="tw-overflow-hidden tw-rounded-3xl tw-border tw-border-white/10 tw-shadow-card">
+            <ProjectFrame
+              src={project.thumb}
+              alt={`${project.name} preview`}
+              sizes="(min-width: 1280px) 1200px, 100vw"
+              priority
+              fallbackClassName="tw-aspect-[16/9]"
+            />
           </div>
         </Container>
       </section>
