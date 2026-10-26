@@ -35,6 +35,7 @@ export const siteConfig = {
     github: 'https://github.com/Haywhyoh',
     linkedin: 'https://www.linkedin.com/in/ayomide-samuel',
     twitter: 'https://twitter.com/haywhyoh',
+    youtube: 'https://www.youtube.com/@cruise_dev',
     upwork: 'https://www.upwork.com/freelancers/~01a49b6b5c0e817554',
   },
   nav: [

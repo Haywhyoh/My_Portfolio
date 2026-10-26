@@ -12,7 +12,12 @@ export const personJsonLd = {
   jobTitle: siteConfig.role,
   url: siteConfig.url,
   email: `mailto:${siteConfig.email}`,
-  sameAs: [siteConfig.social.github, siteConfig.social.linkedin, siteConfig.social.twitter],
+  sameAs: [
+    siteConfig.social.github,
+    siteConfig.social.linkedin,
+    siteConfig.social.twitter,
+    siteConfig.social.youtube,
+  ],
   knowsAbout: [
     'JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', 'NestJS',
     'Django', 'PostgreSQL', 'System Design', 'AI Product Engineering',

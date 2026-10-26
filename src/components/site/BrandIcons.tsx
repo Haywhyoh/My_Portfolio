@@ -29,6 +29,14 @@ export function UpworkIcon({ className = 'tw-h-4 tw-w-4' }: IconProps) {
   );
 }
 
+export function YoutubeIcon({ className = 'tw-h-4 tw-w-4' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.38.45A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.45 9.38.45 9.38.45s7.5 0 9.38-.45a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81ZM9.75 15.57V8.43L15.84 12l-6.09 3.57Z" />
+    </svg>
+  );
+}
+
 export function TwitterIcon({ className = 'tw-h-4 tw-w-4' }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
