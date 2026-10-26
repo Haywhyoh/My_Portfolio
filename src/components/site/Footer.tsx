@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import Container from './Container';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from './BrandIcons';
+import { GithubIcon, LinkedinIcon, TwitterIcon, UpworkIcon } from './BrandIcons';
 import { siteConfig } from '@/lib/siteConfig';
 
 export default function Footer() {
@@ -25,6 +25,9 @@ export default function Footer() {
               </SocialIcon>
               <SocialIcon href={siteConfig.social.twitter} label="Twitter / X">
                 <TwitterIcon />
+              </SocialIcon>
+              <SocialIcon href={siteConfig.social.upwork} label="Upwork">
+                <UpworkIcon />
               </SocialIcon>
               <SocialIcon href={`mailto:${siteConfig.email}`} label="Email">
                 <Mail className="tw-h-4 tw-w-4" />

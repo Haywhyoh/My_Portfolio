@@ -4,6 +4,7 @@ import About from '@/components/home/About';
 import Skills from '@/components/home/Skills';
 import FeaturedWork from '@/components/home/FeaturedWork';
 import Experience from '@/components/home/Experience';
+import Reviews from '@/components/home/Reviews';
 import CTASection from '@/components/site/CTASection';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Skills />
       <FeaturedWork />
       <Experience />
+      <Reviews />
       <CTASection />
     </>
   );

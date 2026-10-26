@@ -11,7 +11,7 @@ export const siteConfig = {
   description:
     'Full-stack software engineer with 5+ years building production SaaS, AI-powered automation, and marketplace platforms with React, Next.js, Node.js, NestJS, Django and PostgreSQL. Available for full-time roles and contract work.',
   tagline: 'I build fast, reliable products that handle real users and real money.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://samueladedayo.vercel.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://cruisedev.vercel.app',
   ogImage: '/opengraph-image',
   keywords: [
     'Adedayo Ayomide Samuel',
@@ -35,6 +35,7 @@ export const siteConfig = {
     github: 'https://github.com/Haywhyoh',
     linkedin: 'https://www.linkedin.com/in/ayomide-samuel',
     twitter: 'https://twitter.com/haywhyoh',
+    upwork: 'https://www.upwork.com/freelancers/~01a49b6b5c0e817554',
   },
   nav: [
     { label: 'Work', href: '/work' },

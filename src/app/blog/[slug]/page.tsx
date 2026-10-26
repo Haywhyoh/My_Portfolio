@@ -75,7 +75,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   }
 
   // Generate structured data
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://samueladedayo.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cruisedev.vercel.app';
   const blogStructuredData = generateBlogPostStructuredData(blog, siteUrl);
   const breadcrumbStructuredData = generateBreadcrumbStructuredData([
     { name: 'Home', url: '/' },

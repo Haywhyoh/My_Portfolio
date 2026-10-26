@@ -4,6 +4,7 @@ interface SectionHeadingProps {
   description?: string;
   align?: 'left' | 'center';
   className?: string;
+  titleId?: string;
 }
 
 export default function SectionHeading({
@@ -12,6 +13,7 @@ export default function SectionHeading({
   description,
   align = 'left',
   className = '',
+  titleId,
 }: SectionHeadingProps) {
   const alignment = align === 'center' ? 'tw-text-center tw-mx-auto' : 'tw-text-left';
   return (
@@ -21,7 +23,7 @@ export default function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2 className="tw-text-balance tw-text-3xl tw-font-semibold tw-tracking-tight tw-text-white sm:tw-text-4xl">
+      <h2 id={titleId} className="tw-text-balance tw-text-3xl tw-font-semibold tw-tracking-tight tw-text-white sm:tw-text-4xl">
         {title}
       </h2>
       {description && (
