@@ -53,7 +53,7 @@ export default function Footer() {
             <ul className="tw-mt-4 tw-space-y-3 tw-text-sm tw-text-mist-300">
               <li>{siteConfig.location}</li>
               <li>
-                <a href={`mailto:${siteConfig.email}`} className="tw-link-underline hover:tw-text-white">
+                <a href={`mailto:${siteConfig.email}`} className="hover:tw-text-white">
                   {siteConfig.email}
                 </a>
               </li>

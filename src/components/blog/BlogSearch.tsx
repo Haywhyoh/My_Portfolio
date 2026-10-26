@@ -53,7 +53,7 @@ const BlogSearch = ({
             pushParams('');
           }}
           aria-label="Clear search"
-          className="tw-absolute tw-right-3 tw-top-1/2 tw-flex tw-h-7 tw-w-7 -tw-translate-y-1/2 tw-items-center tw-justify-center tw-rounded-full tw-text-mist-400 hover:tw-text-white"
+          className="tw-absolute tw-right-3 tw-top-1/2 tw-flex tw-h-7 tw-w-7 -tw-translate-y-1/2 tw-items-center tw-justify-center tw-rounded-full tw-bg-transparent tw-text-mist-400 hover:tw-text-white"
         >
           <X className="tw-h-4 tw-w-4" />
         </button>

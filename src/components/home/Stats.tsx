@@ -26,7 +26,7 @@ export default function Stats() {
             hidden: {},
             show: { transition: { staggerChildren: 0.08 } },
           }}
-          className="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4"
+          className="tw-m-0 tw-grid tw-grid-cols-2 lg:tw-grid-cols-4"
         >
           {stats.map((stat, index) => {
             const { end, suffix } = parseStatValue(stat.value);
@@ -51,7 +51,7 @@ export default function Stats() {
               >
                 <dt
                   aria-label={stat.value}
-                  className="tw-font-display tw-text-3xl tw-font-semibold tw-tabular-nums tw-tracking-tight tw-text-white sm:tw-text-4xl"
+                  className="tw-m-0 tw-font-display tw-text-3xl tw-font-semibold tw-tabular-nums tw-tracking-tight tw-text-white sm:tw-text-4xl"
                 >
                   <CountUp
                     end={end}
@@ -61,7 +61,7 @@ export default function Stats() {
                     scrollSpyOnce
                   />
                 </dt>
-                <dd className="tw-mt-2 tw-max-w-[16rem] tw-text-sm tw-leading-snug tw-text-mist-400">
+                <dd className="tw-m-0 tw-mt-2 tw-text-sm tw-text-mist-400">
                   {stat.label}
                 </dd>
               </motion.div>

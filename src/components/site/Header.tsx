@@ -56,7 +56,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`tw-link-underline tw-text-sm tw-font-medium tw-transition-colors ${
+                className={`tw-text-sm tw-font-medium tw-transition-colors ${
                   active ? 'tw-text-white' : 'tw-text-mist-300 hover:tw-text-white'
                 }`}
               >
@@ -76,7 +76,7 @@ export default function Header() {
           type="button"
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
-          className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-white/10 tw-text-white lg:tw-hidden"
+          className="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-white/10 tw-bg-transparent tw-text-white lg:tw-hidden"
         >
           {open ? <X className="tw-h-5 tw-w-5" /> : <Menu className="tw-h-5 tw-w-5" />}
         </button>

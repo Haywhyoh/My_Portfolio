@@ -32,7 +32,7 @@ export default function SocialShare({ title, url }: SocialShareProps) {
   };
 
   const itemClass =
-    'tw-flex tw-h-9 tw-w-9 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-white/10 tw-text-mist-300 tw-transition-colors hover:tw-border-accent-400 hover:tw-text-white';
+    'tw-flex tw-h-9 tw-w-9 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-white/10 tw-bg-transparent tw-text-mist-300 tw-transition-colors hover:tw-border-accent-400 hover:tw-text-white';
 
   return (
     <div className="tw-flex tw-items-center tw-gap-2">

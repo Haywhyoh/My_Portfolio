@@ -132,8 +132,8 @@ export const education: EducationItem[] = [
 ];
 
 export const stats = [
-  { value: '5+', label: 'Years building production software' },
-  { value: '20K+', label: 'Users served across shipped products' },
-  { value: '6', label: 'Live products & platforms shipped' },
-  { value: '200+', label: 'Partners/staff supported by one dashboard he built' },
+  { value: '5+', label: 'Years shipping' },
+  { value: '20K+', label: 'Users served' },
+  { value: '8', label: 'Products shipped' },
+  { value: '200+', label: 'Partners supported' },
 ];
