@@ -31,7 +31,7 @@ export const upworkProfile = {
   jobSuccess: '100%',
   completedJobs: 21,
   inProgress: 7,
-  hoursBilled: 300,
+  hoursBilled: 1300,
   badge: 'Top Rated',
 } as const;
 
