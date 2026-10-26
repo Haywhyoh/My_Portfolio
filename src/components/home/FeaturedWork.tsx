@@ -202,16 +202,15 @@ export default function FeaturedWork() {
                         : 'tw-bg-white/[0.03] tw-ring-1 tw-ring-white/10 hover:tw-bg-white/[0.06] hover:tw-ring-white/30'
                     }`}
                   >
-                    <span className="tw-relative tw-block tw-aspect-[16/10] tw-overflow-hidden tw-rounded-xl tw-bg-black">
+                    <span className="tw-relative tw-block tw-aspect-[3142/1804] tw-overflow-hidden tw-rounded-xl tw-bg-black">
                       <Image
                         src={item.image}
                         alt=""
                         fill
-                        sizes="148px"
+                        sizes="(min-width: 1024px) 11vw, 160px"
+                        loading="eager"
                         draggable={false}
-                        className={`tw-pointer-events-none tw-object-cover tw-object-[center_36%] tw-transition-transform tw-duration-500 ${
-                          selected ? 'tw-scale-100' : 'tw-scale-[1.04] group-hover:tw-scale-100'
-                        }`}
+                        className="tw-pointer-events-none tw-object-contain"
                       />
                       <span
                         className={`tw-absolute tw-left-1.5 tw-top-1.5 tw-rounded-md tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-[9px] tw-leading-none tw-tracking-[0.14em] ${
@@ -234,13 +233,13 @@ export default function FeaturedWork() {
             </div>
             <div
               aria-hidden
-              className={`tw-pointer-events-none tw-absolute tw-inset-y-0 tw-left-0 tw-w-8 tw-bg-gradient-to-r tw-from-ink-950 tw-to-transparent tw-transition-opacity ${
+              className={`tw-pointer-events-none tw-absolute tw-inset-y-0 tw-left-0 tw-w-8 tw-bg-gradient-to-r tw-from-ink-950 tw-to-transparent tw-transition-opacity lg:tw-hidden ${
                 edges.left ? 'tw-opacity-100' : 'tw-opacity-0'
               }`}
             />
             <div
               aria-hidden
-              className={`tw-pointer-events-none tw-absolute tw-inset-y-0 tw-right-0 tw-w-10 tw-bg-gradient-to-l tw-from-ink-950 tw-to-transparent tw-transition-opacity ${
+              className={`tw-pointer-events-none tw-absolute tw-inset-y-0 tw-right-0 tw-w-10 tw-bg-gradient-to-l tw-from-ink-950 tw-to-transparent tw-transition-opacity lg:tw-hidden ${
                 edges.right ? 'tw-opacity-100' : 'tw-opacity-0'
               }`}
             />
