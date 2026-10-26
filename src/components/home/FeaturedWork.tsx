@@ -26,7 +26,6 @@ function hostOf(url?: string) {
 export default function FeaturedWork() {
   const projects = showcaseProjects;
   const [active, setActive] = useState(0);
-  const [edges, setEdges] = useState({ left: false, right: true });
   const reduce = useReducedMotion();
   const scrollerRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -42,15 +41,6 @@ export default function FeaturedWork() {
     setActive(next);
   }
 
-  function measureEdges() {
-    const el = scrollerRef.current;
-    if (!el) return;
-    setEdges({
-      left: el.scrollLeft > 8,
-      right: el.scrollLeft + el.clientWidth < el.scrollWidth - 8,
-    });
-  }
-
   useEffect(() => {
     const scroller = scrollerRef.current;
     const tab = tabRefs.current[active];
@@ -62,14 +52,7 @@ export default function FeaturedWork() {
       tab?.focus();
       fromKeyboard.current = false;
     }
-    measureEdges();
   }, [active, reduce]);
-
-  useEffect(() => {
-    measureEdges();
-    window.addEventListener('resize', measureEdges);
-    return () => window.removeEventListener('resize', measureEdges);
-  }, []);
 
   function onTabsKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     const key = event.key;
@@ -177,7 +160,6 @@ export default function FeaturedWork() {
               role="tablist"
               aria-label="Selected projects"
               onKeyDown={onTabsKeyDown}
-              onScroll={measureEdges}
               className="tw-no-scrollbar tw-flex tw-snap-x tw-snap-mandatory tw-gap-2.5 tw-overflow-x-auto tw-py-1 max-lg:-tw-mx-5 max-lg:tw-px-5 sm:tw-gap-3 sm:max-lg:-tw-mx-8 sm:max-lg:tw-px-8 lg:tw-gap-2.5"
             >
               {projects.map((item, index) => {
@@ -231,18 +213,6 @@ export default function FeaturedWork() {
                 );
               })}
             </div>
-            <div
-              aria-hidden
-              className={`tw-pointer-events-none tw-absolute tw-inset-y-0 tw-left-0 tw-w-8 tw-bg-gradient-to-r tw-from-ink-950 tw-to-transparent tw-transition-opacity lg:tw-hidden ${
-                edges.left ? 'tw-opacity-100' : 'tw-opacity-0'
-              }`}
-            />
-            <div
-              aria-hidden
-              className={`tw-pointer-events-none tw-absolute tw-inset-y-0 tw-right-0 tw-w-10 tw-bg-gradient-to-l tw-from-ink-950 tw-to-transparent tw-transition-opacity lg:tw-hidden ${
-                edges.right ? 'tw-opacity-100' : 'tw-opacity-0'
-              }`}
-            />
           </div>
 
           <div
