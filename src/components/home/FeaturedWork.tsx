@@ -171,14 +171,14 @@ export default function FeaturedWork() {
             </div>
           </div>
 
-          <div className="tw-relative tw-mt-6 sm:tw-mt-8">
+          <div className="tw-relative tw-mt-5 sm:tw-mt-6">
             <div
               ref={scrollerRef}
               role="tablist"
               aria-label="Selected projects"
               onKeyDown={onTabsKeyDown}
               onScroll={measureEdges}
-              className="tw-no-scrollbar tw-flex tw-snap-x tw-snap-mandatory tw-overflow-x-auto tw-border-b tw-border-white/10 max-lg:-tw-mx-5 max-lg:tw-px-5 sm:max-lg:-tw-mx-8 sm:max-lg:tw-px-8"
+              className="tw-no-scrollbar tw-flex tw-snap-x tw-snap-mandatory tw-gap-2.5 tw-overflow-x-auto tw-py-1 max-lg:-tw-mx-5 max-lg:tw-px-5 sm:tw-gap-3 sm:max-lg:-tw-mx-8 sm:max-lg:tw-px-8 lg:tw-gap-2.5"
             >
               {projects.map((item, index) => {
                 const selected = index === active;
@@ -191,20 +191,41 @@ export default function FeaturedWork() {
                     type="button"
                     role="tab"
                     id={`work-tab-${item.slug}`}
+                    title={item.name}
                     aria-selected={selected}
                     aria-controls="work-panel"
                     tabIndex={selected ? 0 : -1}
                     onClick={() => select(index)}
-                    className={`tw-relative tw-snap-start tw-shrink-0 -tw-mb-px tw-border-b-2 tw-px-3.5 tw-py-3 tw-text-left tw-transition-colors focus-visible:tw-outline-none focus-visible:tw-ring-2 focus-visible:tw-ring-white/40 sm:tw-px-4 ${
+                    className={`tw-group tw-snap-start tw-shrink-0 tw-w-[8.25rem] tw-rounded-2xl tw-p-1.5 tw-text-left tw-transition-all tw-duration-300 focus-visible:tw-outline-none focus-visible:tw-ring-2 focus-visible:tw-ring-white/50 sm:tw-w-[9.25rem] lg:tw-w-auto lg:tw-min-w-0 lg:tw-flex-1 ${
                       selected
-                        ? 'tw-border-white tw-text-white'
-                        : 'tw-border-transparent tw-text-mist-400 hover:tw-text-mist-100'
+                        ? 'tw-bg-white/[0.08] tw-ring-1 tw-ring-white'
+                        : 'tw-bg-white/[0.03] tw-ring-1 tw-ring-white/10 hover:tw-bg-white/[0.06] hover:tw-ring-white/30'
                     }`}
                   >
-                    <span className="tw-block tw-font-mono tw-text-[10px] tw-tracking-[0.16em] tw-text-mist-400">
-                      {pad(index + 1)}
+                    <span className="tw-relative tw-block tw-aspect-[16/10] tw-overflow-hidden tw-rounded-xl tw-bg-black">
+                      <Image
+                        src={item.image}
+                        alt=""
+                        fill
+                        sizes="148px"
+                        draggable={false}
+                        className={`tw-pointer-events-none tw-object-cover tw-object-[center_36%] tw-transition-transform tw-duration-500 ${
+                          selected ? 'tw-scale-100' : 'tw-scale-[1.04] group-hover:tw-scale-100'
+                        }`}
+                      />
+                      <span
+                        className={`tw-absolute tw-left-1.5 tw-top-1.5 tw-rounded-md tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-[9px] tw-leading-none tw-tracking-[0.14em] ${
+                          selected ? 'tw-bg-white tw-text-ink-950' : 'tw-bg-black/75 tw-text-white/80'
+                        }`}
+                      >
+                        {pad(index + 1)}
+                      </span>
                     </span>
-                    <span className="tw-mt-1 tw-block tw-whitespace-nowrap tw-text-sm tw-font-medium">
+                    <span
+                      className={`tw-mt-1.5 tw-block tw-truncate tw-px-1 tw-pb-0.5 tw-text-[11px] tw-font-medium sm:tw-text-xs ${
+                        selected ? 'tw-text-white' : 'tw-text-mist-300 group-hover:tw-text-white'
+                      }`}
+                    >
                       {item.name}
                     </span>
                   </button>
